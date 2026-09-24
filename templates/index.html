@@ -97,872 +97,47 @@
 </div>
 <!-- Mode Toggle Tabs -->
 <div class="flex p-0.5 rounded-lg bg-surface-container max-w-xs">
-<button class="flex-1 py-1.5 px-space-sm rounded-lg bg-surface-container-lowest text-on-surface font-headline-sm text-headline-sm shadow-sm text-center" type="button">
+<button id="uploadModeBtn" class="flex-1 py-1.5 px-space-sm rounded-lg bg-surface-container-lowest text-on-surface font-headline-sm text-headline-sm shadow-sm text-center" type="button" onclick="showInputMode('upload')">
             Upload File
           </button>
-<button class="flex-1 py-1.5 px-space-sm rounded-lg text-on-surface-variant hover:text-on-surface font-body-md text-body-md text-center transition-all" type="button">
+<button id="pasteModeBtn" class="flex-1 py-1.5 px-space-sm rounded-lg text-on-surface-variant hover:text-on-surface font-body-md text-body-md text-center transition-all" type="button" onclick="showInputMode('paste')">
             Paste Code
           </button>
 </div>
-<!-- Uploaded File Badge & Droppable Staging -->
-<div class="rounded-lg bg-surface-container-low p-space-md flex flex-col sm:flex-row items-center justify-between gap-space-md">
-<div class="flex items-center gap-space-sm">
-<div class="w-10 h-10 rounded-lg bg-primary-container text-on-secondary flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-[24px]">integration_instructions</span>
-</div>
-<div class="flex flex-col min-w-0">
-<span class="font-headline-sm text-headline-sm text-on-surface truncate">BinarySearchTree.java</span>
-<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant">
-<span>4.2 KB</span>
-<span>•</span>
-<span>ISO-8859 text</span>
-<span>•</span>
-<span class="text-on-tertiary-container font-medium">Ready</span>
-</div>
-</div>
-</div>
-<div class="flex items-center gap-space-xs">
-<button class="px-space-sm py-1 rounded-lg bg-surface-container-highest text-on-surface hover:bg-surface-container font-label-md text-label-md transition-all" type="button">
-              Change File
-            </button>
-<button class="p-1 rounded-lg hover:bg-error-container text-error transition-all" title="Remove File" type="button">
-<span class="material-symbols-outlined text-[18px]">delete</span>
-</button>
-</div>
-</div>
-<!-- High-density Source Code Preview with Line Numbers -->
-<div class="rounded-lg bg-primary text-on-primary shadow-inner overflow-hidden font-label-md text-label-md">
-<div class="flex items-center justify-between px-space-md py-1.5 bg-inverse-surface text-inverse-on-surface font-label-sm text-label-sm">
-<span class="flex items-center gap-1.5">
-<span class="w-2.5 h-2.5 rounded-full bg-error"></span>
-<span class="w-2.5 h-2.5 rounded-full bg-secondary-fixed-dim"></span>
-<span class="w-2.5 h-2.5 rounded-full bg-tertiary-fixed"></span>
-<span class="ml-2">src/datastructures/BinarySearchTree.java</span>
-</span>
-<span class="text-on-primary-container">Lines 1 - 15 of 84</span>
-</div>
-<div class="p-space-sm overflow-x-auto font-label-sm leading-relaxed max-h-56 select-all">
-<table class="w-full text-left">
-<tbody>
-<tr class="hover:bg-primary-container/40">
-<td class="text-on-primary-container select-none w-8 pr-2 text-right">1</td>
-<td class="text-tertiary-fixed">package</td>
-<td class="pl-2">edu.univ.cse.lab4;</td>
-</tr>
-<tr class="hover:bg-primary-container/40">
-<td class="text-on-primary-container select-none w-8 pr-2 text-right">2</td>
-<td class="text-tertiary-fixed">import</td>
-<td class="pl-2">java.util.Scanner;</td>
-</tr>
-<tr class="hover:bg-primary-container/40">
-<td class="text-on-primary-container select-none w-8 pr-2 text-right">3</td>
-<td colspan="2"></td>
-</tr>
-<tr class="hover:bg-primary-container/40">
-<td class="text-on-primary-container select-none w-8 pr-2 text-right">4</td>
-<td class="text-secondary-fixed">public class</td>
-<td class="pl-2 text-surface-bright">BinarySearchTree {</td>
-</tr>
-<tr class="hover:bg-primary-container/40">
-<td class="text-on-primary-container select-none w-8 pr-2 text-right">5</td>
-<td class="text-on-primary-container select-none text-right"></td>
-<td class="pl-2 text-on-surface-variant font-italic">// Binary Node Definition</td>
-</tr>
-<tr class="hover:bg-primary-container/40">
-<td class="text-on-primary-container select-none w-8 pr-2 text-right">6</td>
-<td class="text-secondary-fixed">static class</td>
-<td class="pl-2">Node { int key; Node left, right;</td>
-</tr>
-<tr class="hover:bg-primary-container/40">
-<td class="text-on-primary-container select-none w-8 pr-2 text-right">7</td>
-<td></td>
-<td class="pl-4">public Node(int item) { key = item; left = right = null; }</td>
-</tr>
-<tr class="hover:bg-primary-container/40">
-<td class="text-on-primary-container select-none w-8 pr-2 text-right">8</td>
-<td></td>
-<td class="pl-2">}</td>
-</tr>
-<tr class="hover:bg-primary-container/40">
-<td class="text-on-primary-container select-none w-8 pr-2 text-right">9</td>
-<td class="text-secondary-fixed">Node</td>
-<td class="pl-2">root;</td>
-</tr>
-<tr class="hover:bg-primary-container/40">
-<td class="text-on-primary-container select-none w-8 pr-2 text-right">10</td>
-<td class="text-secondary-fixed">void</td>
-<td class="pl-2">insert(int key) { root = insertRec(root, key); }</td>
-</tr>
-<tr class="hover:bg-primary-container/40">
-<td class="text-on-primary-container select-none w-8 pr-2 text-right">11</td>
-<td class="text-secondary-fixed">Node</td>
-<td class="pl-2">insertRec(Node root, int key) {</td>
-</tr>
-<tr class="hover:bg-primary-container/40">
-<td class="text-on-primary-container select-none w-8 pr-2 text-right">12</td>
-<td></td>
-<td class="pl-4">if (root == null) { root = new Node(key); return root; }</td>
-</tr>
-<tr class="hover:bg-primary-container/40">
-<td class="text-on-primary-container select-none w-8 pr-2 text-right">13</td>
-<td></td>
-<td class="pl-4">if (key &lt; root.key) root.left = insertRec(root.left, key);</td>
-</tr>
-<tr class="hover:bg-primary-container/40">
-<td class="text-on-primary-container select-none w-8 pr-2 text-right">14</td>
-<td></td>
-<td class="pl-4">else if (key &gt; root.key) root.right = insertRec(root.right, key);</td>
-</tr>
-<tr class="hover:bg-primary-container/40">
-<td class="text-on-primary-container select-none w-8 pr-2 text-right">15</td>
-<td></td>
-<td class="pl-4">return root;</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<!-- AI Semantic Parsing Bar -->
-<div class="flex flex-col sm:flex-row items-center justify-between gap-space-sm p-space-sm rounded-lg bg-surface-container-high">
-<div class="flex items-center gap-space-sm">
-<span class="w-2.5 h-2.5 rounded-full bg-secondary animate-ping"></span>
-<div class="flex flex-col">
-<span class="font-headline-sm text-headline-sm text-on-surface">Analysis Complete</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">5 scholastic sections automatically synthesized from AST parsing</span>
-</div>
-</div>
-<button class="w-full sm:w-auto px-space-md py-space-xs rounded-lg bg-secondary text-on-secondary hover:bg-secondary-container font-headline-sm text-headline-sm flex items-center justify-center gap-space-xs shadow-md transition-all" type="button">
-<span class="material-symbols-outlined text-[18px]">auto_fix_high</span>
-<span>Re-analyze AST</span>
-</button>
-</div>
-</section>
-<!-- STEP 2: RECORD CONTENT CHECKLIST -->
-<section class="rounded-xl bg-surface-container-lowest shadow-[0_1px_3px_0_rgba(15,23,42,0.04)] p-space-lg flex flex-col gap-space-md">
-<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
-<div class="flex items-center gap-space-sm">
-<span class="w-7 h-7 rounded-lg bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm">2</span>
-<div>
-<h2 class="font-headline-lg text-headline-lg text-on-surface">Record Content Sections</h2>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Toggle modular blocks designated for compilation into the thesis layout</p>
-</div>
-</div>
-<div class="flex items-center gap-space-xs">
-<span class="px-space-sm py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm">5 of 5 Selected</span>
-<button class="px-space-xs py-1 text-on-surface-variant hover:text-on-surface font-label-md text-label-md" type="button">Select All</button>
-<span class="text-outline-variant">•</span>
-<button class="px-space-xs py-1 text-on-surface-variant hover:text-on-surface font-label-md text-label-md" type="button">Clear</button>
-</div>
-</div>
-<!-- 5 Interactive Content Blocks with Distinct Visual Accents -->
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-space-sm">
-<!-- Card 1: AIM -->
-<label class="cursor-pointer group flex items-start gap-space-sm p-space-md rounded-xl bg-surface-container-high transition-all shadow-sm">
-<input checked="" class="mt-1 w-4 h-4 rounded text-secondary focus:ring-0 cursor-pointer" type="checkbox"/>
-<div class="flex flex-col">
-<div class="flex items-center gap-space-xs">
-<span class="material-symbols-outlined text-[18px] text-secondary">gps_fixed</span>
-<span class="font-headline-sm text-headline-sm text-on-surface">AIM</span>
-</div>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Objective statement &amp; algorithmic prerequisites</span>
-</div>
-</label>
-<!-- Card 2: ALGORITHM -->
-<label class="cursor-pointer group flex items-start gap-space-sm p-space-md rounded-xl bg-surface-container-high transition-all shadow-sm">
-<input checked="" class="mt-1 w-4 h-4 rounded text-secondary focus:ring-0 cursor-pointer" type="checkbox"/>
-<div class="flex flex-col">
-<div class="flex items-center gap-space-xs">
-<span class="material-symbols-outlined text-[18px] text-secondary">format_list_numbered</span>
-<span class="font-headline-sm text-headline-sm text-on-surface">ALGORITHM</span>
-</div>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Standardized sequential computational steps</span>
-</div>
-</label>
-<!-- Card 3: PROGRAM -->
-<label class="cursor-pointer group flex items-start gap-space-sm p-space-md rounded-xl bg-surface-container-high transition-all shadow-sm">
-<input checked="" class="mt-1 w-4 h-4 rounded text-secondary focus:ring-0 cursor-pointer" type="checkbox"/>
-<div class="flex flex-col">
-<div class="flex items-center gap-space-xs">
-<span class="material-symbols-outlined text-[18px] text-secondary">data_object</span>
-<span class="font-headline-sm text-headline-sm text-on-surface">PROGRAM</span>
-</div>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Monospaced raw Java source listing</span>
-</div>
-</label>
-<!-- Card 4: OUTPUT -->
-<label class="cursor-pointer group flex items-start gap-space-sm p-space-md rounded-xl bg-surface-container-high transition-all shadow-sm">
-<input checked="" class="mt-1 w-4 h-4 rounded text-secondary focus:ring-0 cursor-pointer" type="checkbox"/>
-<div class="flex flex-col">
-<div class="flex items-center gap-space-xs">
-<span class="material-symbols-outlined text-[18px] text-secondary">dvr</span>
-<span class="font-headline-sm text-headline-sm text-on-surface">OUTPUT</span>
-</div>
-<span class="font-body-sm text-body-sm text-on-surface-variant">CLI execution trace and standard test vectors</span>
-</div>
-</label>
-<!-- Card 5: RESULT -->
-<label class="cursor-pointer group flex items-start gap-space-sm p-space-md rounded-xl bg-surface-container-high transition-all shadow-sm">
-<input checked="" class="mt-1 w-4 h-4 rounded text-secondary focus:ring-0 cursor-pointer" type="checkbox"/>
-<div class="flex flex-col">
-<div class="flex items-center gap-space-xs">
-<span class="material-symbols-outlined text-[18px] text-secondary">check_circle</span>
-<span class="font-headline-sm text-headline-sm text-on-surface">RESULT</span>
-</div>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Final validation confirmation and metrics</span>
-</div>
-</label>
-<!-- Supplemental Info Slot -->
-<div class="flex items-center gap-space-sm p-space-md rounded-xl bg-surface-container-low text-on-surface-variant">
-<span class="material-symbols-outlined text-[20px] text-on-tertiary-container">info</span>
-<span class="font-body-sm text-body-sm">All sections strictly comply with standard university syllabus formats.</span>
-</div>
-</div>
-</section>
-<!-- STEP 3: GENERATED CONTENT (EDITABLE CARDS) -->
-<section class="rounded-xl bg-surface-container-lowest shadow-[0_1px_3px_0_rgba(15,23,42,0.04)] p-space-lg flex flex-col gap-space-lg">
-<div class="flex items-start justify-between gap-space-md">
-<div class="flex items-center gap-space-sm">
-<span class="w-7 h-7 rounded-lg bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm">3</span>
-<div>
-<h2 class="font-headline-lg text-headline-lg text-on-surface">Generated Content Review</h2>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Fine-tune the auto-generated laboratory transcript before typesetting</p>
-</div>
-</div>
-<span class="px-space-sm py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm shrink-0">
-            Interactive Form
-          </span>
-</div>
-<!-- AI Generation Notice Banner -->
-<div class="flex items-center gap-space-sm p-space-md rounded-xl bg-surface-container-high text-on-surface">
-<span class="material-symbols-outlined text-secondary text-[22px]">auto_awesome</span>
-<div class="flex-1 font-body-sm text-body-sm">
-<strong class="font-headline-sm">AI Generated Draft:</strong> Formulated using syntax tree traversal of <span class="font-label-sm font-semibold">BinarySearchTree.java</span>. All section bodies are fully interactive.
-          </div>
-</div>
-<div class="flex flex-col gap-space-md">
-<!-- AIM EDITABLE -->
-<div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-xs">
-<div class="flex items-center justify-between">
-<span class="font-label-sm text-label-sm tracking-wider uppercase text-secondary font-bold flex items-center gap-1.5">
-<span class="w-2 h-2 rounded-full bg-secondary"></span> AIM
-              </span>
-<button class="text-on-surface-variant hover:text-on-surface font-label-md text-label-md flex items-center gap-1" type="button">
-<span class="material-symbols-outlined text-[14px]">edit</span> Edit
-              </button>
-</div>
-<textarea class="w-full bg-surface-container-lowest rounded-lg p-space-sm font-body-md text-body-md text-on-surface shadow-sm focus:outline-none focus:ring-2 focus:ring-secondary resize-y" rows="2">To implement and test a Binary Search Tree (BST) in Java, supporting node insertion, search, and in-order, pre-order, and post-order depth-first traversals.</textarea>
-</div>
-<!-- ALGORITHM EDITABLE -->
-<div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-xs">
-<div class="flex items-center justify-between">
-<span class="font-label-sm text-label-sm tracking-wider uppercase text-secondary font-bold flex items-center gap-1.5">
-<span class="w-2 h-2 rounded-full bg-secondary"></span> ALGORITHM
-              </span>
-<button class="text-on-surface-variant hover:text-on-surface font-label-md text-label-md flex items-center gap-1" type="button">
-<span class="material-symbols-outlined text-[14px]">edit</span> Edit Steps
-              </button>
-</div>
-<div class="space-y-1.5 font-body-md text-body-md text-on-surface bg-surface-container-lowest p-space-md rounded-lg shadow-sm">
-<div class="flex items-baseline gap-space-sm">
-<span class="font-label-sm text-secondary font-bold">1.</span>
-<span>Start the execution.</span>
-</div>
-<div class="flex items-baseline gap-space-sm">
-<span class="font-label-sm text-secondary font-bold">2.</span>
-<span>Define a Node class containing data field, left child pointer, and right child pointer.</span>
-</div>
-<div class="flex items-baseline gap-space-sm">
-<span class="font-label-sm text-secondary font-bold">3.</span>
-<span>Read input sequence from standard stream and recursively insert values into the BST hierarchy.</span>
-</div>
-<div class="flex items-baseline gap-space-sm">
-<span class="font-label-sm text-secondary font-bold">4.</span>
-<span>Perform in-order traversal (Left, Root, Right) to compute and display the keys in ascending order.</span>
-</div>
-<div class="flex items-baseline gap-space-sm">
-<span class="font-label-sm text-secondary font-bold">5.</span>
-<span>Execute recursive key query search; print node depth level upon positive match.</span>
-</div>
-<div class="flex items-baseline gap-space-sm">
-<span class="font-label-sm text-secondary font-bold">6.</span>
-<span>Terminate routine and output memory dissipation status.</span>
-</div>
-</div>
-</div>
-<!-- PROGRAM EDITABLE -->
-<div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-xs">
-<div class="flex items-center justify-between">
-<span class="font-label-sm text-label-sm tracking-wider uppercase text-secondary font-bold flex items-center gap-1.5">
-<span class="w-2 h-2 rounded-full bg-secondary"></span> PROGRAM
-              </span>
-<div class="flex items-center gap-space-xs">
-<button class="text-on-surface-variant hover:text-on-surface font-label-md text-label-md flex items-center gap-1" type="button">
-<span class="material-symbols-outlined text-[14px]">content_copy</span> Copy
-                </button>
-<button class="text-on-surface-variant hover:text-on-surface font-label-md text-label-md flex items-center gap-1" type="button">
-<span class="material-symbols-outlined text-[14px]">code</span> Edit Code
-                </button>
-</div>
-</div>
-<div class="bg-primary text-surface-bright rounded-lg p-space-md font-label-sm text-label-sm overflow-x-auto shadow-sm leading-relaxed">
-<pre class="m-0"><code>public class BinarySearchTree {
-    static class Node {
-        int key; Node left, right;
-        public Node(int item) { key = item; left = right = null; }
-    }
-    Node root;
-    void insert(int key) { root = insertRec(root, key); }
-    Node insertRec(Node root, int key) {
-        if (root == null) { root = new Node(key); return root; }
-        if (key &lt; root.key) root.left = insertRec(root.left, key);
-        else if (key &gt; root.key) root.right = insertRec(root.right, key);
-        return root;
-    }
-}</code></pre>
-</div>
-</div>
-<!-- OUTPUT EDITABLE -->
-<div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-xs">
-<div class="flex items-center justify-between">
-<span class="font-label-sm text-label-sm tracking-wider uppercase text-secondary font-bold flex items-center gap-1.5">
-<span class="w-2 h-2 rounded-full bg-secondary"></span> OUTPUT (TERMINAL TRACE)
-              </span>
-<button class="text-on-surface-variant hover:text-on-surface font-label-md text-label-md flex items-center gap-1" type="button">
-<span class="material-symbols-outlined text-[14px]">terminal</span> Re-run
-              </button>
-</div>
-<div class="bg-inverse-surface text-inverse-on-surface font-label-sm text-label-sm p-space-md rounded-lg shadow-inner font-mono">
-<div class="text-on-tertiary-container">$ java -cp bin edu.univ.cse.lab4.BinarySearchTree</div>
-<div class="mt-1">Inserted keys: [15, 10, 20, 8, 12, 18, 25]</div>
-<div>In-order Traversal: 8 10 12 15 18 20 25</div>
-<div>Search for query key 18: Found at tree height level 2</div>
-<div class="text-secondary-fixed mt-1">Process finished with exit code 0 (Execution time: 42ms)</div>
-</div>
-</div>
-<!-- RESULT EDITABLE -->
-<div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-xs">
-<div class="flex items-center justify-between">
-<span class="font-label-sm text-label-sm tracking-wider uppercase text-secondary font-bold flex items-center gap-1.5">
-<span class="w-2 h-2 rounded-full bg-secondary"></span> RESULT
-              </span>
-<button class="text-on-surface-variant hover:text-on-surface font-label-md text-label-md flex items-center gap-1" type="button">
-<span class="material-symbols-outlined text-[14px]">edit</span> Edit
-              </button>
-</div>
-<textarea class="w-full bg-surface-container-lowest rounded-lg p-space-sm font-body-md text-body-md text-on-surface shadow-sm focus:outline-none focus:ring-2 focus:ring-secondary resize-y" rows="2">Thus, the Binary Search Tree operations including insertion, searching, and traversal were successfully implemented and verified with appropriate test vectors.</textarea>
-</div>
-</div>
-</section>
-<!-- STEP 4: DOCUMENT FORMATTING -->
-<section class="rounded-xl bg-surface-container-lowest shadow-[0_1px_3px_0_rgba(15,23,42,0.04)] p-space-lg flex flex-col gap-space-lg">
-<div class="flex items-center gap-space-sm">
-<span class="w-7 h-7 rounded-lg bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm">4</span>
-<div>
-<h2 class="font-headline-lg text-headline-lg text-on-surface">Document Formatting</h2>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Calibrate standard university manuscript layout variables and typographies</p>
-</div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
-<!-- Subcard 1: Typography -->
-<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-sm">
-<div class="flex items-center justify-between">
-<span class="font-headline-sm text-headline-sm text-on-surface">Typography</span>
-<span class="material-symbols-outlined text-[18px] text-secondary">text_format</span>
-</div>
-<div class="flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant">Font Family</label>
-<select class="h-9 px-space-sm rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-secondary">
-<option selected="">Times New Roman</option>
-<option>Newsreader (Serif)</option>
-<option>Inter (Sans)</option>
-<option>JetBrains Mono</option>
-</select>
-</div>
-<div class="grid grid-cols-2 gap-space-xs">
-<div class="flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant">Heading Size</label>
-<select class="h-9 px-space-xs rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md">
-<option selected="">16 pt</option>
-<option>14 pt</option>
-<option>18 pt</option>
-</select>
-</div>
-<div class="flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant">Body Size</label>
-<select class="h-9 px-space-xs rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md">
-<option selected="">12 pt</option>
-<option>11 pt</option>
-<option>10 pt</option>
-</select>
-</div>
-</div>
-<div class="flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant">Line Spacing</label>
-<div class="flex p-0.5 rounded-lg bg-surface-container">
-<button class="flex-1 py-1 text-center font-label-sm text-label-sm rounded text-on-surface-variant" type="button">1.15</button>
-<button class="flex-1 py-1 text-center font-label-sm text-label-sm rounded bg-surface-container-lowest text-secondary font-bold shadow-sm" type="button">1.5</button>
-<button class="flex-1 py-1 text-center font-label-sm text-label-sm rounded text-on-surface-variant" type="button">2.0</button>
-</div>
-</div>
-<div class="pt-space-xs">
-<span class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Body Alignment</span>
-<div class="flex rounded-lg bg-surface-container p-0.5">
-<button class="flex-1 py-1 flex justify-center text-on-surface-variant" type="button"><span class="material-symbols-outlined text-[16px]">format_align_left</span></button>
-<button class="flex-1 py-1 flex justify-center text-on-surface-variant" type="button"><span class="material-symbols-outlined text-[16px]">format_align_center</span></button>
-<button class="flex-1 py-1 flex justify-center bg-surface-container-lowest text-secondary font-bold shadow-sm" type="button"><span class="material-symbols-outlined text-[16px]">format_align_justify</span></button>
-</div>
-</div>
-</div>
-<!-- Subcard 2: Page Setup -->
-<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-sm">
-<div class="flex items-center justify-between">
-<span class="font-headline-sm text-headline-sm text-on-surface">Page Setup</span>
-<span class="material-symbols-outlined text-[18px] text-secondary">description</span>
-</div>
-<div class="flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant">Paper Size</label>
-<select class="h-9 px-space-sm rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:outline-none">
-<option selected="">A4 (210 × 297 mm)</option>
-<option>US Letter</option>
-<option>Legal</option>
-</select>
-</div>
-<div class="flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant">Orientation</label>
-<div class="flex p-0.5 rounded-lg bg-surface-container">
-<button class="flex-1 py-1 text-center font-label-sm text-label-sm rounded bg-surface-container-lowest text-secondary font-bold shadow-sm" type="button">Portrait</button>
-<button class="flex-1 py-1 text-center font-label-sm text-label-sm rounded text-on-surface-variant" type="button">Landscape</button>
-</div>
-</div>
-<div class="pt-space-xs">
-<label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Margins (Inches)</label>
-<div class="grid grid-cols-2 gap-space-xs">
-<div class="flex items-center justify-between bg-surface-container-lowest px-2 py-1 rounded">
-<span class="font-label-sm text-on-surface-variant">T:</span>
-<span class="font-label-sm text-on-surface font-bold">1.0"</span>
-</div>
-<div class="flex items-center justify-between bg-surface-container-lowest px-2 py-1 rounded">
-<span class="font-label-sm text-on-surface-variant">B:</span>
-<span class="font-label-sm text-on-surface font-bold">1.0"</span>
-</div>
-<div class="flex items-center justify-between bg-surface-container-lowest px-2 py-1 rounded">
-<span class="font-label-sm text-on-surface-variant">L:</span>
-<span class="font-label-sm text-secondary font-bold">1.25"</span>
-</div>
-<div class="flex items-center justify-between bg-surface-container-lowest px-2 py-1 rounded">
-<span class="font-label-sm text-on-surface-variant">R:</span>
-<span class="font-label-sm text-on-surface font-bold">1.0"</span>
-</div>
-</div>
-<span class="font-label-sm text-label-sm text-on-surface-variant/80 mt-1 block">Left gutter preserved for binding</span>
-</div>
-</div>
-<!-- Subcard 3: Page Borders -->
-<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-sm justify-between">
-<div class="flex flex-col gap-space-xs">
-<div class="flex items-center justify-between">
-<span class="font-headline-sm text-headline-sm text-on-surface">Page Borders</span>
-<span class="material-symbols-outlined text-[18px] text-secondary">crop_square</span>
-</div>
-<div class="flex items-center justify-between py-1">
-<span class="font-body-sm text-body-sm text-on-surface">Add Page Border</span>
-<span class="w-9 h-5 bg-secondary rounded-full flex items-center p-0.5 cursor-pointer justify-end">
-<span class="w-4 h-4 bg-on-secondary rounded-full shadow"></span>
-</span>
-</div>
-<div class="flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant">Line Style</label>
-<div class="flex p-0.5 rounded-lg bg-surface-container">
-<button class="flex-1 py-1 text-center font-label-sm text-label-sm rounded text-on-surface-variant" type="button">None</button>
-<button class="flex-1 py-1 text-center font-label-sm text-label-sm rounded bg-surface-container-lowest text-secondary font-bold shadow-sm" type="button">Single</button>
-<button class="flex-1 py-1 text-center font-label-sm text-label-sm rounded text-on-surface-variant" type="button">Double</button>
-</div>
-</div>
-<div class="grid grid-cols-2 gap-space-xs">
-<div class="flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant">Thickness</label>
-<select class="h-8 px-1 rounded bg-surface-container-lowest font-label-sm text-label-sm">
-<option selected="">1.0 pt</option>
-<option>1.5 pt</option>
-<option>0.5 pt</option>
-</select>
-</div>
-<div class="flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant">Color</label>
-<div class="flex items-center gap-1.5 h-8 bg-surface-container-lowest px-2 rounded font-label-sm text-label-sm">
-<span class="w-3 h-3 rounded-full bg-primary inline-block"></span>
-<span>#000000</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Border mini-preview -->
-<div class="h-16 w-full rounded bg-surface-container-lowest p-2 flex items-center justify-center">
-<div class="w-full h-full bg-surface-container-low shadow-[inset_0_0_0_1px_rgba(15,23,42,0.8)] flex items-center justify-center">
-<span class="font-label-sm text-label-sm text-on-surface-variant scale-90">1.0 pt Institutional Framing</span>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- STEP 5: IMAGES & GRAPHICAL ARTIFACTS -->
-<section class="rounded-xl bg-surface-container-lowest shadow-[0_1px_3px_0_rgba(15,23,42,0.04)] p-space-lg flex flex-col gap-space-md">
-<div class="flex items-center justify-between">
-<div class="flex items-center gap-space-sm">
-<span class="w-7 h-7 rounded-lg bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm">5</span>
-<div>
-<h2 class="font-headline-lg text-headline-lg text-on-surface">Figures &amp; Artifacts</h2>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Attach program execution screenshots or data structure diagrams to specific pages</p>
-</div>
-</div>
-<button class="px-space-md py-space-xs rounded-lg bg-primary text-on-primary hover:bg-inverse-surface transition-all flex items-center gap-1 font-headline-sm text-headline-sm shadow-sm" type="button">
-<span class="material-symbols-outlined text-[18px]">add_photo_alternate</span>
-<span>Add Image</span>
-</button>
-</div>
-<!-- Attached Image Configuration Item -->
-<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col md:flex-row items-center gap-space-lg">
-<!-- Thumbnail using Rich Image Placeholder -->
-<div class="w-full md:w-44 h-28 rounded-lg overflow-hidden shrink-0 shadow-sm relative group bg-surface-container">
-<img class="w-full h-full object-cover" data-alt="A clean high-resolution screenshot of a software developer console terminal executing Java program for Binary Search Tree traversal, displaying dark terminal output with green and white monospace characters, crisp text, professional scientific screenshot quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVEKm_iyHC6Ibrs00qp-h2vfG1NMlGu5lGXGI6A8c5hZ-t7kQFV24iQwPZbBLHwk7nB1pk4ka68oHaZjSw41oZhCXS6GkEfLHUzsIGD5AJb700dCxyaYCqlVzoBy2ndLw5JX0fS7NA5whaa0-CuT_e9Y_WzIcRtnlCXZbuVAcl2RT7dWWk9izoPf_93ayOUKdJENkAZzTeHtcWoJFo2JkV92q4tE75lAqSrC3eJtm0twuXiI1qiR4"/>
-<div class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all">
-<span class="material-symbols-outlined text-on-primary text-[24px]">zoom_in</span>
-</div>
-</div>
-<!-- Controls & Placement -->
-<div class="flex-1 flex flex-col gap-space-xs w-full">
-<div class="flex items-center justify-between">
-<div class="flex items-center gap-space-xs">
-<span class="font-headline-sm text-headline-sm text-on-surface">bst_execution_screenshot.png</span>
-<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant">124 KB</span>
-</div>
-<button class="text-error hover:text-on-error-container p-1 rounded transition-all" type="button">
-<span class="material-symbols-outlined text-[18px]">delete</span>
-</button>
-</div>
-<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-xs pt-space-xs">
-<div class="flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant">Target Page</label>
-<input class="h-8 px-2 rounded bg-surface-container-lowest text-on-surface font-label-md text-label-md" max="10" min="1" type="number" value="1"/>
-</div>
-<div class="flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant">Position</label>
-<select class="h-8 px-1 rounded bg-surface-container-lowest text-on-surface font-label-md text-label-md">
-<option>Top</option>
-<option selected="">Middle</option>
-<option>Bottom</option>
-</select>
-</div>
-<div class="flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant">Alignment</label>
-<select class="h-8 px-1 rounded bg-surface-container-lowest text-on-surface font-label-md text-label-md">
-<option>Left</option>
-<option selected="">Center</option>
-<option>Right</option>
-</select>
-</div>
-<div class="flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant">Width</label>
-<input class="h-8 px-2 rounded bg-surface-container-lowest text-on-surface font-label-md text-label-md" type="text" value="5.0 cm"/>
-</div>
-</div>
-<div class="flex items-center gap-2 mt-1">
-<span class="font-label-sm text-label-sm text-secondary">Caption:</span>
-<input class="h-7 px-2 rounded bg-surface-container-lowest text-on-surface font-body-sm text-body-sm flex-1" type="text" value="Figure 1: Program Console Execution Output"/>
-</div>
-</div>
-</div>
-</section>
-</div>
-<!-- RIGHT WORKSPACE: A4 Virtual Inspection Bed (5 cols, ~42% width) -->
-<div class="xl:col-span-5 flex flex-col gap-space-md xl:sticky xl:top-20">
-<!-- Top Inspector Toolbar -->
-<div class="rounded-xl bg-surface-container-lowest shadow-[0_1px_3px_0_rgba(15,23,42,0.04)] p-space-sm flex items-center justify-between gap-space-sm">
-<div class="flex items-center gap-space-xs">
-<span class="font-headline-sm text-headline-sm text-on-surface ml-1">Live Document Preview</span>
-<span class="px-space-xs py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm">ISO 216 A4</span>
-</div>
-<!-- Zoom & Nav controls -->
-<div class="flex items-center gap-space-xs">
-<button class="p-1 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container" title="Zoom Out" type="button">
-<span class="material-symbols-outlined text-[18px]">zoom_out</span>
-</button>
-<span class="font-label-sm text-label-sm text-on-surface-variant px-1">100%</span>
-<button class="p-1 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container" title="Zoom In" type="button">
-<span class="material-symbols-outlined text-[18px]">zoom_in</span>
-</button>
-<button class="p-1 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container" title="Fullscreen Preview" type="button">
-<span class="material-symbols-outlined text-[18px]">fullscreen</span>
-</button>
-</div>
-</div>
-<!-- Page Pagination Ribbon -->
-<div class="flex items-center justify-between px-space-md py-space-xs rounded-lg bg-surface-container text-on-surface font-label-sm text-label-sm">
-<button class="flex items-center gap-1 text-on-surface-variant hover:text-on-surface transition-all cursor-not-allowed opacity-50" disabled="" type="button">
-<span class="material-symbols-outlined text-[16px]">chevron_left</span>
-<span>Previous</span>
-</button>
-<span class="font-headline-sm text-headline-sm px-space-sm py-0.5 rounded bg-surface-container-lowest shadow-sm">
-          Page 1 of 2
-        </span>
-<button class="flex items-center gap-1 text-on-surface hover:text-secondary transition-all" type="button">
-<span>Next</span>
-<span class="material-symbols-outlined text-[16px]">chevron_right</span>
-</button>
-</div>
-<!-- THE A4 VIRTUAL INSPECTION BED (Realistic Paper Sheet) -->
-<div class="relative w-full rounded-2xl bg-surface-container-low p-space-md overflow-hidden flex justify-center shadow-inner">
-<!-- Scaled Paper Canvas (Emulating physical paper with drafting table shadow) -->
-<article class="w-full bg-surface-container-lowest text-primary shadow-[0_1px_2px_rgba(15,23,42,0.06),0_4px_6px_-1px_rgba(15,23,42,0.07),0_20px_25px_-5px_rgba(15,23,42,0.08)] p-6 md:p-8 flex flex-col justify-between select-text transition-all duration-300 relative" style="aspect-ratio: 1 / 1.4142; min-height: 720px;">
-<!-- Outer Formal Border Frame (1.0 pt representation) -->
-<div class="absolute inset-3 border border-primary/90 pointer-events-none"></div>
-<!-- Document Inner Flow -->
-<div class="flex flex-col gap-3 relative z-10 font-document-body text-document-body leading-relaxed">
-<!-- Institutional Header -->
-<div class="text-center pb-2 border-b border-primary/20">
-<h3 class="font-document-title text-base md:text-lg uppercase tracking-wider font-bold">Department of Computer Science &amp; Engineering</h3>
-<p class="font-body-sm text-[11px] uppercase tracking-widest text-on-surface-variant font-medium">Data Structures &amp; Algorithms Laboratory (CS2241)</p>
-</div>
-<!-- Experiment Meta Information Strip -->
-<div class="flex justify-between items-center text-xs font-semibold uppercase tracking-wider pb-1 border-b border-primary/10">
-<span>EXPERIMENT NO: 04</span>
-<span>DATE: OCTOBER 24, 2024</span>
-</div>
-<!-- Experiment Title -->
-<div class="text-center my-1">
-<h2 class="font-document-title text-base md:text-lg font-bold uppercase tracking-tight text-primary">
-                IMPLEMENTATION OF BINARY SEARCH TREE
-              </h2>
-</div>
-<!-- Section 1: AIM -->
-<div class="flex flex-col gap-0.5">
-<h4 class="font-document-title text-xs md:text-sm font-bold uppercase tracking-wider underline">AIM:</h4>
-<p class="text-xs text-justify indent-4 leading-normal text-on-surface">
-                To implement and test a Binary Search Tree (BST) in Java, supporting node insertion, search, and in-order, pre-order, and post-order depth-first traversals.
-              </p>
-</div>
-<!-- Section 2: ALGORITHM -->
-<div class="flex flex-col gap-0.5">
-<h4 class="font-document-title text-xs md:text-sm font-bold uppercase tracking-wider underline">ALGORITHM:</h4>
-<ol class="list-decimal list-inside text-[11px] leading-snug space-y-0.5 text-justify pl-1">
-<li>Start the execution.</li>
-<li>Define a <code class="font-label-sm font-bold">Node</code> class with integer data, left pointer, and right pointer.</li>
-<li>Read input values and recursively insert into the binary tree hierarchy preserving BST invariant.</li>
-<li>Perform in-order traversal (Left, Root, Right) to yield sorted numerical sequence.</li>
-<li>Stop execution.</li>
-</ol>
-</div>
-<!-- Section 3: PROGRAM (Compact formatted box) -->
-<div class="flex flex-col gap-0.5">
-<h4 class="font-document-title text-xs md:text-sm font-bold uppercase tracking-wider underline">PROGRAM:</h4>
-<div class="p-2 bg-surface-bright border border-primary/20 text-[9.5px] font-label-sm font-mono leading-tight overflow-hidden text-on-surface">
-<span class="text-secondary font-bold">public class</span> BinarySearchTree {<br/>
-                  <span class="text-secondary font-bold">static class</span> Node { int key; Node left, right; Node(int k){ key=k; } }<br/>
-                  Node root; void insert(int key) { root = insertRec(root, key); }<br/>
-                  Node insertRec(Node r, int k) {<br/>
-                    if(r==null) return new Node(k);<br/>
-                    if(k &lt; r.key) r.left = insertRec(r.left, k);<br/>
-                    else if(k &gt; r.key) r.right = insertRec(r.right, k);<br/>
-                    return r;<br/>
-                  }<br/>
-                }
-              </div>
-</div>
-<!-- Section 4: OUTPUT WITH EMBEDDED GRAPHIC -->
-<div class="flex flex-col gap-0.5">
-<h4 class="font-document-title text-xs md:text-sm font-bold uppercase tracking-wider underline">OUTPUT:</h4>
-<!-- Embedded Screenshot in Document -->
-<div class="flex flex-col items-center my-0.5">
-<div class="w-48 h-16 rounded overflow-hidden border border-primary/20 shadow-xs">
-<img class="w-full h-full object-cover grayscale" data-alt="Monochrome academic terminal simulation output showing successful execution lines of Java binary search tree algorithm, with lines showing traversal sequences and search success results, high contrast print style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFM6Bcyfjm3oiKQoS-KPNmBLevzLLz8Bfn3iXGh1WyJ2JiuIu620iOt_cc8FSgSJgcp8x_fpkbH7v8uSimvl-iTByjxu6FZGHv9wZYMKTxb314uJOWsW1X14fzzixekJMHXVuRsD9piNPM0Szkv2W0ihQsA3Ya2IQncR_ghmB0yy7dmUtRs2aMIDG_o1RjK4rEfI_U1ec_w-TzdSAbX7bbd-WEKtB9zMa8fUb9OwMEiQYovZgR7OQ"/>
-</div>
-<span class="text-[9px] font-document-body italic text-on-surface-variant mt-0.5">
-                  Figure 1: Program Console Execution Output
-                </span>
-</div>
-</div>
-<!-- Section 5: RESULT -->
-<div class="flex flex-col gap-0.5">
-<h4 class="font-document-title text-xs md:text-sm font-bold uppercase tracking-wider underline">RESULT:</h4>
-<p class="text-xs text-justify indent-4 leading-normal text-on-surface">
-                Thus, the Binary Search Tree operations including insertion, searching, and traversal were successfully implemented and verified with appropriate test vectors.
-              </p>
-</div>
-</div>
-<!-- Academic Footer & Sign-off Slot -->
-<div class="flex justify-between items-end pt-3 border-t border-primary/20 text-xs z-10 mt-auto font-body-sm">
-<div class="flex flex-col">
-<span class="text-[10px] text-on-surface-variant">Page 1 of 2</span>
-</div>
-<div class="flex flex-col items-center">
-<div class="w-36 border-b border-primary border-dotted mb-1"></div>
-<span class="text-[10px] font-semibold uppercase tracking-wider text-on-surface">Signature of Evaluator</span>
-</div>
-</div>
-</article>
-</div>
-<!-- Quick Document Specs Card -->
-<div class="p-space-sm rounded-lg bg-surface-container-high flex items-center justify-between text-on-surface font-label-sm text-label-sm">
-<div class="flex items-center gap-space-xs">
-<span class="material-symbols-outlined text-[16px] text-on-tertiary-container">verified</span>
-<span>Margins compliant with UGC/ABET Thesis Guidelines</span>
-</div>
-<span class="text-secondary font-bold">100% Match</span>
-</div>
-</div>
-</div>
-<!-- BOTTOM FINAL ACTION BAR & SUCCESS BANNER -->
-<div class="mt-space-xl pt-space-md border-t-0 flex flex-col gap-space-md">
-<!-- Conceptual Success Banner (Dismissible / Actionable) -->
-<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-[0_1px_3px_0_rgba(15,23,42,0.04)] flex flex-col lg:flex-row items-center justify-between gap-space-md">
-<div class="flex items-center gap-space-md">
-<div class="w-12 h-12 rounded-xl bg-tertiary-container text-on-tertiary-container flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-[28px]">verified_user</span>
-</div>
-<div class="flex flex-col">
-<div class="flex items-center gap-space-xs">
-<h3 class="font-headline-md text-headline-md text-on-surface">Your Lab Record is Ready for Generation</h3>
-<span class="px-space-xs py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm">All Checks Passed</span>
-</div>
-<p class="font-body-sm text-body-sm text-on-surface-variant">
-            File Target: <strong class="text-on-surface font-label-sm">Lab_Record_04_BST.docx</strong> (estimated 48 KB) • Ready for Microsoft Word &amp; Google Docs
-          </p>
-</div>
-</div>
-<div class="flex flex-wrap items-center gap-space-sm w-full lg:w-auto">
-<button class="flex-1 lg:flex-none px-space-md py-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm transition-all flex items-center justify-center gap-space-xs" type="button">
-<span class="material-symbols-outlined text-[18px]">add_task</span>
-<span>Create Another Record</span>
-</button>
-<button class="flex-1 lg:flex-none px-space-lg py-space-sm rounded-lg bg-secondary text-on-secondary hover:bg-secondary-container font-headline-sm text-headline-sm shadow-md transition-all flex items-center justify-center gap-space-xs" type="button">
-<span class="material-symbols-outlined text-[20px]">download</span>
-<span>Download Word Document (.docx)</span>
-</button>
-</div>
-</div>
-<!-- Final Sticky Bar Actions Navigation -->
-<div class="flex items-center justify-between pb-space-lg">
-<button class="px-space-md py-space-sm rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-headline-sm text-headline-sm flex items-center gap-1 transition-all" type="button">
-<span class="material-symbols-outlined text-[18px]">arrow_back</span>
-<span>Back to File Input</span>
-</button>
-<div class="flex items-center gap-space-sm">
-<button class="px-space-md py-space-sm rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container font-headline-sm text-headline-sm transition-all flex items-center gap-1" type="button">
-<span class="material-symbols-outlined text-[18px]">visibility</span>
-<span>Full-Screen Inspection</span>
-</button>
-<button class="px-space-xl py-space-sm rounded-lg bg-primary text-on-primary hover:bg-inverse-surface font-headline-sm text-headline-sm shadow-lg transition-all flex items-center gap-2" type="button">
-<span class="material-symbols-outlined text-[20px]">description</span>
-<span>Confirm &amp; Generate Word</span>
-</button>
-</div>
-</div>
-</div>
-</div></main></div></body></html><!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"error":"#ba1a1a","on-surface-variant":"#45474c","primary-container":"#1e293b","error-container":"#ffdad6","background":"#f8f9ff","on-tertiary-fixed":"#00201d","tertiary-container":"#002f2a","surface-bright":"#f8f9ff","tertiary-fixed":"#89f5e7","inverse-on-surface":"#eaf1ff","on-secondary-fixed":"#00174b","surface-container-high":"#dce9ff","on-secondary-container":"#fefcff","primary":"#091426","on-secondary":"#ffffff","secondary-container":"#316bf3","on-background":"#0b1c30","inverse-primary":"#bcc7de","on-primary":"#ffffff","on-primary-fixed-variant":"#3c475a","on-tertiary-container":"#28a094","surface-container":"#e5eeff","on-error":"#ffffff","inverse-surface":"#213145","on-secondary-fixed-variant":"#003ea8","on-tertiary":"#ffffff","secondary-fixed":"#dbe1ff","secondary":"#0051d5","surface-container-highest":"#d3e4fe","surface-tint":"#545f73","surface":"#f8f9ff","tertiary":"#001815","secondary-fixed-dim":"#b4c5ff","outline":"#75777d","surface-dim":"#cbdbf5","on-primary-fixed":"#111c2d","primary-fixed-dim":"#bcc7de","surface-container-lowest":"#ffffff","surface-container-low":"#eff4ff","on-surface":"#0b1c30","on-tertiary-fixed-variant":"#005049","primary-fixed":"#d8e3fb","surface-variant":"#d3e4fe","tertiary-fixed-dim":"#6bd8cb","on-primary-container":"#8590a6","outline-variant":"#c5c6cd","on-error-container":"#93000a"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"gutter-desktop":"1.5rem","space-lg":"1.25rem","space-md":"0.75rem","margin":"1rem","gutter":"1rem","space-xl":"2rem","space-xs":"0.25rem","margin-desktop":"2rem","space-sm":"0.5rem"},"fontFamily":{"body-lg":["Inter"],"document-body":["Newsreader"],"headline-sm":["Plus Jakarta Sans"],"label-sm":["JetBrains Mono"],"body-md":["Inter"],"document-title":["Newsreader"],"display-sm":["Plus Jakarta Sans"],"label-md":["JetBrains Mono"],"display-lg":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"body-sm":["Inter"],"headline-lg":["Plus Jakarta Sans"]},"fontSize":{"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"document-body":["14px",{"lineHeight":"22px","fontWeight":"400"}],"headline-sm":["14px",{"lineHeight":"20px","fontWeight":"600"}],"label-sm":["10px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"500"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"document-title":["26px",{"lineHeight":"34px","fontWeight":"600"}],"display-sm":["24px",{"lineHeight":"32px","letterSpacing":"-0.015em","fontWeight":"600"}],"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"display-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-md":["16px",{"lineHeight":"24px","fontWeight":"600"}],"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"headline-lg":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between p-space-md"><div class="flex flex-col gap-space-lg"><div class="flex items-start gap-space-sm px-space-xs"><div class="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-on-primary shrink-0"><span class="material-symbols-outlined text-[20px]">science</span></div><div class="flex flex-col min-w-0"><span class="font-headline-md text-headline-md text-on-surface leading-tight truncate">Lab Record Agent</span><span class="font-body-sm text-body-sm text-on-surface-variant truncate mt-space-xs">Turn your programs into formatted lab records</span></div></div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-secondary font-headline-sm"><a aria-current="page" class="flex items-center justify-between px-space-sm py-space-sm rounded-lg transition-all group bg-primary-container text-on-secondary font-headline-sm" data-path="new-record" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">add_circle</span><span class="font-body-md text-body-md">New Record</span></div><span class="bg-secondary text-on-secondary font-label-sm text-label-sm px-space-xs py-0.5 rounded-full">Active</span></a><a class="flex items-center justify-between px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="my-records" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">folder_open</span><span class="font-body-md text-body-md">My Records</span></div><span class="bg-surface-container-high text-on-surface font-label-sm text-label-sm px-space-xs py-0.5 rounded-full">12</span></a><a class="flex items-center justify-between px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="templates" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">description</span><span class="font-body-md text-body-md">Templates</span></div></a><a class="flex items-center justify-between px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="settings" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-body-md text-body-md">Settings</span></div></a></nav></div><div class="flex flex-col gap-space-sm pt-space-md"><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="help-and-docs" href="#"><span class="material-symbols-outlined text-[20px]">help_outline</span><span class="font-body-md text-body-md">Help &amp; Docs</span></a><div class="flex items-center gap-space-sm p-space-sm rounded-lg bg-surface-container-lowest shadow-[0_1px_3px_0_rgba(15,23,42,0.04)]"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col min-w-0 flex-1"><span class="font-headline-sm text-headline-sm text-on-surface truncate">Alex Rivera</span><span class="font-label-sm text-label-sm text-on-surface-variant truncate">alex.rivera@univ.edu</span></div><span class="material-symbols-outlined text-on-surface-variant text-[18px]">unfold_more</span></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-xl"><div class="flex items-center gap-space-sm"><div class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant"><span class="hover:text-on-surface cursor-pointer">Workspace</span><span class="material-symbols-outlined text-[14px]">chevron_right</span></div><span class="font-headline-md text-headline-md text-on-surface">New Record</span><span class="flex items-center gap-1.5 ml-space-md px-space-sm py-0.5 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm"><span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container animate-pulse"></span>Saved to cloud</span></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs text-on-surface-variant"><button class="p-space-xs rounded-lg hover:bg-surface-container-high hover:text-on-surface transition-all" type="button"><span class="material-symbols-outlined text-[20px]">history</span></button><button class="p-space-xs rounded-lg hover:bg-surface-container-high hover:text-on-surface transition-all" type="button"><span class="material-symbols-outlined text-[20px]">share</span></button></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="relative pt-16 w-full min-h-screen bg-surface px-space-xl py-space-xl"><div class="flex flex-col w-full">
-<!-- Top Title Header & Workflow Progression -->
-<div class="flex flex-col gap-space-lg mb-space-xl">
-<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
-<div class="flex flex-col gap-space-xs max-w-2xl">
-<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
-<span class="material-symbols-outlined text-[16px] text-secondary">terminal</span>
-<span>AUTONOMOUS COMPILER AGENT v2.4</span>
-<span class="text-outline-variant">/</span>
-<span class="text-secondary font-headline-sm">EXP-04-BST</span>
-</div>
-<h1 class="font-display-lg text-display-lg text-on-surface tracking-tight">Create New Lab Record</h1>
-<p class="font-body-md text-body-md text-on-surface-variant">
-          Upload your program, choose what belongs in your record, customize the collegiate formatting, and preview the final publication-ready document in real-time.
-        </p>
-</div>
-<!-- Action Quick-Group -->
-<div class="flex items-center gap-space-sm shrink-0">
-<button class="px-space-md py-space-xs rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-all flex items-center gap-space-xs font-headline-sm text-headline-sm shadow-sm" type="button">
-<span class="material-symbols-outlined text-[18px]">restore</span>
-<span>Reset Draft</span>
-</button>
-<button class="px-space-md py-space-xs rounded-lg bg-primary-container text-on-secondary hover:bg-primary transition-all flex items-center gap-space-xs font-headline-sm text-headline-sm shadow-md" type="button">
-<span class="material-symbols-outlined text-[18px]">save</span>
-<span>Save State</span>
-</button>
-</div>
-</div>
-<!-- 4-Step Collegiate Progress Ribbon -->
-<div class="p-space-sm rounded-xl bg-surface-container-low shadow-[0_1px_3px_0_rgba(15,23,42,0.04)] flex flex-wrap md:flex-nowrap items-center justify-between gap-space-sm">
-<!-- Step 1 -->
-<div class="flex items-center gap-space-sm px-space-md py-space-xs rounded-lg bg-surface-container-lowest shadow-sm flex-1">
-<div class="w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-label-sm text-label-sm shrink-0">
-<span class="material-symbols-outlined text-[14px]">check</span>
-</div>
-<div class="flex flex-col min-w-0">
-<span class="font-headline-sm text-headline-sm text-on-surface truncate">1. Content Selection</span>
-<span class="font-label-sm text-label-sm text-on-tertiary-container">Source Parsed</span>
-</div>
-</div>
-<div class="h-0.5 w-6 bg-surface-container-highest hidden md:block"></div>
-<!-- Step 2 -->
-<div class="flex items-center gap-space-sm px-space-md py-space-xs rounded-lg bg-secondary-container text-on-secondary shadow-sm flex-1">
-<div class="w-6 h-6 rounded-full bg-surface-container-lowest text-secondary flex items-center justify-center font-label-sm text-label-sm shrink-0 font-bold">
-          2
-        </div>
-<div class="flex flex-col min-w-0">
-<span class="font-headline-sm text-headline-sm text-on-secondary truncate">2. Format &amp; Layout</span>
-<span class="font-label-sm text-label-sm text-on-secondary-container/90">A4 ISO 216 Rules</span>
-</div>
-</div>
-<div class="h-0.5 w-6 bg-surface-container-highest hidden md:block"></div>
-<!-- Step 3 -->
-<div class="flex items-center gap-space-sm px-space-md py-space-xs rounded-lg bg-surface-container flex-1">
-<div class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-label-sm text-label-sm shrink-0">
-          3
-        </div>
-<div class="flex flex-col min-w-0">
-<span class="font-headline-sm text-headline-sm text-on-surface truncate">3. Verification</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant">Side-by-side inspect</span>
-</div>
-</div>
-<div class="h-0.5 w-6 bg-surface-container-highest hidden md:block"></div>
-<!-- Step 4 -->
-<div class="flex items-center gap-space-sm px-space-md py-space-xs rounded-lg bg-surface-container flex-1 opacity-80">
-<div class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-label-sm text-label-sm shrink-0">
-          4
-        </div>
-<div class="flex flex-col min-w-0">
-<span class="font-headline-sm text-headline-sm text-on-surface truncate">4. Export .DOCX</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant">Signature Ready</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Dual-Column Ergonomic Desktop Workspace -->
-<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-xl items-start">
-<!-- LEFT WORKSPACE: Configuration & Analysis Pipeline (7 cols, ~58%) -->
-<div class="xl:col-span-7 flex flex-col gap-space-xl min-w-0">
-<!-- STEP 1: PROGRAM INPUT CARD -->
-<section class="rounded-xl bg-surface-container-lowest shadow-[0_1px_3px_0_rgba(15,23,42,0.04)] p-space-lg flex flex-col gap-space-md">
-<div class="flex items-center justify-between pb-space-xs">
-<div class="flex items-center gap-space-sm">
-<span class="w-7 h-7 rounded-lg bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm">1</span>
-<div>
-<h2 class="font-headline-lg text-headline-lg text-on-surface">Program Input</h2>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Provide clean source code for automated analysis</p>
-</div>
-</div>
-<span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-surface-container-high text-secondary font-label-sm text-label-sm">
-<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-            Language: Java Detected
-          </span>
-</div>
-<!-- Mode Toggle Tabs -->
-<div class="flex p-0.5 rounded-lg bg-surface-container max-w-xs">
-<button class="flex-1 py-1.5 px-space-sm rounded-lg bg-surface-container-lowest text-on-surface font-headline-sm text-headline-sm shadow-sm text-center" type="button">
-            Upload File
-          </button>
-<button class="flex-1 py-1.5 px-space-sm rounded-lg text-on-surface-variant hover:text-on-surface font-body-md text-body-md text-center transition-all" type="button">
-            Paste Code
-          </button>
+<form id="uploadForm" method="POST" enctype="multipart/form-data" class="hidden">
+<input
+  type="file"
+  id="programFile"
+  name="program"
+  accept=".java,.py,.c,.cpp,.txt"
+  onchange="document.getElementById('uploadForm').submit()">
+</form>
+
+<!-- Paste Code Input -->
+<div id="pasteCodePanel" class="hidden rounded-lg bg-surface-container-low p-space-md flex flex-col gap-space-sm">
+  <div class="flex items-center justify-between">
+    <div class="flex flex-col">
+      <span class="font-headline-sm text-headline-sm text-on-surface">Paste Source Code</span>
+      <span class="font-body-sm text-body-sm text-on-surface-variant">Paste your program below and it will appear in the source preview.</span>
+    </div>
+    <span class="material-symbols-outlined text-secondary">content_paste</span>
+  </div>
+  <textarea
+    id="pasteCodeInput"
+    class="w-full min-h-48 rounded-lg bg-surface-container-lowest p-space-sm font-label-sm text-label-sm text-on-surface shadow-sm focus:outline-none focus:ring-2 focus:ring-secondary resize-y"
+    placeholder="Paste your Java, Python, C, C++, or text program here..."
+    spellcheck="false"
+    oninput="updatePastedCode()"></textarea>
+  <div class="flex items-center justify-between gap-space-sm">
+    <span id="pasteCodeStatus" class="font-label-sm text-label-sm text-on-surface-variant">No code pasted yet</span>
+    <button
+      type="button"
+      class="px-space-sm py-1 rounded-lg bg-surface-container-highest text-on-surface hover:bg-surface-container font-label-md text-label-md transition-all"
+      onclick="clearPastedCode()">
+      Clear
+    </button>
+  </div>
 </div>
 <!-- Uploaded File Badge & Droppable Staging -->
 <div class="rounded-lg bg-surface-container-low p-space-md flex flex-col sm:flex-row items-center justify-between gap-space-md">
@@ -971,18 +146,18 @@
 <span class="material-symbols-outlined text-[24px]">integration_instructions</span>
 </div>
 <div class="flex flex-col min-w-0">
-<span class="font-headline-sm text-headline-sm text-on-surface truncate">BinarySearchTree.java</span>
+<span class="font-headline-sm text-headline-sm text-on-surface truncate"><span data-program-filename>{{ filename or 'No file selected' }}</span></span>
 <div class="flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant">
-<span>4.2 KB</span>
+<span>{{ file_size or '—' }}</span>
 <span>•</span>
-<span>ISO-8859 text</span>
+<span>UTF-8 text</span>
 <span>•</span>
 <span class="text-on-tertiary-container font-medium">Ready</span>
 </div>
 </div>
 </div>
 <div class="flex items-center gap-space-xs">
-<button class="px-space-sm py-1 rounded-lg bg-surface-container-highest text-on-surface hover:bg-surface-container font-label-md text-label-md transition-all" type="button">
+<button class="px-space-sm py-1 rounded-lg bg-surface-container-highest text-on-surface hover:bg-surface-container font-label-md text-label-md transition-all" type="button" onclick="document.getElementById('programFile').click()">
               Change File
             </button>
 <button class="p-1 rounded-lg hover:bg-error-container text-error transition-all" title="Remove File" type="button">
@@ -997,87 +172,28 @@
 <span class="w-2.5 h-2.5 rounded-full bg-error"></span>
 <span class="w-2.5 h-2.5 rounded-full bg-secondary-fixed-dim"></span>
 <span class="w-2.5 h-2.5 rounded-full bg-tertiary-fixed"></span>
-<span class="ml-2">src/datastructures/BinarySearchTree.java</span>
+<span class="ml-2" data-program-filename>{{ filename or 'No file selected' }}</span>
 </span>
-<span class="text-on-primary-container">Lines 1 - 15 of 84</span>
+<span class="text-on-primary-container">{% if code %}Lines 1 - {{ [code.splitlines()|length, 15]|min }} of {{ code.splitlines()|length }}{% else %}No source loaded{% endif %}</span>
 </div>
 <div class="p-space-sm overflow-x-auto font-label-sm leading-relaxed max-h-56 select-all">
 <table class="w-full text-left">
 <tbody>
+{% if code %}
+{% for line in code.splitlines() %}
+{% if loop.index <= 100 %}
 <tr class="hover:bg-primary-container/40">
+<td class="text-on-primary-container select-none w-8 pr-2 text-right align-top">{{ loop.index }}</td>
+<td colspan="2" class="pl-2 whitespace-pre">{{ line }}</td>
+</tr>
+{% endif %}
+{% endfor %}
+{% else %}
+<tr id="emptySourceRow">
 <td class="text-on-primary-container select-none w-8 pr-2 text-right">1</td>
-<td class="text-tertiary-fixed">package</td>
-<td class="pl-2">edu.univ.cse.lab4;</td>
+<td colspan="2" class="pl-2 text-on-primary-container">Upload a program file or paste source code to display it here.</td>
 </tr>
-<tr class="hover:bg-primary-container/40">
-<td class="text-on-primary-container select-none w-8 pr-2 text-right">2</td>
-<td class="text-tertiary-fixed">import</td>
-<td class="pl-2">java.util.Scanner;</td>
-</tr>
-<tr class="hover:bg-primary-container/40">
-<td class="text-on-primary-container select-none w-8 pr-2 text-right">3</td>
-<td colspan="2"></td>
-</tr>
-<tr class="hover:bg-primary-container/40">
-<td class="text-on-primary-container select-none w-8 pr-2 text-right">4</td>
-<td class="text-secondary-fixed">public class</td>
-<td class="pl-2 text-surface-bright">BinarySearchTree {</td>
-</tr>
-<tr class="hover:bg-primary-container/40">
-<td class="text-on-primary-container select-none w-8 pr-2 text-right">5</td>
-<td class="text-on-primary-container select-none text-right"></td>
-<td class="pl-2 text-on-surface-variant font-italic">// Binary Node Definition</td>
-</tr>
-<tr class="hover:bg-primary-container/40">
-<td class="text-on-primary-container select-none w-8 pr-2 text-right">6</td>
-<td class="text-secondary-fixed">static class</td>
-<td class="pl-2">Node { int key; Node left, right;</td>
-</tr>
-<tr class="hover:bg-primary-container/40">
-<td class="text-on-primary-container select-none w-8 pr-2 text-right">7</td>
-<td></td>
-<td class="pl-4">public Node(int item) { key = item; left = right = null; }</td>
-</tr>
-<tr class="hover:bg-primary-container/40">
-<td class="text-on-primary-container select-none w-8 pr-2 text-right">8</td>
-<td></td>
-<td class="pl-2">}</td>
-</tr>
-<tr class="hover:bg-primary-container/40">
-<td class="text-on-primary-container select-none w-8 pr-2 text-right">9</td>
-<td class="text-secondary-fixed">Node</td>
-<td class="pl-2">root;</td>
-</tr>
-<tr class="hover:bg-primary-container/40">
-<td class="text-on-primary-container select-none w-8 pr-2 text-right">10</td>
-<td class="text-secondary-fixed">void</td>
-<td class="pl-2">insert(int key) { root = insertRec(root, key); }</td>
-</tr>
-<tr class="hover:bg-primary-container/40">
-<td class="text-on-primary-container select-none w-8 pr-2 text-right">11</td>
-<td class="text-secondary-fixed">Node</td>
-<td class="pl-2">insertRec(Node root, int key) {</td>
-</tr>
-<tr class="hover:bg-primary-container/40">
-<td class="text-on-primary-container select-none w-8 pr-2 text-right">12</td>
-<td></td>
-<td class="pl-4">if (root == null) { root = new Node(key); return root; }</td>
-</tr>
-<tr class="hover:bg-primary-container/40">
-<td class="text-on-primary-container select-none w-8 pr-2 text-right">13</td>
-<td></td>
-<td class="pl-4">if (key &lt; root.key) root.left = insertRec(root.left, key);</td>
-</tr>
-<tr class="hover:bg-primary-container/40">
-<td class="text-on-primary-container select-none w-8 pr-2 text-right">14</td>
-<td></td>
-<td class="pl-4">else if (key &gt; root.key) root.right = insertRec(root.right, key);</td>
-</tr>
-<tr class="hover:bg-primary-container/40">
-<td class="text-on-primary-container select-none w-8 pr-2 text-right">15</td>
-<td></td>
-<td class="pl-4">return root;</td>
-</tr>
+{% endif %}
 </tbody>
 </table>
 </div>
@@ -1718,4 +834,90 @@
 </div>
 </div>
 </div>
-</div></main></div></body></html>
+</div></main></div>
+<script>
+function showInputMode(mode) {
+  const pastePanel = document.getElementById("pasteCodePanel");
+  const uploadBtn = document.getElementById("uploadModeBtn");
+  const pasteBtn = document.getElementById("pasteModeBtn");
+
+  if (mode === "paste") {
+    pastePanel.classList.remove("hidden");
+
+    uploadBtn.className =
+      "flex-1 py-1.5 px-space-sm rounded-lg text-on-surface-variant hover:text-on-surface font-body-md text-body-md text-center transition-all";
+
+    pasteBtn.className =
+      "flex-1 py-1.5 px-space-sm rounded-lg bg-surface-container-lowest text-on-surface font-headline-sm text-headline-sm shadow-sm text-center";
+
+    document.getElementById("pasteCodeInput").focus();
+  } else {
+    pastePanel.classList.add("hidden");
+
+    uploadBtn.className =
+      "flex-1 py-1.5 px-space-sm rounded-lg bg-surface-container-lowest text-on-surface font-headline-sm text-headline-sm shadow-sm text-center";
+
+    pasteBtn.className =
+      "flex-1 py-1.5 px-space-sm rounded-lg text-on-surface-variant hover:text-on-surface font-body-md text-body-md text-center transition-all";
+  }
+}
+
+function updatePastedCode() {
+  const textarea = document.getElementById("pasteCodeInput");
+  const code = textarea.value;
+  const status = document.getElementById("pasteCodeStatus");
+
+  if (!code.trim()) {
+    status.textContent = "No code pasted yet";
+    return;
+  }
+
+  const sourceBody = document.querySelector(".font-label-sm.leading-relaxed.max-h-56 table tbody");
+  if (!sourceBody) return;
+
+  sourceBody.innerHTML = "";
+
+  const lines = code.split(/\r?\n/);
+
+  lines.forEach((line, index) => {
+    const row = document.createElement("tr");
+    row.className = "hover:bg-primary-container/40";
+
+    const lineNumber = document.createElement("td");
+    lineNumber.className = "text-on-primary-container select-none w-8 pr-2 text-right align-top";
+    lineNumber.textContent = index + 1;
+
+    const codeCell = document.createElement("td");
+    codeCell.colSpan = 2;
+    codeCell.className = "pl-2 whitespace-pre";
+    codeCell.textContent = line;
+
+    row.appendChild(lineNumber);
+    row.appendChild(codeCell);
+    sourceBody.appendChild(row);
+  });
+
+  const filenameLabels = document.querySelectorAll("[data-program-filename]");
+  filenameLabels.forEach(label => {
+    label.textContent = "Pasted Code";
+  });
+
+  const statusText = `${lines.length} line${lines.length === 1 ? "" : "s"} • Pasted`;
+  status.textContent = statusText;
+
+  const sourceHeader = document.querySelector(".font-label-sm.leading-relaxed.max-h-56")
+    ?.parentElement?.querySelector(".flex.items-center.justify-between span:last-child");
+
+  if (sourceHeader) {
+    sourceHeader.textContent =
+      `Lines 1 - ${Math.min(lines.length, 15)} of ${lines.length}`;
+  }
+}
+
+function clearPastedCode() {
+  document.getElementById("pasteCodeInput").value = "";
+  document.getElementById("pasteCodeStatus").textContent = "No code pasted yet";
+}
+</script>
+
+</body></html>
