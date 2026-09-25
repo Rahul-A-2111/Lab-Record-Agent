@@ -142,100 +142,161 @@ def generate_docx(
         run.underline = True
         return p
 
-    # Helper function for adding regular content
-    def add_body_paragraph(text: str, space_after=6):
-        p = doc.add_paragraph()
-        p.alignment = body_align_val
-        p.paragraph_format.line_spacing = line_spacing
-        p.paragraph_format.space_after = Pt(space_after)
-        run = p.add_run(text)
-        run.font.name = font_family
-        run.font.size = Pt(content_size)
-        return p
+    def get_align_val(align_str: str | None):
+        if not align_str:
+            return body_align_val
+        a = align_str.lower()
+        if a == "left":
+            return WD_ALIGN_PARAGRAPH.LEFT
+        elif a == "center":
+            return WD_ALIGN_PARAGRAPH.CENTER
+        elif a == "justify":
+            return WD_ALIGN_PARAGRAPH.JUSTIFY
+        return body_align_val
 
-    # 5. Output Selected Sections in Standard Order
-    # --- AIM ---
-    if "AIM" in sections and sections["AIM"]:
-        add_heading("AIM")
-        add_body_paragraph(str(sections["AIM"]).strip())
+    # Normalize incoming sections into an ordered list: [(key, title, content, alignment)]
+    ordered_items = []
+    if isinstance(sections, list):
+        for item in sections:
+            if isinstance(item, dict):
+                k = item.get("key", "").upper()
+                t = item.get("title", k)
+                c = item.get("content", "")
+                align = item.get("alignment")
+                ordered_items.append((k, t, c, align))
+    elif isinstance(sections, dict):
+        # If section_order is passed in payload or meta, respect it
+        s_order = meta.get("section_order") if meta else None
+        if not s_order:
+            s_order = list(sections.keys())
+        for k in s_order:
+            if k in sections and sections[k]:
+                c = sections[k]
+                align = None
+                if isinstance(c, dict):
+                    content_val = c.get("content", "")
+                    align = c.get("alignment")
+                else:
+                    content_val = c
+                ordered_items.append((k.upper(), k.upper(), content_val, align))
 
-    # --- ALGORITHM ---
-    if "ALGORITHM" in sections and sections["ALGORITHM"]:
-        add_heading("ALGORITHM")
-        algo_data = sections["ALGORITHM"]
-        if isinstance(algo_data, list):
-            steps = algo_data
-        else:
-            steps = str(algo_data).splitlines()
+    # 5. Output Selected Sections in the EXACT requested order without boxes
+    for key, title_text, content_val, item_align in ordered_items:
+        sec_align = get_align_val(item_align)
 
-        for step in steps:
-            step_str = str(step).strip()
-            if not step_str:
-                continue
+        if key == "AIM":
+            add_heading(title_text)
             p = doc.add_paragraph()
+            p.alignment = sec_align
             p.paragraph_format.line_spacing = line_spacing
-            p.paragraph_format.space_after = Pt(3)
-            p.paragraph_format.left_indent = Inches(0.25)
+            p.paragraph_format.space_after = Pt(6)
+            run = p.add_run(str(content_val).strip())
+            run.font.name = font_family
+            run.font.size = Pt(content_size)
 
-            # Check if step has number prefix e.g. "1. Step text"
-            match = re.match(r"^(\d+\.)\s*(.*)$", step_str)
-            if match:
-                num_run = p.add_run(match.group(1) + " ")
-                num_run.font.name = font_family
-                num_run.font.size = Pt(content_size)
-                num_run.bold = True
-
-                text_run = p.add_run(match.group(2))
-                text_run.font.name = font_family
-                text_run.font.size = Pt(content_size)
+        elif key == "ALGORITHM":
+            add_heading(title_text)
+            if isinstance(content_val, list):
+                steps = content_val
             else:
-                text_run = p.add_run(step_str)
-                text_run.font.name = font_family
-                text_run.font.size = Pt(content_size)
+                steps = str(content_val).splitlines()
 
-    # --- PROGRAM ---
-    if "PROGRAM" in sections and sections["PROGRAM"]:
-        add_heading("PROGRAM")
-        code_text = str(sections["PROGRAM"]).strip()
+            for step in steps:
+                step_str = str(step).strip()
+                if not step_str:
+                    continue
+                p = doc.add_paragraph()
+                p.alignment = sec_align
+                p.paragraph_format.line_spacing = line_spacing
+                p.paragraph_format.space_after = Pt(3)
+                p.paragraph_format.left_indent = Inches(0.25)
 
-        # Render program code in a clean bordered box
-        table = doc.add_table(rows=1, cols=1)
-        table.alignment = WD_TABLE_ALIGNMENT.CENTER
-        cell = table.cell(0, 0)
-        cell.width = Inches(6.0)
+                match = re.match(r"^(\d+\.)\s*(.*)$", step_str)
+                if match:
+                    num_run = p.add_run(match.group(1) + " ")
+                    num_run.font.name = font_family
+                    num_run.font.size = Pt(content_size)
+                    num_run.bold = True
 
-        # Style box with light shading and border
-        tcPr = cell._tc.get_or_add_tcPr()
-        shd = parse_xml(f'<w:shd {nsdecls("w")} w:fill="F8F9FA"/>')
-        borders = parse_xml(
-            f'<w:tcBorders {nsdecls("w")}>'
-            f'<w:top w:val="single" w:sz="4" w:space="0" w:color="CCCCCC"/>'
-            f'<w:left w:val="single" w:sz="4" w:space="0" w:color="CCCCCC"/>'
-            f'<w:bottom w:val="single" w:sz="4" w:space="0" w:color="CCCCCC"/>'
-            f'<w:right w:val="single" w:sz="4" w:space="0" w:color="CCCCCC"/>'
-            f'</w:tcBorders>'
-        )
-        tcPr.append(shd)
-        tcPr.append(borders)
+                    text_run = p.add_run(match.group(2))
+                    text_run.font.name = font_family
+                    text_run.font.size = Pt(content_size)
+                else:
+                    text_run = p.add_run(step_str)
+                    text_run.font.name = font_family
+                    text_run.font.size = Pt(content_size)
 
-        p_code = cell.paragraphs[0]
-        p_code.paragraph_format.space_before = Pt(4)
-        p_code.paragraph_format.space_after = Pt(4)
-        p_code.paragraph_format.line_spacing = 1.05
+        elif key == "PROGRAM":
+            add_heading(title_text)
+            code_text = str(content_val).strip()
+            # Render cleanly directly on page without any table or gray box
+            p = doc.add_paragraph()
+            p.alignment = sec_align
+            p.paragraph_format.line_spacing = 1.05
+            p.paragraph_format.space_after = Pt(6)
+            p.paragraph_format.left_indent = Inches(0.2)
+            run = p.add_run(code_text)
+            run.font.name = "Consolas"
+            run.font.size = Pt(content_size - 1)
 
-        run_code = p_code.add_run(code_text)
-        run_code.font.name = "Consolas"
-        run_code.font.size = Pt(9.5)
-        run_code.font.color.rgb = RGBColor(0x1E, 0x29, 0x3B)
+        elif key == "OUTPUT":
+            add_heading(title_text)
+            out_text = str(content_val).strip()
+            # Render cleanly directly on page without any dark box
+            p = doc.add_paragraph()
+            p.alignment = sec_align
+            p.paragraph_format.line_spacing = line_spacing
+            p.paragraph_format.space_after = Pt(6)
+            p.paragraph_format.left_indent = Inches(0.2)
+            run = p.add_run(out_text)
+            run.font.name = font_family
+            run.font.size = Pt(content_size)
 
-    # --- OUTPUT ---
-    if "OUTPUT" in sections and sections["OUTPUT"]:
-        add_heading("OUTPUT")
-        output_text = str(sections["OUTPUT"]).strip()
-        add_body_paragraph(output_text)
+        elif key == "RESULT":
+            add_heading(title_text)
+            p = doc.add_paragraph()
+            p.alignment = sec_align
+            p.paragraph_format.line_spacing = line_spacing
+            p.paragraph_format.space_after = Pt(6)
+            run = p.add_run(str(content_val).strip())
+            run.font.name = font_family
+            run.font.size = Pt(content_size)
 
-    # --- IMAGES / FIGURES ---
-    if images:
+        elif key in ("FIGURES", "IMAGES"):
+            if images:
+                for idx, img_info in enumerate(images, start=1):
+                    img_data = img_info.get("data")
+                    img_path = img_info.get("path")
+                    caption = img_info.get("caption", f"Figure {idx}: Program Execution Console Output")
+                    width_in = float(img_info.get("width_in", 4.5))
+
+                    try:
+                        p_img = doc.add_paragraph()
+                        p_img.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                        p_img.paragraph_format.space_before = Pt(8)
+                        p_img.paragraph_format.space_after = Pt(2)
+
+                        if img_data and img_data.startswith("data:image"):
+                            _, b64_str = img_data.split(",", 1)
+                            img_bytes = base64.b64decode(b64_str)
+                            image_stream = io.BytesIO(img_bytes)
+                            p_img.add_run().add_picture(image_stream, width=Inches(width_in))
+                        elif img_path and os.path.exists(img_path):
+                            p_img.add_run().add_picture(img_path, width=Inches(width_in))
+
+                        p_cap = doc.add_paragraph()
+                        p_cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                        p_cap.paragraph_format.space_after = Pt(10)
+                        run_cap = p_cap.add_run(caption)
+                        run_cap.font.name = font_family
+                        run_cap.font.size = Pt(content_size - 1.5)
+                        run_cap.italic = True
+                    except Exception as img_err:
+                        print("Failed to add image to document:", img_err)
+
+    # If images were not placed in ordered_items, append them at the end
+    has_image_key = any(k in ("FIGURES", "IMAGES") for k, _, _, _ in ordered_items)
+    if not has_image_key and images:
         for idx, img_info in enumerate(images, start=1):
             img_data = img_info.get("data")
             img_path = img_info.get("path")
@@ -249,7 +310,6 @@ def generate_docx(
                 p_img.paragraph_format.space_after = Pt(2)
 
                 if img_data and img_data.startswith("data:image"):
-                    # Base64 data URL
                     _, b64_str = img_data.split(",", 1)
                     img_bytes = base64.b64decode(b64_str)
                     image_stream = io.BytesIO(img_bytes)
@@ -257,21 +317,15 @@ def generate_docx(
                 elif img_path and os.path.exists(img_path):
                     p_img.add_run().add_picture(img_path, width=Inches(width_in))
 
-                # Caption
                 p_cap = doc.add_paragraph()
                 p_cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
-                p_cap.paragraph_format.space_after = Pt(8)
-                r_cap = p_cap.add_run(caption)
-                r_cap.font.name = font_family
-                r_cap.font.size = Pt(content_size - 1)
-                r_cap.italic = True
-            except Exception as e:
-                print(f"Warning: Failed to embed image in Word doc: {e}")
-
-    # --- RESULT ---
-    if "RESULT" in sections and sections["RESULT"]:
-        add_heading("RESULT")
-        add_body_paragraph(str(sections["RESULT"]).strip())
+                p_cap.paragraph_format.space_after = Pt(10)
+                run_cap = p_cap.add_run(caption)
+                run_cap.font.name = font_family
+                run_cap.font.size = Pt(content_size - 1.5)
+                run_cap.italic = True
+            except Exception as img_err:
+                print("Failed to add image to document:", img_err)
 
     # 6. Academic Footer & Evaluator Signature Block
     p_sig = doc.add_paragraph()

@@ -183,10 +183,12 @@ def export_docx():
     os.makedirs(export_folder, exist_ok=True)
     full_output_path = os.path.join(export_folder, filename)
 
+    sections_payload = payload.get("ordered_sections") or payload.get("sections", {})
+
     try:
         saved_path = generate_docx(
             output_path=full_output_path,
-            sections=sections,
+            sections=sections_payload,
             formatting=formatting,
             images=images,
             meta=meta

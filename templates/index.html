@@ -827,110 +827,30 @@
                 <span class="w-7 h-7 rounded-lg bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm">3</span>
                 <div>
                   <h2 class="font-headline-lg text-headline-lg text-on-surface">Step 3: Verification Preview</h2>
+                  <p class="text-xs text-on-surface-variant">Hover sections to reorder, align, edit in-place, or remove • Content paginates automatically across A4 sheets</p>
                 </div>
               </div>
 
-              <!-- Quick Alignment / Zoom Controls -->
-              <div class="flex items-center gap-space-sm">
-                <div class="flex rounded-lg bg-surface-container p-0.5">
+              <!-- Quick Alignment / Section Reorder helper / Page Badge -->
+              <div class="flex items-center flex-wrap gap-space-sm">
+                <div class="flex rounded-lg bg-surface-container p-0.5" title="Default Document Alignment">
                   <button onclick="setDocumentAlignment('left')" class="px-2 py-1 flex items-center text-on-surface-variant hover:text-on-surface" type="button" title="Left Align"><span class="material-symbols-outlined text-[18px]">format_align_left</span></button>
                   <button onclick="setDocumentAlignment('center')" class="px-2 py-1 flex items-center text-on-surface-variant hover:text-on-surface" type="button" title="Center Align"><span class="material-symbols-outlined text-[18px]">format_align_center</span></button>
                   <button onclick="setDocumentAlignment('justify')" class="px-2 py-1 flex items-center text-secondary font-bold" type="button" title="Justify Align"><span class="material-symbols-outlined text-[18px]">format_align_justify</span></button>
                 </div>
-                <span class="px-space-xs py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm">ISO 216 A4</span>
+                <button onclick="resetSectionOrder()" type="button" class="px-2.5 py-1 text-xs rounded-lg border border-surface-container-high hover:bg-surface-container text-on-surface flex items-center gap-1 font-body-sm transition-all" title="Reset to standard Aim → Algorithm → Program → Output → Result order">
+                  <span class="material-symbols-outlined text-[16px]">restart_alt</span>
+                  <span>Reset Order</span>
+                </button>
+                <span id="previewPageCountBadge" class="px-space-xs py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-semibold">1 Page (A4)</span>
               </div>
             </div>
 
-            <!-- Realistic A4 Virtual Sheet -->
-            <div class="relative w-full rounded-2xl bg-surface-container-low p-space-lg overflow-x-auto flex justify-center shadow-inner">
-              <article id="livePaperSheet" class="w-full max-w-3xl bg-surface-container-lowest text-primary shadow-[0_4px_20px_rgba(15,23,42,0.1)] p-8 md:p-12 flex flex-col justify-between transition-all duration-300 relative select-text" style="aspect-ratio: 1 / 1.4142; min-height: 840px;">
-                <!-- Border Overlay Frame -->
-                <div id="livePaperBorderFrame" class="absolute inset-4 border border-primary/90 pointer-events-none transition-all"></div>
-
-                <!-- Document Inner Flow -->
-                <div class="flex flex-col gap-4 relative z-10 font-document-body leading-relaxed" id="liveDocContentWrapper">
-                  <!-- Institutional Header -->
-                  <div class="text-center pb-2 border-b border-primary/20">
-                    <h3 class="doc-preview-heading font-document-title text-base md:text-lg uppercase tracking-wider font-bold" id="liveDocDeptHeader">
-                      Department of Computer Science &amp; Engineering
-                    </h3>
-                    <p class="doc-preview-body font-body-sm text-[11px] uppercase tracking-widest text-on-surface-variant font-medium">
-                      Data Structures &amp; Algorithms Laboratory
-                    </p>
-                  </div>
-
-                  <!-- Experiment Meta Strip -->
-                  <div class="flex justify-between items-center text-xs font-semibold uppercase tracking-wider pb-1 border-b border-primary/10">
-                    <span id="liveDocExpNo">EXPERIMENT NO: 04</span>
-                    <span id="liveDocDate">DATE: OCTOBER 24, 2024</span>
-                  </div>
-
-                  <!-- Experiment Title -->
-                  <div class="text-center my-1">
-                    <h2 class="doc-preview-heading font-document-title text-base md:text-lg font-bold uppercase tracking-tight text-primary underline" id="liveDocTitle">
-                      IMPLEMENTATION OF PROGRAM
-                    </h2>
-                  </div>
-
-                  <!-- AIM Block -->
-                  <div id="liveDocBlock-AIM" class="flex flex-col gap-0.5">
-                    <h4 class="doc-preview-heading font-document-title text-xs md:text-sm font-bold uppercase tracking-wider underline">AIM:</h4>
-                    <p id="liveDocAimContent" class="doc-preview-body text-xs text-justify indent-4 leading-normal text-on-surface">
-                      To implement, compile, and execute the given program and verify its correctness.
-                    </p>
-                  </div>
-
-                  <!-- ALGORITHM Block -->
-                  <div id="liveDocBlock-ALGORITHM" class="flex flex-col gap-0.5">
-                    <h4 class="doc-preview-heading font-document-title text-xs md:text-sm font-bold uppercase tracking-wider underline">ALGORITHM:</h4>
-                    <div id="liveDocAlgorithmContent" class="doc-preview-body text-[11px] leading-snug space-y-0.5 text-justify pl-1">
-                      1. Start the program execution.<br/>
-                      2. Initialize required variables.<br/>
-                      3. Stop the program execution.
-                    </div>
-                  </div>
-
-                  <!-- PROGRAM Block -->
-                  <div id="liveDocBlock-PROGRAM" class="flex flex-col gap-0.5">
-                    <h4 class="doc-preview-heading font-document-title text-xs md:text-sm font-bold uppercase tracking-wider underline">PROGRAM:</h4>
-                    <div id="liveDocProgramContent" class="p-2 bg-surface-bright border border-primary/20 text-[9.5px] font-label-sm font-mono leading-tight overflow-hidden text-on-surface whitespace-pre-wrap max-h-64 overflow-y-auto">
-                      // Source code listing
-                    </div>
-                  </div>
-
-                  <!-- OUTPUT Block -->
-                  <div id="liveDocBlock-OUTPUT" class="flex flex-col gap-0.5">
-                    <h4 class="doc-preview-heading font-document-title text-xs md:text-sm font-bold uppercase tracking-wider underline">OUTPUT:</h4>
-                    <div id="liveDocOutputContent" class="p-2 bg-inverse-surface text-inverse-on-surface font-mono text-[9.5px] rounded">
-                      (Console execution output)
-                    </div>
-                  </div>
-
-                  <!-- Attached Images Preview Container -->
-                  <div id="liveDocImagesSection" class="flex flex-col gap-2 my-1">
-                    <!-- Injected figure blocks will appear here -->
-                  </div>
-
-                  <!-- RESULT Block -->
-                  <div id="liveDocBlock-RESULT" class="flex flex-col gap-0.5">
-                    <h4 class="doc-preview-heading font-document-title text-xs md:text-sm font-bold uppercase tracking-wider underline">RESULT:</h4>
-                    <p id="liveDocResultContent" class="doc-preview-body text-xs text-justify indent-4 leading-normal text-on-surface">
-                      Thus, the program was successfully created, compiled, and its functionality verified.
-                    </p>
-                  </div>
-                </div>
-
-                <!-- Academic Sign-off Footer -->
-                <div class="flex justify-between items-end pt-4 border-t border-primary/20 text-xs z-10 mt-auto font-body-sm">
-                  <div class="flex flex-col">
-                    <span class="text-[10px] text-on-surface-variant">Verified Collegiate Document</span>
-                  </div>
-                  <div class="flex flex-col items-center">
-                    <div class="w-36 border-b border-primary border-dotted mb-1"></div>
-                    <span class="text-[10px] font-semibold uppercase tracking-wider text-on-surface">Signature of Evaluator</span>
-                  </div>
-                </div>
-              </article>
+            <!-- Realistic Multi-Page A4 Virtual Container -->
+            <div class="relative w-full rounded-2xl bg-surface-container-low p-space-sm md:p-space-lg overflow-x-auto flex flex-col items-center gap-6 shadow-inner">
+              <div id="previewPagesContainer" class="flex flex-col items-center gap-8 w-full max-w-3xl">
+                <!-- Dynamically generated A4 sheets rendered by renderMultiPagePreview() -->
+              </div>
             </div>
 
             <!-- Step 3 Navigation Footer -->
@@ -1175,6 +1095,16 @@
     // Global Project State
     let currentStep = 1;
     let projectImages = [];
+    let previewSections = [
+      { key: "AIM", title: "AIM", type: "text", content: "", alignment: "justify", visible: true },
+      { key: "ALGORITHM", title: "ALGORITHM", type: "steps", content: "", alignment: "justify", visible: true },
+      { key: "PROGRAM", title: "PROGRAM", type: "code", content: "", alignment: "left", visible: true },
+      { key: "OUTPUT", title: "OUTPUT", type: "output", content: "", alignment: "left", visible: true },
+      { key: "FIGURES", title: "FIGURES / SCREENSHOTS", type: "images", content: "", alignment: "center", visible: false },
+      { key: "RESULT", title: "RESULT", type: "text", content: "", alignment: "justify", visible: true }
+    ];
+    let userModifiedPreviewContent = {};
+    let draggedSectionKey = null;
 
     // Step Navigation
     function goToStep(stepNumber) {
@@ -1712,140 +1642,571 @@
       }
     }
 
-    // Step 3: Live Document Preview Synchronization
+    // Step 3: Multi-Page Dynamic Pagination & Live Document Synchronization
+    function syncStep2ToPreviewSections() {
+      const aimChecked = document.getElementById("sectionCheckbox-AIM")?.checked ?? true;
+      const algoChecked = document.getElementById("sectionCheckbox-ALGORITHM")?.checked ?? true;
+      const progChecked = document.getElementById("sectionCheckbox-PROGRAM")?.checked ?? true;
+      const outChecked = document.getElementById("sectionCheckbox-OUTPUT")?.checked ?? true;
+      const resChecked = document.getElementById("sectionCheckbox-RESULT")?.checked ?? true;
+      const imgChecked = document.getElementById("enableImagesCheckbox")?.checked ?? true;
+      const defaultAlign = document.getElementById("docAlignment")?.value || "justify";
+
+      previewSections.forEach(sec => {
+        if (sec.key === "AIM") {
+          sec.visible = aimChecked;
+          if (userModifiedPreviewContent["AIM"] === undefined) {
+            sec.content = document.getElementById("reviewAimText")?.value || "To implement, compile, and execute the program and verify its correctness.";
+          } else {
+            sec.content = userModifiedPreviewContent["AIM"];
+          }
+        } else if (sec.key === "ALGORITHM") {
+          sec.visible = algoChecked;
+          if (userModifiedPreviewContent["ALGORITHM"] === undefined) {
+            sec.content = document.getElementById("reviewAlgorithmText")?.value || "1. Start the program execution.\n2. Initialize required variables.\n3. Execute the algorithm.\n4. Stop the program execution.";
+          } else {
+            sec.content = userModifiedPreviewContent["ALGORITHM"];
+          }
+        } else if (sec.key === "PROGRAM") {
+          sec.visible = progChecked;
+          if (userModifiedPreviewContent["PROGRAM"] === undefined) {
+            sec.content = document.getElementById("reviewProgramCode")?.textContent || "// Source code listing";
+          } else {
+            sec.content = userModifiedPreviewContent["PROGRAM"];
+          }
+        } else if (sec.key === "OUTPUT") {
+          sec.visible = outChecked;
+          if (userModifiedPreviewContent["OUTPUT"] === undefined) {
+            sec.content = document.getElementById("reviewOutputText")?.value || "(Console execution output)";
+          } else {
+            sec.content = userModifiedPreviewContent["OUTPUT"];
+          }
+        } else if (sec.key === "FIGURES") {
+          sec.visible = imgChecked && projectImages.length > 0;
+        } else if (sec.key === "RESULT") {
+          sec.visible = resChecked;
+          if (userModifiedPreviewContent["RESULT"] === undefined) {
+            sec.content = document.getElementById("reviewResultText")?.value || "Thus, the program was successfully created, compiled, and its functionality verified.";
+          } else {
+            sec.content = userModifiedPreviewContent["RESULT"];
+          }
+        }
+
+        if (!sec.alignment) {
+          sec.alignment = (sec.type === "code" || sec.type === "output") ? "left" : defaultAlign;
+        }
+      });
+    }
+
     function updateLiveDocumentPreview() {
-      // 1. Borders
+      renderMultiPagePreview();
+    }
+
+    function renderMultiPagePreview() {
+      const container = document.getElementById("previewPagesContainer");
+      if (!container) return;
+      container.innerHTML = "";
+
+      syncStep2ToPreviewSections();
+
+      const activeSections = previewSections.filter(s => s.visible !== false);
+      if (activeSections.length === 0) {
+        container.innerHTML = `
+          <div class="p-8 text-center text-on-surface-variant font-body-md rounded-xl bg-surface-container-lowest border border-surface-container-high w-full">
+            No document sections are currently selected. Return to <strong class="text-on-surface">Step 2: Format &amp; Layout</strong> and select at least one component (Aim, Algorithm, Program, Output, Result).
+          </div>
+        `;
+        const badge = document.getElementById("previewPageCountBadge");
+        if (badge) badge.textContent = "0 Pages (A4)";
+        return;
+      }
+
+      // Formatting Configuration
       const borderStyle = document.getElementById("docBorderStyle")?.value || "single";
       const borderThickness = document.getElementById("docBorderThickness")?.value || "1.0";
       const borderColor = document.getElementById("docBorderColor")?.value || "#000000";
-      const borderFrame = document.getElementById("livePaperBorderFrame");
-
-      if (borderFrame) {
-        if (borderStyle === "none") {
-          borderFrame.style.border = "none";
-        } else if (borderStyle === "double") {
-          borderFrame.style.border = `${Math.max(3, parseFloat(borderThickness) * 3)}px double ${borderColor}`;
-        } else {
-          borderFrame.style.border = `${borderThickness}pt solid ${borderColor}`;
-        }
-      }
-
-      // 2. Typography & Sizing
       const fontFamily = document.getElementById("docFontFamily")?.value || "Times New Roman";
       const headingSize = document.getElementById("docHeadingSize")?.value || "14";
       const contentSize = document.getElementById("docContentSize")?.value || "11";
       const lineSpacing = document.getElementById("docLineSpacing")?.value || "1.15";
-      const alignment = document.getElementById("docAlignment")?.value || "justify";
+      const defaultAlign = document.getElementById("docAlignment")?.value || "justify";
 
-      const paperSheet = document.getElementById("livePaperSheet");
-      if (paperSheet) {
-        paperSheet.style.fontFamily = fontFamily;
+      let borderCss = `${borderThickness}pt solid ${borderColor}`;
+      if (borderStyle === "none") borderCss = "none";
+      else if (borderStyle === "double") borderCss = `${Math.max(3, parseFloat(borderThickness) * 3)}px double ${borderColor}`;
+
+      // Dynamic Pagination Model
+      // Height budget per page in pixels:
+      // Page 1 budget: ~740px (accounts for institutional header, title, margins, footer)
+      // Page 2+ budget: ~860px (accounts for running header, margins, footer)
+      const PAGE1_BUDGET = 740;
+      const PAGE2_BUDGET = 860;
+
+      const pages = [];
+      let currentPage = { pageNum: 1, items: [] };
+      pages.push(currentPage);
+      let currentHeight = 0;
+
+      function getBudget(pNum) {
+        return pNum === 1 ? PAGE1_BUDGET : PAGE2_BUDGET;
       }
 
-      // Headings
-      document.querySelectorAll(".doc-preview-heading").forEach(el => {
-        el.style.fontSize = `${headingSize}pt`;
-        el.style.fontFamily = fontFamily;
-      });
-
-      // Body text
-      document.querySelectorAll(".doc-preview-body").forEach(el => {
-        el.style.fontSize = `${contentSize}pt`;
-        el.style.fontFamily = fontFamily;
-        el.style.lineHeight = lineSpacing;
-        el.style.textAlign = alignment;
-      });
-
-      // 3. Sections Content
-      const aimChecked = document.getElementById("sectionCheckbox-AIM")?.checked;
-      const algoChecked = document.getElementById("sectionCheckbox-ALGORITHM")?.checked;
-      const progChecked = document.getElementById("sectionCheckbox-PROGRAM")?.checked;
-      const outChecked = document.getElementById("sectionCheckbox-OUTPUT")?.checked;
-      const resChecked = document.getElementById("sectionCheckbox-RESULT")?.checked;
-
-      // AIM
-      const aimBlock = document.getElementById("liveDocBlock-AIM");
-      if (aimBlock) {
-        aimBlock.classList.toggle("hidden", !aimChecked);
-        const aimText = document.getElementById("reviewAimText")?.value;
-        if (aimText) document.getElementById("liveDocAimContent").textContent = aimText;
+      function pushNewPage() {
+        currentPage = { pageNum: pages.length + 1, items: [] };
+        pages.push(currentPage);
+        currentHeight = 0;
       }
 
-      // ALGORITHM
-      const algoBlock = document.getElementById("liveDocBlock-ALGORITHM");
-      if (algoBlock) {
-        algoBlock.classList.toggle("hidden", !algoChecked);
-        const algoText = document.getElementById("reviewAlgorithmText")?.value;
-        if (algoText) {
-          const container = document.getElementById("liveDocAlgorithmContent");
-          container.innerHTML = "";
-          algoText.split(/\r?\n/).forEach(line => {
-            if (line.trim()) {
-              const p = document.createElement("div");
-              p.textContent = line;
-              container.appendChild(p);
+      // Distribute each active section across pages
+      activeSections.forEach(sec => {
+        const secAlign = sec.alignment || defaultAlign;
+
+        if (sec.type === "images") {
+          if (projectImages.length > 0) {
+            projectImages.forEach((img, idx) => {
+              const imgHeight = 220;
+              if (currentHeight + imgHeight > getBudget(currentPage.pageNum) && currentHeight > 120) {
+                pushNewPage();
+              }
+              currentPage.items.push({
+                kind: "image",
+                secKey: sec.key,
+                img: img,
+                align: secAlign
+              });
+              currentHeight += imgHeight;
+            });
+          }
+        } else if (sec.type === "code" || sec.type === "output") {
+          const lines = (sec.content || "").split(/\r?\n/);
+          const headingHeight = 36;
+          const lineHeight = 16.5;
+
+          // If heading plus at least 4 lines won't fit on this page, push to next page
+          if (currentHeight + headingHeight + (lineHeight * 4) > getBudget(currentPage.pageNum) && currentHeight > 100) {
+            pushNewPage();
+          }
+
+          let chunkLines = [];
+          let isContinuation = false;
+
+          for (let i = 0; i < lines.length; i++) {
+            if (currentHeight + lineHeight > getBudget(currentPage.pageNum)) {
+              if (chunkLines.length > 0) {
+                currentPage.items.push({
+                  kind: "code_section",
+                  secKey: sec.key,
+                  secTitle: sec.title,
+                  isContinuation: isContinuation,
+                  linesText: chunkLines.join("\n"),
+                  align: secAlign
+                });
+                chunkLines = [];
+              }
+              pushNewPage();
+              isContinuation = true;
+              currentHeight += headingHeight;
             }
-          });
-        }
-      }
+            chunkLines.push(lines[i]);
+            currentHeight += lineHeight;
+          }
 
-      // PROGRAM
-      const progBlock = document.getElementById("liveDocBlock-PROGRAM");
-      if (progBlock) {
-        progBlock.classList.toggle("hidden", !progChecked);
-        const progCode = document.getElementById("reviewProgramCode")?.textContent;
-        if (progCode) document.getElementById("liveDocProgramContent").textContent = progCode;
-      }
+          if (chunkLines.length > 0) {
+            currentPage.items.push({
+              kind: "code_section",
+              secKey: sec.key,
+              secTitle: sec.title,
+              isContinuation: isContinuation,
+              linesText: chunkLines.join("\n"),
+              align: secAlign
+            });
+          }
+          currentHeight += 16; // spacing after section
 
-      // OUTPUT
-      const outBlock = document.getElementById("liveDocBlock-OUTPUT");
-      if (outBlock) {
-        outBlock.classList.toggle("hidden", !outChecked);
-        const outText = document.getElementById("reviewOutputText")?.value;
-        if (outText) document.getElementById("liveDocOutputContent").textContent = outText;
-      }
+        } else if (sec.type === "steps") {
+          const steps = (sec.content || "").split(/\r?\n/).filter(s => s.trim().length > 0);
+          const headingHeight = 36;
+          const stepHeight = 22;
 
-      // RESULT
-      const resBlock = document.getElementById("liveDocBlock-RESULT");
-      if (resBlock) {
-        resBlock.classList.toggle("hidden", !resChecked);
-        const resText = document.getElementById("reviewResultText")?.value;
-        if (resText) document.getElementById("liveDocResultContent").textContent = resText;
-      }
+          if (currentHeight + headingHeight + (stepHeight * 3) > getBudget(currentPage.pageNum) && currentHeight > 100) {
+            pushNewPage();
+          }
 
-      // 4. Render Embedded Images
-      const imagesSection = document.getElementById("liveDocImagesSection");
-      const imagesEnabled = document.getElementById("enableImagesCheckbox")?.checked;
+          let chunkSteps = [];
+          let isContinuation = false;
 
-      if (imagesSection) {
-        imagesSection.innerHTML = "";
-        if (imagesEnabled && projectImages.length > 0) {
-          imagesSection.classList.remove("hidden");
-          projectImages.forEach(img => {
-            const figureBlock = document.createElement("div");
-            figureBlock.className = "flex flex-col items-center my-2";
-            figureBlock.innerHTML = `
-              <div class="max-w-md w-full rounded overflow-hidden border border-primary/20 shadow-xs">
-                <img src="${img.data}" class="w-full object-contain max-h-48" alt="Document figure"/>
-              </div>
-              <span class="text-[10px] font-document-body italic text-on-surface-variant mt-1 text-center">
-                ${escapeHtml(img.caption)}
-              </span>
-            `;
-            imagesSection.appendChild(figureBlock);
-          });
+          for (let s of steps) {
+            if (currentHeight + stepHeight > getBudget(currentPage.pageNum)) {
+              if (chunkSteps.length > 0) {
+                currentPage.items.push({
+                  kind: "steps_section",
+                  secKey: sec.key,
+                  secTitle: sec.title,
+                  isContinuation: isContinuation,
+                  steps: chunkSteps,
+                  align: secAlign
+                });
+                chunkSteps = [];
+              }
+              pushNewPage();
+              isContinuation = true;
+              currentHeight += headingHeight;
+            }
+            chunkSteps.push(s);
+            currentHeight += stepHeight;
+          }
+
+          if (chunkSteps.length > 0) {
+            currentPage.items.push({
+              kind: "steps_section",
+              secKey: sec.key,
+              secTitle: sec.title,
+              isContinuation: isContinuation,
+              steps: chunkSteps,
+              align: secAlign
+            });
+          }
+          currentHeight += 16;
+
         } else {
-          imagesSection.classList.add("hidden");
+          // Standard text paragraphs (AIM, RESULT, etc.)
+          const text = (sec.content || "");
+          const estHeight = 36 + Math.max(30, Math.ceil(text.length / 80) * 18);
+
+          if (currentHeight + estHeight > getBudget(currentPage.pageNum) && currentHeight > 100) {
+            pushNewPage();
+          }
+
+          currentPage.items.push({
+            kind: "text_section",
+            secKey: sec.key,
+            secTitle: sec.title,
+            content: text,
+            align: secAlign
+          });
+          currentHeight += estHeight + 16;
+        }
+      });
+
+      // Update Toolbar Page Count Badge
+      const totalPages = pages.length;
+      const pageBadge = document.getElementById("previewPageCountBadge");
+      if (pageBadge) {
+        pageBadge.textContent = totalPages === 1 ? "1 Page (A4)" : `${totalPages} Pages (A4)`;
+      }
+
+      // Render Each Virtual A4 Sheet
+      pages.forEach((pg, pgIdx) => {
+        const isFirstPage = (pg.pageNum === 1);
+        const isLastPage = (pg.pageNum === totalPages);
+
+        const sheetArticle = document.createElement("article");
+        sheetArticle.className = "a4-sheet relative w-full bg-surface-container-lowest text-primary shadow-[0_8px_30px_rgba(15,23,42,0.12)] p-8 md:p-12 flex flex-col justify-between transition-all select-text rounded-xs mb-4";
+        sheetArticle.style.aspectRatio = "1 / 1.4142";
+        sheetArticle.style.minHeight = "980px";
+        sheetArticle.style.fontFamily = fontFamily;
+        sheetArticle.style.boxSizing = "border-box";
+
+        // Border Overlay Frame
+        const borderFrame = document.createElement("div");
+        borderFrame.className = "a4-border-frame absolute inset-4 pointer-events-none transition-all";
+        borderFrame.style.border = borderCss;
+        sheetArticle.appendChild(borderFrame);
+
+        // Content Flow Wrapper
+        const contentFlow = document.createElement("div");
+        contentFlow.className = "flex flex-col gap-3 relative z-10 font-document-body leading-relaxed";
+
+        // Header for Page 1 vs Page 2+
+        if (isFirstPage) {
+          contentFlow.innerHTML += `
+            <div class="text-center pb-2 border-b border-primary/20">
+              <h3 class="doc-preview-heading font-document-title uppercase tracking-wider font-bold" style="font-size: ${Math.max(13, parseFloat(headingSize) + 1)}pt; font-family: ${fontFamily};">
+                Department of Computer Science &amp; Engineering
+              </h3>
+              <p class="font-body-sm text-[11px] uppercase tracking-widest text-on-surface-variant font-medium">
+                Data Structures &amp; Algorithms Laboratory
+              </p>
+            </div>
+            <div class="flex justify-between items-center text-xs font-semibold uppercase tracking-wider pb-1 border-b border-primary/10">
+              <span>EXPERIMENT NO: 04</span>
+              <span>DATE: OCTOBER 24, 2024</span>
+            </div>
+            <div class="text-center my-0.5">
+              <h2 class="doc-preview-heading font-document-title font-bold uppercase tracking-tight text-primary underline" style="font-size: ${Math.max(13, parseFloat(headingSize) + 1)}pt; font-family: ${fontFamily};">
+                IMPLEMENTATION OF PROGRAM
+              </h2>
+            </div>
+          `;
+        } else {
+          contentFlow.innerHTML += `
+            <div class="flex justify-between items-center text-[11px] uppercase font-semibold text-on-surface-variant pb-1 border-b border-primary/15">
+              <span>IMPLEMENTATION OF PROGRAM</span>
+              <span>Experiment No: 04 — (Contd.)</span>
+            </div>
+          `;
+        }
+
+        // Render Allocated Items for this Page
+        pg.items.forEach(item => {
+          const itemDiv = document.createElement("div");
+          itemDiv.className = "preview-section-item group relative transition-all rounded p-1.5 hover:bg-slate-50 border border-transparent hover:border-slate-200/80";
+          itemDiv.setAttribute("data-section-key", item.secKey);
+          itemDiv.setAttribute("draggable", "true");
+
+          // Drag and drop event listeners
+          itemDiv.addEventListener("dragstart", (e) => handleDragStart(e, item.secKey));
+          itemDiv.addEventListener("dragover", handleDragOver);
+          itemDiv.addEventListener("dragenter", handleDragEnter);
+          itemDiv.addEventListener("dragleave", handleDragLeave);
+          itemDiv.addEventListener("drop", (e) => handleDrop(e, item.secKey));
+          itemDiv.addEventListener("dragend", handleDragEnd);
+
+          // Build Action Toolbar HTML
+          const actionToolbarHtml = `
+            <div class="absolute -top-3 right-2 hidden group-hover:flex items-center bg-surface-container-lowest border border-surface-container-high rounded-md shadow-md px-1 py-0.5 gap-0.5 z-30 text-xs">
+              <button type="button" onclick="moveSection('${item.secKey}', -1)" title="Move Section Up" class="p-1 hover:bg-surface-container rounded text-on-surface transition-colors">
+                <span class="material-symbols-outlined text-[15px]">arrow_upward</span>
+              </button>
+              <button type="button" onclick="moveSection('${item.secKey}', 1)" title="Move Section Down" class="p-1 hover:bg-surface-container rounded text-on-surface transition-colors">
+                <span class="material-symbols-outlined text-[15px]">arrow_downward</span>
+              </button>
+              <div class="w-px h-3 bg-surface-container-high mx-0.5"></div>
+              <button type="button" onclick="setSectionAlignment('${item.secKey}', 'left')" title="Align Left" class="p-1 hover:bg-surface-container rounded ${item.align === 'left' ? 'text-secondary font-bold bg-secondary-container/40' : 'text-on-surface-variant'} transition-colors">
+                <span class="material-symbols-outlined text-[15px]">format_align_left</span>
+              </button>
+              <button type="button" onclick="setSectionAlignment('${item.secKey}', 'center')" title="Align Center" class="p-1 hover:bg-surface-container rounded ${item.align === 'center' ? 'text-secondary font-bold bg-secondary-container/40' : 'text-on-surface-variant'} transition-colors">
+                <span class="material-symbols-outlined text-[15px]">format_align_center</span>
+              </button>
+              <button type="button" onclick="setSectionAlignment('${item.secKey}', 'justify')" title="Align Justify" class="p-1 hover:bg-surface-container rounded ${item.align === 'justify' ? 'text-secondary font-bold bg-secondary-container/40' : 'text-on-surface-variant'} transition-colors">
+                <span class="material-symbols-outlined text-[15px]">format_align_justify</span>
+              </button>
+              <div class="w-px h-3 bg-surface-container-high mx-0.5"></div>
+              <button type="button" onclick="removePreviewSection('${item.secKey}')" title="Remove Section" class="p-1 hover:bg-error-container text-error rounded transition-colors">
+                <span class="material-symbols-outlined text-[15px]">delete</span>
+              </button>
+            </div>
+          `;
+
+          if (item.kind === "code_section") {
+            // UNBOXED PROGRAM / OUTPUT: pure academic text flow matching Aim/Algorithm, monospace font
+            itemDiv.innerHTML = `
+              ${actionToolbarHtml}
+              <div class="flex items-center gap-1 cursor-grab active:cursor-grabbing mb-0.5">
+                <span class="material-symbols-outlined text-[14px] text-on-surface-variant/40 group-hover:text-primary transition-colors cursor-grab" title="Drag to reorder">drag_indicator</span>
+                <h4 class="doc-preview-heading font-document-title font-bold uppercase tracking-wider underline text-primary" style="font-size: ${headingSize}pt; font-family: ${fontFamily};">
+                  ${item.isContinuation ? `${item.secTitle} (Contd.):` : `${item.secTitle}:`}
+                </h4>
+              </div>
+              <div class="doc-preview-body font-mono text-[9.5px] leading-snug whitespace-pre-wrap select-text focus:outline-dashed focus:outline-1 focus:outline-secondary/60 rounded px-1 text-on-surface"
+                   contenteditable="true"
+                   onblur="handleSectionContentEdit('${item.secKey}', this.innerText)"
+                   style="font-family: Consolas, 'Courier New', monospace; font-size: ${Math.max(8.5, parseFloat(contentSize) - 1.5)}pt; text-align: ${item.align};">
+                ${escapeHtml(item.linesText)}
+              </div>
+            `;
+          } else if (item.kind === "steps_section") {
+            const stepsHtml = item.steps.map(step => {
+              const match = step.match(/^(\d+\.)\s*(.*)$/);
+              if (match) {
+                return `<div><strong>${escapeHtml(match[1])}</strong> ${escapeHtml(match[2])}</div>`;
+              }
+              return `<div>${escapeHtml(step)}</div>`;
+            }).join("");
+
+            itemDiv.innerHTML = `
+              ${actionToolbarHtml}
+              <div class="flex items-center gap-1 cursor-grab active:cursor-grabbing mb-0.5">
+                <span class="material-symbols-outlined text-[14px] text-on-surface-variant/40 group-hover:text-primary transition-colors cursor-grab" title="Drag to reorder">drag_indicator</span>
+                <h4 class="doc-preview-heading font-document-title font-bold uppercase tracking-wider underline text-primary" style="font-size: ${headingSize}pt; font-family: ${fontFamily};">
+                  ${item.isContinuation ? `${item.secTitle} (Contd.):` : `${item.secTitle}:`}
+                </h4>
+              </div>
+              <div class="doc-preview-body text-xs space-y-0.5 pl-1 select-text focus:outline-dashed focus:outline-1 focus:outline-secondary/60 rounded px-1 text-on-surface"
+                   contenteditable="true"
+                   onblur="handleSectionContentEdit('${item.secKey}', this.innerText)"
+                   style="font-family: ${fontFamily}; font-size: ${contentSize}pt; line-height: ${lineSpacing}; text-align: ${item.align};">
+                ${stepsHtml}
+              </div>
+            `;
+          } else if (item.kind === "image") {
+            itemDiv.innerHTML = `
+              ${actionToolbarHtml}
+              <div class="flex flex-col items-center my-1">
+                <div class="max-w-md w-full rounded overflow-hidden border border-primary/20 shadow-xs">
+                  <img src="${item.img.data}" class="w-full object-contain max-h-48" alt="Figure preview"/>
+                </div>
+                <span class="text-[10px] font-document-body italic text-on-surface-variant mt-1 text-center">
+                  ${escapeHtml(item.img.caption)}
+                </span>
+              </div>
+            `;
+          } else {
+            // text_section (AIM, RESULT)
+            itemDiv.innerHTML = `
+              ${actionToolbarHtml}
+              <div class="flex items-center gap-1 cursor-grab active:cursor-grabbing mb-0.5">
+                <span class="material-symbols-outlined text-[14px] text-on-surface-variant/40 group-hover:text-primary transition-colors cursor-grab" title="Drag to reorder">drag_indicator</span>
+                <h4 class="doc-preview-heading font-document-title font-bold uppercase tracking-wider underline text-primary" style="font-size: ${headingSize}pt; font-family: ${fontFamily};">
+                  ${item.secTitle}:
+                </h4>
+              </div>
+              <div class="doc-preview-body text-xs indent-4 leading-normal select-text focus:outline-dashed focus:outline-1 focus:outline-secondary/60 rounded px-1 text-on-surface"
+                   contenteditable="true"
+                   onblur="handleSectionContentEdit('${item.secKey}', this.innerText)"
+                   style="font-family: ${fontFamily}; font-size: ${contentSize}pt; line-height: ${lineSpacing}; text-align: ${item.align};">
+                ${escapeHtml(item.content)}
+              </div>
+            `;
+          }
+
+          contentFlow.appendChild(itemDiv);
+        });
+
+        sheetArticle.appendChild(contentFlow);
+
+        // Academic Sign-off Footer
+        const footerDiv = document.createElement("div");
+        footerDiv.className = "flex justify-between items-end pt-3 border-t border-primary/20 text-xs z-10 mt-auto font-body-sm";
+        footerDiv.innerHTML = `
+          <div class="flex flex-col">
+            <span class="text-[10px] text-on-surface-variant font-medium">Verified Academic Record</span>
+          </div>
+          ${isLastPage ? `
+          <div class="flex flex-col items-center">
+            <div class="w-36 border-b border-primary border-dotted mb-1"></div>
+            <span class="text-[10px] font-semibold uppercase tracking-wider text-on-surface">Signature of Evaluator</span>
+          </div>` : `<div></div>`}
+          <div class="text-[10px] font-semibold uppercase tracking-wider text-on-surface-variant">
+            Page ${pg.pageNum} of ${totalPages}
+          </div>
+        `;
+        sheetArticle.appendChild(footerDiv);
+
+        container.appendChild(sheetArticle);
+      });
+    }
+
+    // Drag and Drop & Section Reordering Handlers
+    function handleDragStart(e, key) {
+      draggedSectionKey = key;
+      e.dataTransfer.effectAllowed = "move";
+      e.dataTransfer.setData("text/plain", key);
+      e.currentTarget.classList.add("opacity-40");
+    }
+
+    function handleDragOver(e) {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = "move";
+    }
+
+    function handleDragEnter(e) {
+      e.currentTarget.classList.add("bg-secondary-container/30");
+    }
+
+    function handleDragLeave(e) {
+      e.currentTarget.classList.remove("bg-secondary-container/30");
+    }
+
+    function handleDrop(e, targetKey) {
+      e.preventDefault();
+      e.currentTarget.classList.remove("bg-secondary-container/30");
+      if (!draggedSectionKey || draggedSectionKey === targetKey) return;
+
+      const srcIdx = previewSections.findIndex(s => s.key === draggedSectionKey);
+      const tgtIdx = previewSections.findIndex(s => s.key === targetKey);
+
+      if (srcIdx !== -1 && tgtIdx !== -1) {
+        const [movedItem] = previewSections.splice(srcIdx, 1);
+        previewSections.splice(tgtIdx, 0, movedItem);
+        renderMultiPagePreview();
+      }
+    }
+
+    function handleDragEnd(e) {
+      draggedSectionKey = null;
+      document.querySelectorAll(".preview-section-item").forEach(el => {
+        el.classList.remove("opacity-40", "bg-secondary-container/30");
+      });
+    }
+
+    function moveSection(key, direction) {
+      const idx = previewSections.findIndex(s => s.key === key);
+      if (idx === -1) return;
+      const targetIdx = idx + direction;
+      if (targetIdx < 0 || targetIdx >= previewSections.length) return;
+
+      const temp = previewSections[idx];
+      previewSections[idx] = previewSections[targetIdx];
+      previewSections[targetIdx] = temp;
+
+      renderMultiPagePreview();
+    }
+
+    function setSectionAlignment(key, alignVal) {
+      const sec = previewSections.find(s => s.key === key);
+      if (sec) {
+        sec.alignment = alignVal;
+        renderMultiPagePreview();
+      }
+    }
+
+    function handleSectionContentEdit(key, newText) {
+      const sec = previewSections.find(s => s.key === key);
+      if (sec) {
+        sec.content = newText;
+        userModifiedPreviewContent[key] = newText;
+
+        // Keep Step 2 fields in sync
+        if (key === "AIM") {
+          const el = document.getElementById("reviewAimText");
+          if (el) el.value = newText;
+        } else if (key === "ALGORITHM") {
+          const el = document.getElementById("reviewAlgorithmText");
+          if (el) el.value = newText;
+        } else if (key === "PROGRAM") {
+          const el = document.getElementById("reviewProgramCode");
+          if (el) el.textContent = newText;
+        } else if (key === "OUTPUT") {
+          const el = document.getElementById("reviewOutputText");
+          if (el) el.value = newText;
+        } else if (key === "RESULT") {
+          const el = document.getElementById("reviewResultText");
+          if (el) el.value = newText;
         }
       }
+    }
+
+    function removePreviewSection(key) {
+      const sec = previewSections.find(s => s.key === key);
+      if (sec) {
+        sec.visible = false;
+        const cb = document.getElementById(`sectionCheckbox-${key}`);
+        if (cb) {
+          cb.checked = false;
+          updateSelectedSectionsCount();
+        }
+        renderMultiPagePreview();
+      }
+    }
+
+    function resetSectionOrder() {
+      const standardOrder = ["AIM", "ALGORITHM", "PROGRAM", "OUTPUT", "FIGURES", "RESULT"];
+      previewSections.sort((a, b) => standardOrder.indexOf(a.key) - standardOrder.indexOf(b.key));
+      renderMultiPagePreview();
     }
 
     function setDocumentAlignment(alignVal) {
       const select = document.getElementById("docAlignment");
       if (select) {
         select.value = alignVal;
-        updateLiveDocumentPreview();
       }
+      previewSections.forEach(s => {
+        if (s.type !== "code" && s.type !== "output") {
+          s.alignment = alignVal;
+        }
+      });
+      renderMultiPagePreview();
     }
 
     // Step 4: Export .DOCX Implementation
@@ -1861,24 +2222,6 @@
       if (exportBtnText) exportBtnText.textContent = "Synthesizing Word Document (.docx)...";
       if (exportBtnIcon) exportBtnIcon.textContent = "hourglass_top";
 
-      // Collect approved sections
-      const sections = {};
-      if (document.getElementById("sectionCheckbox-AIM")?.checked) {
-        sections["AIM"] = document.getElementById("reviewAimText")?.value || "";
-      }
-      if (document.getElementById("sectionCheckbox-ALGORITHM")?.checked) {
-        sections["ALGORITHM"] = document.getElementById("reviewAlgorithmText")?.value || "";
-      }
-      if (document.getElementById("sectionCheckbox-PROGRAM")?.checked) {
-        sections["PROGRAM"] = document.getElementById("reviewProgramCode")?.textContent || "";
-      }
-      if (document.getElementById("sectionCheckbox-OUTPUT")?.checked) {
-        sections["OUTPUT"] = document.getElementById("reviewOutputText")?.value || "";
-      }
-      if (document.getElementById("sectionCheckbox-RESULT")?.checked) {
-        sections["RESULT"] = document.getElementById("reviewResultText")?.value || "";
-      }
-
       // Collect formatting
       const formatting = {
         font_family: document.getElementById("docFontFamily")?.value || "Times New Roman",
@@ -1891,6 +2234,23 @@
         alignment: document.getElementById("docAlignment")?.value || "justify"
       };
 
+      // Collect ordered sections from preview state (preserving order, in-place edits, and alignment)
+      const orderedSections = previewSections
+        .filter(s => s.visible !== false && s.key !== "FIGURES")
+        .map(s => ({
+          key: s.key,
+          title: s.title,
+          content: s.content,
+          alignment: s.alignment || formatting.alignment,
+          type: s.type
+        }));
+
+      // Fallback sections object for backward compatibility
+      const sections = {};
+      orderedSections.forEach(s => {
+        sections[s.key] = s.content;
+      });
+
       // Collect images if enabled
       const images = document.getElementById("enableImagesCheckbox")?.checked ? projectImages : [];
 
@@ -1901,6 +2261,7 @@
           body: JSON.stringify({
             filename: docName,
             export_folder: folderPath,
+            ordered_sections: orderedSections,
             sections: sections,
             formatting: formatting,
             images: images,
@@ -1938,8 +2299,8 @@
         console.error(err);
       } finally {
         if (exportBtn) exportBtn.disabled = false;
-        if (exportBtnText) exportBtnText.textContent = "Generate & Save Word Document (.docx)";
-        if (exportBtnIcon) exportBtnIcon.textContent = "download";
+        if (exportBtnText) exportBtnText.textContent = "Synthesize & Save Document";
+        if (exportBtnIcon) exportBtnIcon.textContent = "download_for_offline";
       }
     }
 
