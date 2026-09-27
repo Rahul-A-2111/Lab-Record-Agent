@@ -10,13 +10,105 @@
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet"/>
   <style>
+    :root {
+      --blue-bell: #1E91D6;
+      --twitter-blue: #0072BB;
+      --yellow-green: #8FC93A;
+      --golden-glow: #E4CC37;
+      --golden-chestnut: #E18335;
+      --cream-bg: #F5F2EB;
+      --cream-paper: #FAF8F5;
+      --black: #000000;
+    }
+
     @layer base {
       html, body { margin: 0; padding: 0; }
-      body { overscroll-behavior: none; }
+      body {
+        overscroll-behavior: none;
+        background-color: #F5F2EB;
+        background-image: radial-gradient(rgba(0, 0, 0, 0.14) 1.25px, transparent 1.25px);
+        background-size: 20px 20px;
+        color: #000000;
+      }
       main > :first-child { margin-top: 0 !important; }
       main > :last-child { margin-bottom: 0 !important; }
     }
-    ::-webkit-scrollbar { display: none; }
+
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #F5F2EB; }
+    ::-webkit-scrollbar-thumb { background: #000000; border: 1px solid #000000; }
+
+    /* Neo-Brutalist Core Utility Styles */
+    .neo-card {
+      background-color: #FFFFFF;
+      border: 2px solid #000000;
+      box-shadow: 4px 4px 0px 0px #000000;
+      border-radius: 3px;
+    }
+    .neo-card-sm {
+      background-color: #FFFFFF;
+      border: 2px solid #000000;
+      box-shadow: 2px 2px 0px 0px #000000;
+      border-radius: 2px;
+    }
+    .neo-card-lg {
+      background-color: #FFFFFF;
+      border: 3px solid #000000;
+      box-shadow: 6px 6px 0px 0px #000000;
+      border-radius: 4px;
+    }
+    .neo-btn {
+      border: 2px solid #000000;
+      box-shadow: 3px 3px 0px 0px #000000;
+      border-radius: 3px;
+      font-weight: 700;
+      transition: all 0.12s ease-in-out;
+      cursor: pointer;
+    }
+    .neo-btn:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0px 0px #000000;
+    }
+    .neo-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px 0px #000000;
+    }
+    .neo-btn-sm {
+      border: 1.5px solid #000000;
+      box-shadow: 2px 2px 0px 0px #000000;
+      border-radius: 2px;
+      font-weight: 700;
+      transition: all 0.1s ease-in-out;
+      cursor: pointer;
+    }
+    .neo-btn-sm:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 3px 3px 0px 0px #000000;
+    }
+    .neo-btn-sm:active {
+      transform: translate(1px, 1px);
+      box-shadow: 0px 0px 0px 0px #000000;
+    }
+    .neo-input {
+      border: 2px solid #000000;
+      box-shadow: 2px 2px 0px 0px #000000;
+      border-radius: 3px;
+      background-color: #FFFFFF;
+      color: #000000;
+      transition: all 0.15s ease-in-out;
+    }
+    .neo-input:focus {
+      outline: none;
+      box-shadow: 3px 3px 0px 0px #1E91D6;
+    }
+    .neo-tag {
+      border: 1.5px solid #000000;
+      box-shadow: 1.5px 1.5px 0px 0px #000000;
+      border-radius: 2px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
     .border-double-custom { border-style: double !important; }
   </style>
   <script src="https://cdn.tailwindcss.com"></script>
@@ -26,144 +118,170 @@
       theme: {
         extend: {
           colors: {
-            error: "#ba1a1a",
-            "on-surface-variant": "#45474c",
-            "primary-container": "#1e293b",
-            "error-container": "#ffdad6",
-            background: "#f8f9ff",
-            "on-tertiary-fixed": "#00201d",
-            "tertiary-container": "#002f2a",
-            "surface-bright": "#f8f9ff",
-            "tertiary-fixed": "#89f5e7",
-            "inverse-on-surface": "#eaf1ff",
-            "on-secondary-fixed": "#00174b",
-            "surface-container-high": "#dce9ff",
-            "on-secondary-container": "#fefcff",
-            primary: "#091426",
-            "on-secondary": "#ffffff",
-            "secondary-container": "#316bf3",
-            "on-background": "#0b1c30",
-            "inverse-primary": "#bcc7de",
-            "on-primary": "#ffffff",
-            "on-primary-fixed-variant": "#3c475a",
-            "on-tertiary-container": "#28a094",
-            "surface-container": "#e5eeff",
-            "on-error": "#ffffff",
-            "inverse-surface": "#213145",
-            "on-secondary-fixed-variant": "#003ea8",
-            "on-tertiary": "#ffffff",
-            "secondary-fixed": "#dbe1ff",
-            secondary: "#0051d5",
-            "surface-container-highest": "#d3e4fe",
-            "surface-tint": "#545f73",
-            surface: "#f8f9ff",
-            tertiary: "#001815",
-            "secondary-fixed-dim": "#b4c5ff",
-            outline: "#75777d",
-            "surface-dim": "#cbdbf5",
-            "on-primary-fixed": "#111c2d",
-            "primary-fixed-dim": "#bcc7de",
-            "surface-container-lowest": "#ffffff",
-            "surface-container-low": "#eff4ff",
-            "on-surface": "#0b1c30",
-            "on-tertiary-fixed-variant": "#005049",
-            "primary-fixed": "#d8e3fb",
-            "surface-variant": "#d3e4fe",
-            "tertiary-fixed-dim": "#6bd8cb",
-            "on-primary-container": "#8590a6",
-            "outline-variant": "#c5c6cd",
-            "on-error-container": "#93000a"
+            "blue-bell": "#1E91D6",
+            "twitter-blue": "#0072BB",
+            "yellow-green": "#8FC93A",
+            "golden-glow": "#E4CC37",
+            "golden-chestnut": "#E18335",
+            "cream-bg": "#F5F2EB",
+            "cream-paper": "#FAF8F5",
+
+            // Semantic mappings for neo-brutalist theme
+            primary: "#000000",
+            "on-primary": "#FFFFFF",
+            "primary-container": "#0072BB",
+            "on-primary-container": "#FFFFFF",
+
+            secondary: "#0072BB",
+            "on-secondary": "#FFFFFF",
+            "secondary-container": "#1E91D6",
+            "on-secondary-container": "#000000",
+            "secondary-fixed": "#E4CC37",
+            "on-secondary-fixed": "#000000",
+
+            tertiary: "#8FC93A",
+            "on-tertiary": "#000000",
+            "tertiary-container": "#E4CC37",
+            "on-tertiary-container": "#000000",
+            "tertiary-fixed": "#8FC93A",
+            "on-tertiary-fixed": "#000000",
+
+            surface: "#F5F2EB",
+            "on-surface": "#000000",
+            "on-surface-variant": "#222222",
+
+            "surface-container-lowest": "#FFFFFF",
+            "surface-container-low": "#FAF8F5",
+            "surface-container": "#EFE9DF",
+            "surface-container-high": "#E5DFD3",
+            "surface-container-highest": "#D8D1C3",
+
+            "surface-bright": "#FFFFFF",
+            "inverse-surface": "#111111",
+            "inverse-on-surface": "#F5F2EB",
+
+            error: "#D32F2F",
+            "error-container": "#FFDADA",
+            "on-error": "#FFFFFF",
+            "on-error-container": "#000000",
+
+            outline: "#000000",
+            "outline-variant": "#444444"
           },
-          borderRadius: { DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem" },
+          borderRadius: {
+            DEFAULT: "3px",
+            sm: "2px",
+            md: "3px",
+            lg: "4px",
+            xl: "4px",
+            "2xl": "4px",
+            full: "9999px"
+          },
+          boxShadow: {
+            DEFAULT: "2px 2px 0px 0px #000000",
+            sm: "2px 2px 0px 0px #000000",
+            md: "4px 4px 0px 0px #000000",
+            lg: "6px 6px 0px 0px #000000",
+            xl: "8px 8px 0px 0px #000000",
+            inner: "inset 2px 2px 0px 0px #000000"
+          },
           spacing: {
             "gutter-desktop": "1.5rem", "space-lg": "1.25rem", "space-md": "0.75rem",
             margin: "1rem", gutter: "1rem", "space-xl": "2rem", "space-xs": "0.25rem",
             "margin-desktop": "2rem", "space-sm": "0.5rem"
           },
           fontFamily: {
-            "body-lg": ["Inter"], "document-body": ["Newsreader"], "headline-sm": ["Plus Jakarta Sans"],
-            "label-sm": ["JetBrains Mono"], "body-md": ["Inter"], "document-title": ["Newsreader"],
-            "display-sm": ["Plus Jakarta Sans"], "label-md": ["JetBrains Mono"], "display-lg": ["Plus Jakarta Sans"],
-            "headline-md": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "headline-lg": ["Plus Jakarta Sans"]
+            "body-lg": ["Inter", "sans-serif"],
+            "body-md": ["Inter", "sans-serif"],
+            "body-sm": ["Inter", "sans-serif"],
+            "headline-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-md": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "display-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "display-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "label-sm": ["JetBrains Mono", "monospace"],
+            "label-md": ["JetBrains Mono", "monospace"],
+            "document-body": ["Newsreader", "serif"],
+            "document-title": ["Newsreader", "serif"]
           }
         }
       }
     };
   </script>
 </head>
-<body class="bg-surface font-body-md text-on-surface antialiased">
-  <!-- Left Permanent Sidebar Navigation -->
-  <aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between p-space-md">
+<body class="bg-[#F5F2EB] font-body-md text-black antialiased">
+  <!-- Left Permanent Sidebar Navigation (Neo-Brutalist) -->
+  <aside class="fixed left-0 top-0 h-full w-72 bg-[#FAF8F5] border-r-2 border-black z-50 flex flex-col justify-between p-space-md shadow-[4px_0px_0px_0px_rgba(0,0,0,0.06)]">
     <div class="flex flex-col gap-space-lg">
-      <div class="flex items-start gap-space-sm px-space-xs">
-        <div class="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-on-primary shrink-0">
-          <span class="material-symbols-outlined text-[20px]">science</span>
+      <div class="flex items-center gap-space-sm px-space-xs pb-space-sm border-b-2 border-black">
+        <div class="w-10 h-10 rounded-[3px] bg-[#E4CC37] border-2 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center text-black shrink-0 font-black">
+          <span class="material-symbols-outlined text-[24px]">science</span>
         </div>
         <div class="flex flex-col min-w-0">
-          <span class="font-headline-md text-headline-md text-on-surface leading-tight truncate">Lab Record Agent</span>
-          <span class="font-label-sm text-xs text-on-surface-variant truncate mt-0.5">Collegiate Document Studio</span>
+          <span class="font-headline-lg text-base font-black text-black leading-none uppercase tracking-tight truncate">Lab Record Agent</span>
+          <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-black/70 mt-1">Collegiate Studio v2.4</span>
         </div>
       </div>
-      <nav class="flex flex-col gap-space-xs" id="sidebarNav">
-        <button onclick="switchTab('wizard')" id="navTabWizard" class="flex items-center justify-between px-space-sm py-space-sm rounded-lg transition-all text-left bg-primary-container text-on-secondary font-headline-sm w-full">
+      <nav class="flex flex-col gap-space-sm" id="sidebarNav">
+        <button onclick="switchTab('wizard')" id="navTabWizard" class="flex items-center justify-between px-space-md py-space-sm rounded-[3px] transition-all text-left bg-[#8FC93A] text-black font-extrabold border-2 border-black shadow-[3px_3px_0px_#000] w-full cursor-pointer hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#000] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[1px_1px_0px_#000]">
           <div class="flex items-center gap-space-sm">
             <span class="material-symbols-outlined text-[20px]">add_circle</span>
-            <span class="font-body-md text-body-md">New Record</span>
+            <span class="font-headline-sm text-sm font-bold uppercase tracking-wide">New Record</span>
           </div>
-          <span id="navTabWizardBadge" class="bg-secondary text-on-secondary font-label-sm text-label-sm px-space-xs py-0.5 rounded-full">Active</span>
+          <span id="navTabWizardBadge" class="bg-black text-[#8FC93A] font-mono text-[10px] uppercase font-black px-2 py-0.5 rounded-[2px] border border-black">Active</span>
         </button>
-        <button onclick="switchTab('myrecords')" id="navTabMyRecords" class="flex items-center justify-between px-space-sm py-space-sm rounded-lg transition-all text-left text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface w-full">
+        <button onclick="switchTab('myrecords')" id="navTabMyRecords" class="flex items-center justify-between px-space-md py-space-sm rounded-[3px] transition-all text-left bg-white text-black font-bold border-2 border-black shadow-[2px_2px_0px_#000] hover:bg-[#FAF8F5] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#000] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[1px_1px_0px_#000] w-full cursor-pointer">
           <div class="flex items-center gap-space-sm">
             <span class="material-symbols-outlined text-[20px]">folder_open</span>
-            <span class="font-body-md text-body-md">My Records</span>
+            <span class="font-headline-sm text-sm font-bold uppercase tracking-wide">My Records</span>
           </div>
-          <span id="sidebarRecordsCountBadge" class="bg-surface-container-high text-on-surface font-label-sm text-label-sm px-space-xs py-0.5 rounded-full">0</span>
+          <span id="sidebarRecordsCountBadge" class="bg-[#EFE9DF] text-black border border-black font-mono text-[11px] font-bold px-2 py-0.5 rounded-[2px]">0</span>
         </button>
-        <button onclick="switchTab('templates')" id="navTabTemplates" class="flex items-center justify-between px-space-sm py-space-sm rounded-lg transition-all text-left text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface w-full">
+        <button onclick="switchTab('templates')" id="navTabTemplates" class="flex items-center justify-between px-space-md py-space-sm rounded-[3px] transition-all text-left bg-white text-black font-bold border-2 border-black shadow-[2px_2px_0px_#000] hover:bg-[#FAF8F5] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#000] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[1px_1px_0px_#000] w-full cursor-pointer">
           <div class="flex items-center gap-space-sm">
             <span class="material-symbols-outlined text-[20px]">description</span>
-            <span class="font-body-md text-body-md">Templates</span>
+            <span class="font-headline-sm text-sm font-bold uppercase tracking-wide">Templates</span>
           </div>
-          <span id="sidebarTemplatesCountBadge" class="bg-surface-container-high text-on-surface font-label-sm text-label-sm px-space-xs py-0.5 rounded-full">3</span>
+          <span id="sidebarTemplatesCountBadge" class="bg-[#EFE9DF] text-black border border-black font-mono text-[11px] font-bold px-2 py-0.5 rounded-[2px]">3</span>
         </button>
       </nav>
     </div>
-    <div class="flex flex-col gap-space-sm pt-space-md border-t border-surface-container-high">
-      <button onclick="startInteractiveTutorial()" class="w-full flex items-center justify-center gap-2 px-space-md py-space-sm rounded-xl bg-secondary text-on-secondary hover:bg-secondary-container transition-all font-headline-sm text-headline-sm shadow-sm" type="button">
+    <div class="flex flex-col gap-space-sm pt-space-md border-t-2 border-black">
+      <button onclick="startInteractiveTutorial()" class="w-full flex items-center justify-center gap-2 px-space-md py-space-sm rounded-[3px] bg-[#E18335] text-black border-2 border-black shadow-[3px_3px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#000] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[1px_1px_0px_#000] transition-all font-headline-sm text-sm font-black uppercase tracking-wider cursor-pointer" type="button">
         <span class="material-symbols-outlined text-[20px]">school</span>
-        <span>Tutorial Walkthrough</span>
+        <span>Tutorial Tour</span>
       </button>
-      <div class="flex items-center justify-between px-space-xs py-1 text-on-surface-variant font-label-sm text-xs">
-        <span class="flex items-center gap-1.5">
-          <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
-          <span>System Ready</span>
+      <div class="flex items-center justify-between px-space-xs py-1 text-black font-mono text-xs">
+        <span class="flex items-center gap-1.5 font-bold">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#8FC93A] border border-black animate-pulse"></span>
+          <span>ONLINE</span>
         </span>
-        <span class="font-mono text-[11px] opacity-60">v2.4</span>
+        <span class="font-mono text-[11px] font-bold px-1.5 py-0.5 rounded-[2px] bg-white border border-black shadow-[1px_1px_0px_#000]">v2.4</span>
       </div>
     </div>
   </aside>
 
   <!-- Right App Main Body -->
   <div class="pl-72">
-    <!-- Top Bar -->
-    <header class="fixed top-0 left-72 right-0 h-16 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-xl">
+    <!-- Top Bar (Neo-Brutalist) -->
+    <header class="fixed top-0 left-72 right-0 h-16 bg-[#FAF8F5] border-b-2 border-black z-40 flex items-center justify-between px-space-xl shadow-[0_2px_0_0_#000000]">
       <div class="flex items-center gap-space-sm">
-        <div class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant">
-          <span class="hover:text-on-surface cursor-pointer" onclick="switchTab('wizard')">Workspace</span>
+        <div class="flex items-center gap-space-xs font-mono text-xs font-bold text-black uppercase">
+          <span class="hover:underline cursor-pointer bg-white border border-black px-1.5 py-0.5 shadow-[1px_1px_0px_#000]" onclick="switchTab('wizard')">STUDIO</span>
           <span class="material-symbols-outlined text-[14px]">chevron_right</span>
         </div>
-        <span class="font-headline-md text-headline-md text-on-surface" id="topBarTitle">New Record Wizard</span>
-        <span class="flex items-center gap-1.5 ml-space-xs px-space-sm py-0.5 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm">
-          <span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container animate-pulse"></span>
+        <span class="font-headline-md text-base font-black text-black uppercase tracking-tight" id="topBarTitle">New Record Wizard</span>
+        <span class="flex items-center gap-1.5 ml-space-xs px-2 py-0.5 rounded-[2px] bg-[#8FC93A] text-black border border-black shadow-[1.5px_1.5px_0px_#000] font-mono text-xs font-bold uppercase">
+          <span class="w-2 h-2 rounded-full bg-black"></span>
           Ready
         </span>
-        <button onclick="startInteractiveTutorial()" class="flex items-center gap-1 ml-space-xs px-space-sm py-0.5 rounded-full bg-secondary/10 hover:bg-secondary/20 text-secondary font-headline-sm text-xs transition-all" type="button">
+        <button onclick="startInteractiveTutorial()" class="flex items-center gap-1 ml-space-xs px-2.5 py-1 rounded-[2px] bg-[#E4CC37] text-black border border-black shadow-[1.5px_1.5px_0px_#000] font-headline-sm text-xs font-bold uppercase hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all cursor-pointer" type="button">
           <span class="material-symbols-outlined text-[14px]">school</span>
-          <span>Tutorial</span>
+          <span>Guide</span>
         </button>
       </div>
       <div class="flex items-center gap-space-sm">
-        <button onclick="switchTab('myrecords')" class="px-space-sm py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface text-xs font-headline-sm flex items-center gap-1 transition-all" type="button">
+        <button onclick="switchTab('myrecords')" class="px-space-md py-1.5 rounded-[3px] bg-white hover:bg-[#FAF8F5] text-black border-2 border-black shadow-[2px_2px_0px_#000] text-xs font-headline-sm font-bold uppercase flex items-center gap-1.5 transition-all cursor-pointer" type="button">
           <span class="material-symbols-outlined text-[16px]">folder_open</span>
           <span>My Records</span>
         </button>
@@ -171,101 +289,101 @@
     </header>
 
     <!-- Main Workspace Container -->
-    <main class="relative pt-20 w-full min-h-screen bg-surface px-space-xl py-space-xl">
+    <main class="relative pt-20 w-full min-h-screen px-space-xl py-space-xl">
       <div class="flex flex-col w-full max-w-7xl mx-auto">
 
-        <!-- Top Title Header -->
-        <!-- ========================================================================= -->
-        <!-- TAB VIEW: NEW RECORD WIZARD                                               -->
+        <!-- TAB VIEW: NEW RECORD WIZARD -->
         <!-- ========================================================================= -->
         <div id="viewWizard" class="flex flex-col w-full">
           <!-- Top Title Header -->
           <div class="flex flex-col gap-space-sm mb-space-lg">
-            <div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
-              <span class="material-symbols-outlined text-[16px] text-secondary">terminal</span>
-              <span>AUTONOMOUS COMPILER AGENT v2.4</span>
-              <span class="text-outline-variant">/</span>
-              <span class="text-secondary font-headline-sm" id="topExperimentLabel">EXP-04</span>
+            <div class="flex items-center gap-space-xs font-mono text-xs font-bold">
+              <span class="px-2 py-0.5 bg-[#1E91D6] text-black border border-black shadow-[1.5px_1.5px_0px_#000] rounded-[2px] flex items-center gap-1 uppercase">
+                <span class="material-symbols-outlined text-[14px]">terminal</span>
+                <span>COMPILER AGENT v2.4</span>
+              </span>
+              <span class="text-black font-extrabold">/</span>
+              <span class="px-2 py-0.5 bg-[#E4CC37] text-black border border-black shadow-[1.5px_1.5px_0px_#000] rounded-[2px] uppercase font-bold" id="topExperimentLabel">EXP-04</span>
             </div>
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
               <div>
-                <h1 class="font-display-lg text-display-lg text-on-surface tracking-tight" id="mainHeaderTitle">1. Content Selection</h1>
+                <h1 class="font-headline-lg text-3xl md:text-4xl font-black text-black tracking-tight uppercase" id="mainHeaderTitle">1. Content Selection</h1>
               </div>
               <div class="flex items-center gap-space-sm shrink-0">
-                <button onclick="resetDraft()" class="px-space-md py-space-xs rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-all flex items-center gap-space-xs font-headline-sm text-headline-sm shadow-sm" type="button">
+                <button onclick="resetDraft()" class="px-space-md py-space-xs rounded-[3px] bg-white text-black hover:bg-[#FAF8F5] border-2 border-black shadow-[2px_2px_0px_#000] hover:shadow-[3px_3px_0px_#000] transition-all flex items-center gap-space-xs font-mono text-xs font-bold uppercase cursor-pointer" type="button">
                   <span class="material-symbols-outlined text-[18px]">restore</span>
-                  <span>Reset</span>
+                  <span>Reset Draft</span>
                 </button>
               </div>
             </div>
           </div>
 
-        <!-- 4-Step Collegiate Progress Ribbon -->
-        <div class="p-space-sm rounded-xl bg-surface-container-low shadow-[0_1px_3px_0_rgba(15,23,42,0.04)] flex flex-wrap md:flex-nowrap items-center justify-between gap-space-sm mb-space-xl">
+        <!-- 4-Step Collegiate Progress Ribbon (Neo-Brutalist) -->
+        <div class="p-2 rounded-[3px] bg-white border-2 border-black shadow-[4px_4px_0px_#000] flex flex-wrap md:flex-nowrap items-center justify-between gap-2 mb-space-xl">
           <!-- Ribbon Step 1 -->
-          <div id="ribbonStep1" onclick="goToStep(1)" class="flex items-center gap-space-sm px-space-md py-space-xs rounded-lg transition-all cursor-pointer flex-1 bg-primary text-on-primary shadow-md">
-            <div id="ribbonStep1Badge" class="w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-label-sm text-label-sm shrink-0 font-bold">1</div>
+          <div id="ribbonStep1" onclick="goToStep(1)" class="flex items-center gap-space-sm px-space-md py-space-xs rounded-[3px] transition-all cursor-pointer flex-1 bg-[#E4CC37] text-black border-2 border-black shadow-[3px_3px_0px_#000] font-bold">
+            <div id="ribbonStep1Badge" class="w-6 h-6 rounded-[2px] bg-black text-[#E4CC37] flex items-center justify-center font-mono text-xs shrink-0 font-black border border-black">1</div>
             <div class="flex flex-col min-w-0">
-              <span class="font-headline-sm text-headline-sm truncate">1. Content Selection</span>
-              <span class="font-label-sm text-label-sm opacity-90" id="ribbonStep1Status">Upload or Paste Source</span>
+              <span class="font-headline-sm text-xs font-black uppercase truncate">1. Content Selection</span>
+              <span class="font-mono text-[10px] uppercase font-bold opacity-90 truncate" id="ribbonStep1Status">Source Verified</span>
             </div>
           </div>
-          <div class="h-0.5 w-6 bg-surface-container-highest hidden md:block"></div>
+          <span class="material-symbols-outlined text-black font-bold text-[18px] hidden md:block">arrow_forward</span>
 
           <!-- Ribbon Step 2 -->
-          <div id="ribbonStep2" onclick="goToStep(2)" class="flex items-center gap-space-sm px-space-md py-space-xs rounded-lg transition-all cursor-pointer flex-1 bg-surface-container text-on-surface opacity-85">
-            <div id="ribbonStep2Badge" class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label-sm text-label-sm shrink-0">2</div>
+          <div id="ribbonStep2" onclick="goToStep(2)" class="flex items-center gap-space-sm px-space-md py-space-xs rounded-[3px] transition-all cursor-pointer flex-1 bg-[#FAF8F5] text-black border-2 border-black shadow-[2px_2px_0px_#000] hover:bg-white">
+            <div id="ribbonStep2Badge" class="w-6 h-6 rounded-[2px] bg-white text-black border border-black flex items-center justify-center font-mono text-xs shrink-0 font-bold">2</div>
             <div class="flex flex-col min-w-0">
-              <span class="font-headline-sm text-headline-sm truncate">2. Format &amp; Layout</span>
-              <span class="font-label-sm text-label-sm opacity-75">Components &amp; Rules</span>
+              <span class="font-headline-sm text-xs font-black uppercase truncate">2. Format &amp; Layout</span>
+              <span class="font-mono text-[10px] uppercase font-bold opacity-70 truncate">Components &amp; Rules</span>
             </div>
           </div>
-          <div class="h-0.5 w-6 bg-surface-container-highest hidden md:block"></div>
+          <span class="material-symbols-outlined text-black font-bold text-[18px] hidden md:block">arrow_forward</span>
 
           <!-- Ribbon Step 3 -->
-          <div id="ribbonStep3" onclick="goToStep(3)" class="flex items-center gap-space-sm px-space-md py-space-xs rounded-lg transition-all cursor-pointer flex-1 bg-surface-container text-on-surface opacity-85">
-            <div id="ribbonStep3Badge" class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label-sm text-label-sm shrink-0">3</div>
+          <div id="ribbonStep3" onclick="goToStep(3)" class="flex items-center gap-space-sm px-space-md py-space-xs rounded-[3px] transition-all cursor-pointer flex-1 bg-[#FAF8F5] text-black border-2 border-black shadow-[2px_2px_0px_#000] hover:bg-white">
+            <div id="ribbonStep3Badge" class="w-6 h-6 rounded-[2px] bg-white text-black border border-black flex items-center justify-center font-mono text-xs shrink-0 font-bold">3</div>
             <div class="flex flex-col min-w-0">
-              <span class="font-headline-sm text-headline-sm truncate">3. Verification</span>
-              <span class="font-label-sm text-label-sm opacity-75">A4 Live Document</span>
+              <span class="font-headline-sm text-xs font-black uppercase truncate">3. Verification</span>
+              <span class="font-mono text-[10px] uppercase font-bold opacity-70 truncate">A4 Live Document</span>
             </div>
           </div>
-          <div class="h-0.5 w-6 bg-surface-container-highest hidden md:block"></div>
+          <span class="material-symbols-outlined text-black font-bold text-[18px] hidden md:block">arrow_forward</span>
 
           <!-- Ribbon Step 4 -->
-          <div id="ribbonStep4" onclick="goToStep(4)" class="flex items-center gap-space-sm px-space-md py-space-xs rounded-lg transition-all cursor-pointer flex-1 bg-surface-container text-on-surface opacity-85">
-            <div id="ribbonStep4Badge" class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label-sm text-label-sm shrink-0">4</div>
+          <div id="ribbonStep4" onclick="goToStep(4)" class="flex items-center gap-space-sm px-space-md py-space-xs rounded-[3px] transition-all cursor-pointer flex-1 bg-[#FAF8F5] text-black border-2 border-black shadow-[2px_2px_0px_#000] hover:bg-white">
+            <div id="ribbonStep4Badge" class="w-6 h-6 rounded-[2px] bg-white text-black border border-black flex items-center justify-center font-mono text-xs shrink-0 font-bold">4</div>
             <div class="flex flex-col min-w-0">
-              <span class="font-headline-sm text-headline-sm truncate">4. Export .DOCX</span>
-              <span class="font-label-sm text-label-sm opacity-75">Generate &amp; Save</span>
+              <span class="font-headline-sm text-xs font-black uppercase truncate">4. Export .DOCX</span>
+              <span class="font-mono text-[10px] uppercase font-bold opacity-70 truncate">Generate &amp; Save</span>
             </div>
           </div>
         </div>
 
         <!-- ========================================================================= -->
-        <!-- STEP 1: CONTENT SELECTION                                                 -->
+        <!-- STEP 1: CONTENT SELECTION (Neo-Brutalist)                                 -->
         <!-- ========================================================================= -->
         <div id="stepContainer1" class="flex flex-col gap-space-lg">
-          <section class="rounded-xl bg-surface-container-lowest shadow-[0_1px_3px_0_rgba(15,23,42,0.04)] p-space-lg flex flex-col gap-space-md">
-            <div class="flex items-center justify-between pb-space-xs border-b border-surface-container-high">
+          <section class="rounded-[3px] bg-white border-2 border-black shadow-[5px_5px_0px_#000] p-space-lg flex flex-col gap-space-md">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-sm border-b-2 border-black">
               <div class="flex items-center gap-space-sm">
-                <span class="w-7 h-7 rounded-lg bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm">1</span>
+                <span class="w-8 h-8 rounded-[2px] bg-[#1E91D6] text-black border-2 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center font-mono font-black text-sm">01</span>
                 <div>
-                  <h2 class="font-headline-lg text-headline-lg text-on-surface">Program Input &amp; Source Verification</h2>
+                  <h2 class="font-headline-lg text-xl font-black text-black uppercase tracking-tight">Program Input &amp; Source Verification</h2>
                 </div>
               </div>
-              <span id="detectedLanguageBadge" class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-surface-container-high text-secondary font-label-sm text-label-sm">
-                <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+              <span id="detectedLanguageBadge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-[2px] bg-[#E4CC37] text-black border border-black shadow-[1.5px_1.5px_0px_#000] font-mono text-xs font-bold uppercase self-start sm:self-auto">
+                <span class="w-2 h-2 rounded-full bg-black"></span>
                 Language: <span id="detectedLanguageName">{% if language %}{{ language }} Detected{% elif code %}Code Loaded{% else %}None Detected{% endif %}</span>
               </span>
             </div>
 
-            <!-- Mode Toggle Tabs -->
-            <div class="flex p-0.5 rounded-lg bg-surface-container max-w-xs">
-              <button id="uploadModeBtn" class="flex-1 py-1.5 px-space-sm rounded-lg bg-surface-container-lowest text-on-surface font-headline-sm text-headline-sm shadow-sm text-center" type="button" onclick="showInputMode('upload')">
+            <!-- Mode Toggle Tabs (Neo-Brutalist) -->
+            <div class="flex p-1 rounded-[3px] bg-[#EFE9DF] border-2 border-black shadow-[2px_2px_0px_#000] max-w-xs gap-1">
+              <button id="uploadModeBtn" class="flex-1 py-1.5 px-space-sm rounded-[2px] bg-[#E4CC37] text-black border-2 border-black shadow-[2px_2px_0px_#000] font-headline-sm text-xs font-black uppercase text-center transition-all cursor-pointer" type="button" onclick="showInputMode('upload')">
                 Upload File
               </button>
-              <button id="pasteModeBtn" class="flex-1 py-1.5 px-space-sm rounded-lg text-on-surface-variant hover:text-on-surface font-body-md text-body-md text-center transition-all" type="button" onclick="showInputMode('paste')">
+              <button id="pasteModeBtn" class="flex-1 py-1.5 px-space-sm rounded-[2px] text-black/75 hover:text-black font-headline-sm text-xs font-bold uppercase text-center transition-all cursor-pointer" type="button" onclick="showInputMode('paste')">
                 Paste Code
               </button>
             </div>
@@ -278,79 +396,79 @@
             <input type="hidden" id="uploadedFilenameStore" value="{{ filename or '' }}"/>
 
             <!-- Paste Code Input Panel -->
-            <div id="pasteCodePanel" class="hidden rounded-lg bg-surface-container-low p-space-md flex flex-col gap-space-sm">
-              <div class="flex items-center justify-between">
-                <span class="font-headline-sm text-headline-sm text-on-surface">Paste Source Code</span>
-                <span class="material-symbols-outlined text-secondary">content_paste</span>
+            <div id="pasteCodePanel" class="hidden rounded-[3px] bg-[#FAF8F5] border-2 border-black shadow-[3px_3px_0px_#000] p-space-md flex flex-col gap-space-sm">
+              <div class="flex items-center justify-between pb-1 border-b border-black">
+                <span class="font-headline-sm text-sm font-black uppercase text-black">Paste Source Code</span>
+                <span class="material-symbols-outlined text-black font-bold">content_paste</span>
               </div>
               <textarea
                 id="pasteCodeInput"
-                class="w-full min-h-48 rounded-lg bg-surface-container-lowest p-space-sm font-label-sm text-label-sm text-on-surface shadow-sm focus:outline-none focus:ring-2 focus:ring-secondary resize-y"
+                class="w-full min-h-48 rounded-[3px] bg-white border-2 border-black shadow-[2px_2px_0px_#000] p-space-sm font-mono text-xs text-black focus:outline-none focus:shadow-[3px_3px_0px_#1E91D6] resize-y"
                 placeholder="Paste your Java, Python, C, C++, or text program here..."
                 spellcheck="false"
                 oninput="updatePastedCode()"></textarea>
               <div class="flex items-center justify-between gap-space-sm">
-                <span id="pasteCodeStatus" class="font-label-sm text-label-sm text-on-surface-variant">No code pasted yet</span>
-                <button type="button" class="px-space-sm py-1 rounded-lg bg-surface-container-highest text-on-surface hover:bg-surface-container font-label-md text-label-md transition-all" onclick="clearPastedCode()">
+                <span id="pasteCodeStatus" class="font-mono text-xs font-bold text-black/70">No code pasted yet</span>
+                <button type="button" class="px-space-md py-1 rounded-[2px] bg-white hover:bg-[#FAF8F5] text-black border border-black shadow-[1.5px_1.5px_0px_#000] font-mono text-xs font-bold uppercase transition-all cursor-pointer" onclick="clearPastedCode()">
                   Clear
                 </button>
               </div>
             </div>
 
             <!-- Uploaded File Badge Banner -->
-            <div class="rounded-lg bg-surface-container-low p-space-md flex flex-col sm:flex-row items-center justify-between gap-space-md">
-              <div class="flex items-center gap-space-sm">
-                <div class="w-10 h-10 rounded-lg bg-primary-container text-on-secondary flex items-center justify-center shrink-0">
+            <div class="rounded-[3px] bg-[#FAF8F5] border-2 border-black shadow-[3px_3px_0px_#000] p-space-md flex flex-col sm:flex-row items-center justify-between gap-space-md">
+              <div class="flex items-center gap-space-sm min-w-0">
+                <div class="w-11 h-11 rounded-[3px] bg-[#1E91D6] text-black border-2 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center shrink-0 font-black">
                   <span class="material-symbols-outlined text-[24px]">integration_instructions</span>
                 </div>
                 <div class="flex flex-col min-w-0">
-                  <span class="font-headline-sm text-headline-sm text-on-surface truncate"><span data-program-filename>{{ filename or 'No file uploaded yet' }}</span></span>
-                  <div class="flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant">
+                  <span class="font-headline-sm text-sm font-black text-black uppercase truncate"><span data-program-filename>{{ filename or 'No file uploaded yet' }}</span></span>
+                  <div class="flex items-center gap-space-xs font-mono text-xs font-bold text-black/70">
                     <span>{{ file_size or '—' }}</span>
                     <span>•</span>
                     <span>UTF-8 text</span>
                     <span>•</span>
-                    <span class="text-on-tertiary-container font-medium" id="codeStagingStatus">{% if code %}Ready for Processing{% else %}Awaiting Input{% endif %}</span>
+                    <span class="text-black font-extrabold" id="codeStagingStatus">{% if code %}READY FOR STAGING{% else %}AWAITING INPUT{% endif %}</span>
                   </div>
                 </div>
               </div>
-              <div class="flex items-center gap-space-xs">
-                <button class="px-space-sm py-1 rounded-lg bg-surface-container-highest text-on-surface hover:bg-surface-container font-label-md text-label-md transition-all" type="button" onclick="document.getElementById('programFile').click()">
+              <div class="flex items-center gap-space-xs shrink-0">
+                <button class="px-space-md py-1.5 rounded-[3px] bg-[#E4CC37] hover:bg-[#ebd54b] text-black border-2 border-black shadow-[2px_2px_0px_#000] font-mono text-xs font-black uppercase transition-all cursor-pointer" type="button" onclick="document.getElementById('programFile').click()">
                   Choose File
                 </button>
-                <button class="p-1 rounded-lg hover:bg-error-container text-error transition-all" title="Remove File" type="button" onclick="resetFileSelection()">
+                <button class="p-1.5 rounded-[3px] bg-[#FFDADA] hover:bg-[#ffbaba] text-black border-2 border-black shadow-[2px_2px_0px_#000] transition-all cursor-pointer" title="Remove File" type="button" onclick="resetFileSelection()">
                   <span class="material-symbols-outlined text-[18px]">delete</span>
                 </button>
               </div>
             </div>
 
-            <!-- Terminal-Esque Source Code Preview -->
-            <div class="rounded-lg bg-primary text-on-primary shadow-inner overflow-hidden font-label-md text-label-md">
-              <div class="flex items-center justify-between px-space-md py-1.5 bg-inverse-surface text-inverse-on-surface font-label-sm text-label-sm">
-                <span class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-error"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-secondary-fixed-dim"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-tertiary-fixed"></span>
-                  <span class="ml-2 font-mono" data-program-filename>{{ filename or 'Terminal Source Preview' }}</span>
+            <!-- Terminal-Esque Source Code Preview (Neo-Brutalist) -->
+            <div class="rounded-[3px] bg-[#111111] text-[#E0E0E0] border-2 border-black shadow-[5px_5px_0px_#000] overflow-hidden font-mono text-xs">
+              <div class="flex items-center justify-between px-space-md py-2 bg-[#000000] border-b-2 border-black text-white font-mono text-xs">
+                <span class="flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full bg-[#E18335] border border-black"></span>
+                  <span class="w-3 h-3 rounded-full bg-[#E4CC37] border border-black"></span>
+                  <span class="w-3 h-3 rounded-full bg-[#8FC93A] border border-black"></span>
+                  <span class="ml-2 font-bold uppercase tracking-wider text-xs" data-program-filename>{{ filename or 'Terminal Source Preview' }}</span>
                 </span>
-                <span class="text-on-primary-container" id="terminalLineCounter">{% if code %}Lines 1 - {{ [code.splitlines()|length, 100]|min }} of {{ code.splitlines()|length }}{% else %}No source loaded{% endif %}</span>
+                <span class="font-mono text-[11px] text-[#8FC93A] font-bold" id="terminalLineCounter">{% if code %}Lines 1 - {{ [code.splitlines()|length, 100]|min }} of {{ code.splitlines()|length }}{% else %}No source loaded{% endif %}</span>
               </div>
-              <div class="p-space-sm overflow-x-auto font-label-sm leading-relaxed max-h-72 select-all font-mono">
+              <div class="p-space-sm overflow-x-auto font-mono text-xs leading-relaxed max-h-72 select-all">
                 <table class="w-full text-left">
                   <tbody id="terminalSourceTableBody">
                     {% if code %}
                       {% for line in code.splitlines() %}
                         {% if loop.index <= 100 %}
-                        <tr class="hover:bg-primary-container/40">
-                          <td class="text-on-primary-container select-none w-8 pr-2 text-right align-top">{{ loop.index }}</td>
-                          <td colspan="2" class="pl-2 whitespace-pre">{{ line }}</td>
+                        <tr class="hover:bg-white/10">
+                          <td class="text-[#888888] select-none w-8 pr-2 text-right align-top">{{ loop.index }}</td>
+                          <td colspan="2" class="pl-2 whitespace-pre text-[#F5F2EB]">{{ line }}</td>
                         </tr>
                         {% endif %}
                       {% endfor %}
                     {% else %}
                       <tr id="emptySourceRow">
-                        <td class="text-on-primary-container select-none w-8 pr-2 text-right">1</td>
-                        <td colspan="2" class="pl-2 text-on-primary-container">Upload a program file or paste source code to display it here.</td>
+                        <td class="text-[#888888] select-none w-8 pr-2 text-right">1</td>
+                        <td colspan="2" class="pl-2 text-[#AAAAAA]">Upload a program file or paste source code to display it here.</td>
                       </tr>
                     {% endif %}
                   </tbody>
@@ -359,34 +477,34 @@
             </div>
 
             <!-- AI Semantic Parsing Bar -->
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-space-sm p-space-sm rounded-lg bg-surface-container-high">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-space-sm p-space-sm rounded-[3px] bg-[#FAF8F5] border-2 border-black shadow-[3px_3px_0px_#000]">
               <div class="flex items-center gap-space-sm">
-                <span class="w-2.5 h-2.5 rounded-full bg-secondary animate-ping"></span>
+                <span class="w-3 h-3 rounded-full bg-[#8FC93A] border border-black animate-pulse"></span>
                 <div class="flex flex-col">
-                  <span class="font-headline-sm text-headline-sm text-on-surface" id="parsingStatusTitle">AST Parsing Ready</span>
-                  <span class="font-body-sm text-body-sm text-on-surface-variant" id="parsingStatusDesc">Check that your program parsed correctly before proceeding to format and layout</span>
+                  <span class="font-headline-sm text-sm font-black text-black uppercase" id="parsingStatusTitle">AST Parsing Ready</span>
+                  <span class="font-body-sm text-xs text-black/75" id="parsingStatusDesc">Check that your program parsed correctly before proceeding to format and layout</span>
                 </div>
               </div>
-              <button id="reanalyzeAstBtn" class="w-full sm:w-auto px-space-md py-space-xs rounded-lg bg-surface-container-highest hover:bg-surface-container text-on-surface font-headline-sm text-headline-sm flex items-center justify-center gap-space-xs transition-all" type="button" onclick="reparseCurrentCode()">
+              <button id="reanalyzeAstBtn" class="w-full sm:w-auto px-space-md py-2 rounded-[3px] bg-[#1E91D6] hover:bg-[#34a2e3] text-black border-2 border-black shadow-[2px_2px_0px_#000] font-headline-sm text-xs font-black uppercase flex items-center justify-center gap-space-xs transition-all cursor-pointer" type="button" onclick="reparseCurrentCode()">
                 <span class="material-symbols-outlined text-[18px]">sync</span>
                 <span>Re-analyze Source</span>
               </button>
             </div>
 
             <!-- Step 1 Validation Warning Alert -->
-            <div id="step1ValidationError" class="hidden p-space-sm rounded-xl bg-error-container text-on-error-container flex items-center justify-between gap-space-sm font-body-sm text-body-sm transition-all shadow-sm">
+            <div id="step1ValidationError" class="hidden p-space-sm rounded-[3px] bg-[#FFDADA] border-2 border-black shadow-[3px_3px_0px_#000] text-black flex items-center justify-between gap-space-sm font-bold text-xs transition-all">
               <div class="flex items-center gap-space-xs">
                 <span class="material-symbols-outlined text-[20px] text-error shrink-0">error</span>
                 <span id="step1ValidationMessage">Please upload a file or paste your source code to proceed.</span>
               </div>
-              <button type="button" onclick="document.getElementById('step1ValidationError').classList.add('hidden')" class="p-1 hover:bg-error/10 rounded-lg text-on-error-container">
+              <button type="button" onclick="document.getElementById('step1ValidationError').classList.add('hidden')" class="p-1 hover:bg-black/10 rounded-[2px] text-black">
                 <span class="material-symbols-outlined text-[16px]">close</span>
               </button>
             </div>
 
             <!-- Step 1 Approval & Continue Button -->
-            <div class="flex items-center justify-end pt-space-xs border-t border-surface-container-high">
-              <button id="approveStep1Btn" type="button" onclick="approveStep1()" class="px-space-xl py-space-sm rounded-lg bg-secondary text-on-secondary hover:bg-secondary-container font-headline-sm text-headline-sm flex items-center gap-space-xs shadow-md transition-all">
+            <div class="flex items-center justify-end pt-space-xs border-t-2 border-black">
+              <button id="approveStep1Btn" type="button" onclick="approveStep1()" class="w-full sm:w-auto px-space-xl py-3 rounded-[3px] bg-[#8FC93A] text-black border-2 border-black shadow-[4px_4px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[5px_5px_0px_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[1px_1px_0px_#000] font-headline-sm text-sm font-black uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer">
                 <span>Approve Content &amp; Proceed to Step 2</span>
                 <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
               </button>
@@ -399,104 +517,116 @@
         <!-- ========================================================================= -->
         <div id="stepContainer2" class="hidden flex flex-col gap-space-xl">
 
-          <!-- Part 2A: Components Selection (Aim, Algorithm, Program, Output, Result) -->
-          <section class="rounded-xl bg-surface-container-lowest shadow-[0_1px_3px_0_rgba(15,23,42,0.04)] p-space-lg flex flex-col gap-space-md">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-xs border-b border-surface-container-high">
+          <!-- Part 2A: Components Selection (Neo-Brutalist) -->
+          <section class="rounded-[3px] bg-white border-2 border-black shadow-[5px_5px_0px_#000] p-space-lg flex flex-col gap-space-md">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-sm border-b-2 border-black">
               <div class="flex items-center gap-space-sm">
-                <span class="w-7 h-7 rounded-lg bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm">2A</span>
+                <span class="w-8 h-8 rounded-[2px] bg-[#E4CC37] text-black border-2 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center font-mono font-black text-sm">2A</span>
                 <div>
-                  <h2 class="font-headline-lg text-headline-lg text-on-surface">Record Components Selection</h2>
-                  <p class="font-body-sm text-body-sm text-on-surface-variant">Choose which sections should be included in your collegiate record</p>
+                  <h2 class="font-headline-lg text-xl font-black text-black uppercase tracking-tight">Record Components Selection</h2>
+                  <p class="font-body-sm text-xs text-black/70">Choose which sections should be included in your collegiate record</p>
                 </div>
               </div>
-              <div class="flex items-center gap-space-xs">
-                <span id="selectedSectionsCount" class="px-space-sm py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm">5 of 5 Selected</span>
-                <button class="px-space-xs py-1 text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all" type="button" onclick="selectAllSections()">Select All</button>
-                <span class="text-outline-variant">•</span>
-                <button class="px-space-xs py-1 text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all" type="button" onclick="clearAllSections()">Clear</button>
+              <div class="flex items-center gap-space-xs self-start sm:self-auto">
+                <span id="selectedSectionsCount" class="px-2.5 py-1 rounded-[2px] bg-[#8FC93A] text-black border border-black shadow-[1.5px_1.5px_0px_#000] font-mono text-xs font-bold uppercase">5 of 5 Selected</span>
+                <button class="px-2 py-1 text-black font-mono text-xs font-bold uppercase hover:bg-black/10 rounded-[2px] border border-transparent hover:border-black transition-all cursor-pointer" type="button" onclick="selectAllSections()">Select All</button>
+                <span class="text-black font-bold">•</span>
+                <button class="px-2 py-1 text-black font-mono text-xs font-bold uppercase hover:bg-black/10 rounded-[2px] border border-transparent hover:border-black transition-all cursor-pointer" type="button" onclick="clearAllSections()">Clear</button>
               </div>
             </div>
 
             <!-- 5 Interactive Component Blocks -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-space-sm">
               <!-- AIM -->
-              <label class="cursor-pointer group flex items-start gap-space-sm p-space-md rounded-xl bg-surface-container-high transition-all shadow-sm">
-                <input id="sectionCheckbox-AIM" name="recordSection" value="AIM" checked="" class="mt-1 w-4 h-4 rounded text-secondary focus:ring-0 cursor-pointer" type="checkbox" onchange="handleSectionToggle('AIM')"/>
+              <label class="cursor-pointer group flex items-start gap-space-sm p-space-md rounded-[3px] bg-[#FAF8F5] hover:bg-white border-2 border-black shadow-[3px_3px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#000] transition-all">
+                <input id="sectionCheckbox-AIM" name="recordSection" value="AIM" checked="" class="mt-1 w-4 h-4 rounded-[2px] border-2 border-black accent-[#0072BB] cursor-pointer" type="checkbox" onchange="handleSectionToggle('AIM')"/>
                 <div class="flex flex-col">
                   <div class="flex items-center gap-space-xs">
-                    <span class="material-symbols-outlined text-[18px] text-secondary">gps_fixed</span>
-                    <span class="font-headline-sm text-headline-sm text-on-surface">AIM</span>
+                    <span class="w-6 h-6 rounded-[2px] bg-[#1E91D6] text-black border border-black flex items-center justify-center font-bold text-xs">
+                      <span class="material-symbols-outlined text-[16px]">gps_fixed</span>
+                    </span>
+                    <span class="font-headline-sm text-sm font-black text-black uppercase">AIM</span>
                   </div>
-                  <span class="font-body-sm text-body-sm text-on-surface-variant">Objective statement &amp; problem scope</span>
+                  <span class="font-body-sm text-xs text-black/75 mt-1">Objective statement &amp; problem scope</span>
                 </div>
               </label>
 
               <!-- ALGORITHM -->
-              <label class="cursor-pointer group flex items-start gap-space-sm p-space-md rounded-xl bg-surface-container-high transition-all shadow-sm">
-                <input id="sectionCheckbox-ALGORITHM" name="recordSection" value="ALGORITHM" checked="" class="mt-1 w-4 h-4 rounded text-secondary focus:ring-0 cursor-pointer" type="checkbox" onchange="handleSectionToggle('ALGORITHM')"/>
+              <label class="cursor-pointer group flex items-start gap-space-sm p-space-md rounded-[3px] bg-[#FAF8F5] hover:bg-white border-2 border-black shadow-[3px_3px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#000] transition-all">
+                <input id="sectionCheckbox-ALGORITHM" name="recordSection" value="ALGORITHM" checked="" class="mt-1 w-4 h-4 rounded-[2px] border-2 border-black accent-[#0072BB] cursor-pointer" type="checkbox" onchange="handleSectionToggle('ALGORITHM')"/>
                 <div class="flex flex-col">
                   <div class="flex items-center gap-space-xs">
-                    <span class="material-symbols-outlined text-[18px] text-secondary">format_list_numbered</span>
-                    <span class="font-headline-sm text-headline-sm text-on-surface">ALGORITHM</span>
+                    <span class="w-6 h-6 rounded-[2px] bg-[#E4CC37] text-black border border-black flex items-center justify-center font-bold text-xs">
+                      <span class="material-symbols-outlined text-[16px]">format_list_numbered</span>
+                    </span>
+                    <span class="font-headline-sm text-sm font-black text-black uppercase">ALGORITHM</span>
                   </div>
-                  <span class="font-body-sm text-body-sm text-on-surface-variant">Step-by-step sequential logic derived from code</span>
+                  <span class="font-body-sm text-xs text-black/75 mt-1">Step-by-step sequential logic derived from code</span>
                 </div>
               </label>
 
               <!-- PROGRAM -->
-              <label class="cursor-pointer group flex items-start gap-space-sm p-space-md rounded-xl bg-surface-container-high transition-all shadow-sm">
-                <input id="sectionCheckbox-PROGRAM" name="recordSection" value="PROGRAM" checked="" class="mt-1 w-4 h-4 rounded text-secondary focus:ring-0 cursor-pointer" type="checkbox" onchange="handleSectionToggle('PROGRAM')"/>
+              <label class="cursor-pointer group flex items-start gap-space-sm p-space-md rounded-[3px] bg-[#FAF8F5] hover:bg-white border-2 border-black shadow-[3px_3px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#000] transition-all">
+                <input id="sectionCheckbox-PROGRAM" name="recordSection" value="PROGRAM" checked="" class="mt-1 w-4 h-4 rounded-[2px] border-2 border-black accent-[#0072BB] cursor-pointer" type="checkbox" onchange="handleSectionToggle('PROGRAM')"/>
                 <div class="flex flex-col">
                   <div class="flex items-center gap-space-xs">
-                    <span class="material-symbols-outlined text-[18px] text-secondary">data_object</span>
-                    <span class="font-headline-sm text-headline-sm text-on-surface">PROGRAM</span>
+                    <span class="w-6 h-6 rounded-[2px] bg-[#0072BB] text-white border border-black flex items-center justify-center font-bold text-xs">
+                      <span class="material-symbols-outlined text-[16px]">data_object</span>
+                    </span>
+                    <span class="font-headline-sm text-sm font-black text-black uppercase">PROGRAM</span>
                   </div>
-                  <span class="font-body-sm text-body-sm text-on-surface-variant">Your exact submitted program code listing</span>
+                  <span class="font-body-sm text-xs text-black/75 mt-1">Your exact submitted program code listing</span>
                 </div>
               </label>
 
               <!-- OUTPUT -->
-              <label class="cursor-pointer group flex items-start gap-space-sm p-space-md rounded-xl bg-surface-container-high transition-all shadow-sm">
-                <input id="sectionCheckbox-OUTPUT" name="recordSection" value="OUTPUT" checked="" class="mt-1 w-4 h-4 rounded text-secondary focus:ring-0 cursor-pointer" type="checkbox" onchange="handleSectionToggle('OUTPUT')"/>
+              <label class="cursor-pointer group flex items-start gap-space-sm p-space-md rounded-[3px] bg-[#FAF8F5] hover:bg-white border-2 border-black shadow-[3px_3px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#000] transition-all">
+                <input id="sectionCheckbox-OUTPUT" name="recordSection" value="OUTPUT" checked="" class="mt-1 w-4 h-4 rounded-[2px] border-2 border-black accent-[#0072BB] cursor-pointer" type="checkbox" onchange="handleSectionToggle('OUTPUT')"/>
                 <div class="flex flex-col">
                   <div class="flex items-center gap-space-xs">
-                    <span class="material-symbols-outlined text-[18px] text-secondary">dvr</span>
-                    <span class="font-headline-sm text-headline-sm text-on-surface">OUTPUT</span>
+                    <span class="w-6 h-6 rounded-[2px] bg-[#E18335] text-black border border-black flex items-center justify-center font-bold text-xs">
+                      <span class="material-symbols-outlined text-[16px]">dvr</span>
+                    </span>
+                    <span class="font-headline-sm text-sm font-black text-black uppercase">OUTPUT</span>
                   </div>
-                  <span class="font-body-sm text-body-sm text-on-surface-variant">Program console trace &amp; execution results</span>
+                  <span class="font-body-sm text-xs text-black/75 mt-1">Program console trace &amp; execution results</span>
                 </div>
               </label>
 
               <!-- RESULT -->
-              <label class="cursor-pointer group flex items-start gap-space-sm p-space-md rounded-xl bg-surface-container-high transition-all shadow-sm">
-                <input id="sectionCheckbox-RESULT" name="recordSection" value="RESULT" checked="" class="mt-1 w-4 h-4 rounded text-secondary focus:ring-0 cursor-pointer" type="checkbox" onchange="handleSectionToggle('RESULT')"/>
+              <label class="cursor-pointer group flex items-start gap-space-sm p-space-md rounded-[3px] bg-[#FAF8F5] hover:bg-white border-2 border-black shadow-[3px_3px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#000] transition-all">
+                <input id="sectionCheckbox-RESULT" name="recordSection" value="RESULT" checked="" class="mt-1 w-4 h-4 rounded-[2px] border-2 border-black accent-[#0072BB] cursor-pointer" type="checkbox" onchange="handleSectionToggle('RESULT')"/>
                 <div class="flex flex-col">
                   <div class="flex items-center gap-space-xs">
-                    <span class="material-symbols-outlined text-[18px] text-secondary">check_circle</span>
-                    <span class="font-headline-sm text-headline-sm text-on-surface">RESULT</span>
+                    <span class="w-6 h-6 rounded-[2px] bg-[#8FC93A] text-black border border-black flex items-center justify-center font-bold text-xs">
+                      <span class="material-symbols-outlined text-[16px]">check_circle</span>
+                    </span>
+                    <span class="font-headline-sm text-sm font-black text-black uppercase">RESULT</span>
                   </div>
-                  <span class="font-body-sm text-body-sm text-on-surface-variant">Execution completion and verification statement</span>
+                  <span class="font-body-sm text-xs text-black/75 mt-1">Execution completion &amp; verification statement</span>
                 </div>
               </label>
 
-              <!-- Synthesis Helper Slot -->
-              <div class="flex items-center gap-space-sm p-space-md rounded-xl bg-surface-container-low text-on-surface-variant">
-                <span class="material-symbols-outlined text-[20px] text-on-tertiary-container">info</span>
-                <span class="font-body-sm text-body-sm">Standard syllabus structure strictly adhered to.</span>
+              <!-- Helper Slot -->
+              <div class="flex items-center gap-space-sm p-space-md rounded-[3px] bg-[#EFE9DF] border-2 border-black shadow-[2px_2px_0px_#000] text-black">
+                <span class="material-symbols-outlined text-[24px] text-black">verified</span>
+                <span class="font-mono text-xs font-bold uppercase leading-tight">Standard collegiate syllabus sequence enforced.</span>
               </div>
             </div>
 
             <!-- AI Configuration (.env / Direct key) -->
-            <div class="p-space-sm rounded-xl bg-surface-container-low border border-surface-container-high flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-sm">
+            <div class="p-space-sm rounded-[3px] bg-[#FAF8F5] border-2 border-black shadow-[3px_3px_0px_#000] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-sm">
               <div class="flex items-center gap-space-sm flex-1 w-full">
-                <span class="material-symbols-outlined text-secondary text-[20px]">smart_toy</span>
+                <div class="w-8 h-8 rounded-[2px] bg-[#E4CC37] border border-black flex items-center justify-center text-black font-black shrink-0">
+                  <span class="material-symbols-outlined text-[20px]">smart_toy</span>
+                </div>
                 <div class="flex flex-col flex-1 min-w-0">
                   <div class="flex items-center gap-2 flex-wrap">
-                    <span class="font-headline-sm text-headline-sm text-on-surface">AI Model Configuration</span>
-                    <span id="aiActiveBadge" class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-xs">Checking .env...</span>
+                    <span class="font-headline-sm text-sm font-black uppercase text-black">AI Model Configuration</span>
+                    <span id="aiActiveBadge" class="px-2 py-0.5 rounded-[2px] bg-[#EFE9DF] border border-black font-mono text-[11px] font-bold text-black">Checking .env...</span>
                   </div>
-                  <span id="aiActiveDescription" class="font-body-sm text-xs text-on-surface-variant">
-                    Configured via project <code class="font-mono bg-surface-container-highest px-1 py-0.5 rounded text-[11px]">.env</code> file (<code class="font-mono text-[11px]">GITHUB_TOKEN=...</code> or <code class="font-mono text-[11px]">GEMINI_API_KEY=...</code>), or paste below:
+                  <span id="aiActiveDescription" class="font-mono text-xs text-black/70 mt-0.5">
+                    Configured via project <code class="font-mono bg-white border border-black px-1 py-0.2 rounded-[2px] font-bold">.env</code> or enter token below:
                   </span>
                 </div>
               </div>
@@ -504,8 +634,8 @@
                 <input
                   type="password"
                   id="customApiKeyInput"
-                  placeholder="Paste GitHub/Gemini token (or leave blank for .env)"
-                  class="h-9 px-space-sm rounded-lg bg-surface-container-lowest border border-surface-container-high font-mono text-xs text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary w-full sm:w-72"
+                  placeholder="Paste GitHub/Gemini token..."
+                  class="h-9 px-space-sm rounded-[2px] bg-white border-2 border-black shadow-[2px_2px_0px_#000] font-mono text-xs text-black focus:outline-none focus:shadow-[3px_3px_0px_#1E91D6] w-full sm:w-72"
                   oninput="handleApiKeyInput(this.value)"
                 />
               </div>
@@ -513,158 +643,158 @@
 
             <!-- Generate Action Bar -->
             <div class="flex flex-col sm:flex-row items-center justify-between gap-space-sm pt-space-xs">
-              <span class="text-on-surface-variant font-label-sm text-label-sm">
-                Click below to generate academic content for your selected components.
+              <span class="text-black font-mono text-xs font-bold uppercase">
+                Click below to generate academic content for your selected components:
               </span>
-              <button id="generateSectionsBtn" type="button" onclick="generateRecordSections()" class="w-full sm:w-auto px-space-lg py-space-sm rounded-lg bg-secondary text-on-secondary hover:bg-secondary-container font-headline-sm text-headline-sm flex items-center justify-center gap-space-xs shadow-md transition-all">
+              <button id="generateSectionsBtn" type="button" onclick="generateRecordSections()" class="w-full sm:w-auto px-space-lg py-2.5 rounded-[3px] bg-[#E4CC37] hover:bg-[#ebd54b] text-black border-2 border-black shadow-[4px_4px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[5px_5px_0px_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[1px_1px_0px_#000] font-headline-sm text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer">
                 <span id="generateBtnIcon" class="material-symbols-outlined text-[18px]">auto_awesome</span>
                 <span id="generateBtnText">Generate Appropriate Content</span>
               </button>
             </div>
 
-            <div id="sectionValidationError" class="hidden p-space-sm rounded-xl bg-error-container text-on-error-container flex items-center justify-between gap-space-sm font-body-sm text-body-sm transition-all shadow-sm">
+            <div id="sectionValidationError" class="hidden p-space-sm rounded-[3px] bg-[#FFDADA] border-2 border-black shadow-[3px_3px_0px_#000] text-black flex items-center justify-between gap-space-sm font-bold text-xs transition-all">
               <div class="flex items-center gap-space-xs">
                 <span class="material-symbols-outlined text-[20px] text-error shrink-0">error</span>
                 <span id="sectionValidationMessage">Please select at least one record section to proceed.</span>
               </div>
-              <button type="button" onclick="hideValidationError()" class="p-1 hover:bg-error/10 rounded-lg text-on-error-container">
+              <button type="button" onclick="hideValidationError()" class="p-1 hover:bg-black/10 rounded-[2px] text-black">
                 <span class="material-symbols-outlined text-[16px]">close</span>
               </button>
             </div>
           </section>
 
-          <!-- Part 2B: Content Verification & Editing -->
-          <section id="contentReviewSection" class="rounded-xl bg-surface-container-lowest shadow-[0_1px_3px_0_rgba(15,23,42,0.04)] p-space-lg flex flex-col gap-space-lg">
-            <div class="flex items-start justify-between gap-space-md pb-space-xs border-b border-surface-container-high">
+          <!-- Part 2B: Content Verification & Editing (Neo-Brutalist) -->
+          <section id="contentReviewSection" class="rounded-[3px] bg-white border-2 border-black shadow-[5px_5px_0px_#000] p-space-lg flex flex-col gap-space-lg">
+            <div class="flex items-center justify-between gap-space-md pb-space-sm border-b-2 border-black">
               <div class="flex items-center gap-space-sm">
-                <span class="w-7 h-7 rounded-lg bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm">2B</span>
+                <span class="w-8 h-8 rounded-[2px] bg-[#1E91D6] text-black border-2 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center font-mono font-black text-sm">2B</span>
                 <div>
-                  <h2 class="font-headline-lg text-headline-lg text-on-surface">Content Verification &amp; Editing</h2>
-                  <p class="font-body-sm text-body-sm text-on-surface-variant">Verify the generated content below. You can edit any section text directly.</p>
+                  <h2 class="font-headline-lg text-xl font-black text-black uppercase tracking-tight">Content Verification &amp; Editing</h2>
+                  <p class="font-body-sm text-xs text-black/70">Verify the generated content below. You can edit any section text directly.</p>
                 </div>
               </div>
-              <span class="px-space-sm py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm shrink-0">
+              <span class="px-3 py-1 rounded-[2px] bg-[#8FC93A] text-black border border-black shadow-[1.5px_1.5px_0px_#000] font-mono text-xs font-bold uppercase shrink-0">
                 Directly Editable
               </span>
             </div>
 
             <!-- Draft Status Notice -->
-            <div class="flex items-center gap-space-sm p-space-md rounded-xl bg-surface-container-high text-on-surface">
-              <span class="material-symbols-outlined text-secondary text-[22px]">auto_awesome</span>
-              <div class="flex-1 font-body-sm text-body-sm" id="generationNoticeBanner">
-                <strong class="font-headline-sm">Draft Content:</strong> Ready for verification. Edit any field below as desired.
+            <div class="flex items-center gap-space-sm p-space-sm rounded-[3px] bg-[#FAF8F5] border-2 border-black shadow-[3px_3px_0px_#000] text-black">
+              <span class="material-symbols-outlined text-[#0072BB] text-[24px]">auto_awesome</span>
+              <div class="flex-1 font-body-sm text-xs" id="generationNoticeBanner">
+                <strong class="font-headline-sm uppercase font-black">Draft Content:</strong> Ready for verification. Edit any field below as desired.
               </div>
             </div>
 
             <!-- Editable Sections Grid -->
             <div class="flex flex-col gap-space-md">
               <!-- AIM Card -->
-              <div id="reviewCard-AIM" class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-xs transition-all">
-                <div class="flex items-center justify-between">
-                  <span class="font-label-sm text-label-sm tracking-wider uppercase text-secondary font-bold flex items-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-secondary"></span> AIM
+              <div id="reviewCard-AIM" class="rounded-[3px] bg-[#FAF8F5] border-2 border-black shadow-[3px_3px_0px_#000] p-space-md flex flex-col gap-space-xs transition-all">
+                <div class="flex items-center justify-between pb-1 border-b border-black">
+                  <span class="font-mono text-xs font-black uppercase text-black flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#1E91D6] border border-black"></span> AIM
                   </span>
-                  <button class="text-on-surface-variant hover:text-on-surface font-label-md text-label-md flex items-center gap-1" type="button" onclick="document.getElementById('reviewAimText').focus()">
+                  <button class="text-black font-mono text-xs font-bold uppercase flex items-center gap-1 hover:underline cursor-pointer" type="button" onclick="document.getElementById('reviewAimText').focus()">
                     <span class="material-symbols-outlined text-[14px]">edit</span> Edit
                   </button>
                 </div>
-                <textarea id="reviewAimText" class="w-full bg-surface-container-lowest rounded-lg p-space-sm font-body-md text-body-md text-on-surface shadow-sm focus:outline-none focus:ring-2 focus:ring-secondary resize-y" rows="2" placeholder="Enter Aim statement..."></textarea>
+                <textarea id="reviewAimText" class="w-full bg-white border-2 border-black shadow-[2px_2px_0px_#000] rounded-[2px] p-space-sm font-body-md text-xs text-black focus:outline-none focus:shadow-[3px_3px_0px_#1E91D6] resize-y" rows="2" placeholder="Enter Aim statement..."></textarea>
               </div>
 
               <!-- ALGORITHM Card -->
-              <div id="reviewCard-ALGORITHM" class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-xs transition-all">
-                <div class="flex items-center justify-between">
-                  <span class="font-label-sm text-label-sm tracking-wider uppercase text-secondary font-bold flex items-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-secondary"></span> ALGORITHM
+              <div id="reviewCard-ALGORITHM" class="rounded-[3px] bg-[#FAF8F5] border-2 border-black shadow-[3px_3px_0px_#000] p-space-md flex flex-col gap-space-xs transition-all">
+                <div class="flex items-center justify-between pb-1 border-b border-black">
+                  <span class="font-mono text-xs font-black uppercase text-black flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#E4CC37] border border-black"></span> ALGORITHM
                   </span>
-                  <button class="text-on-surface-variant hover:text-on-surface font-label-md text-label-md flex items-center gap-1" type="button" onclick="document.getElementById('reviewAlgorithmText').focus()">
+                  <button class="text-black font-mono text-xs font-bold uppercase flex items-center gap-1 hover:underline cursor-pointer" type="button" onclick="document.getElementById('reviewAlgorithmText').focus()">
                     <span class="material-symbols-outlined text-[14px]">format_list_numbered</span> Edit Steps
                   </button>
                 </div>
-                <textarea id="reviewAlgorithmText" class="w-full bg-surface-container-lowest rounded-lg p-space-sm font-body-md text-body-md text-on-surface shadow-sm focus:outline-none focus:ring-2 focus:ring-secondary resize-y font-mono text-xs" rows="6" placeholder="1. Start the program execution...&#10;2. ...&#10;3. Stop execution."></textarea>
+                <textarea id="reviewAlgorithmText" class="w-full bg-white border-2 border-black shadow-[2px_2px_0px_#000] rounded-[2px] p-space-sm font-mono text-xs text-black focus:outline-none focus:shadow-[3px_3px_0px_#1E91D6] resize-y" rows="6" placeholder="1. Start the program execution...&#10;2. ...&#10;3. Stop execution."></textarea>
               </div>
 
               <!-- PROGRAM Card -->
-              <div id="reviewCard-PROGRAM" class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-xs transition-all">
-                <div class="flex items-center justify-between">
-                  <span class="font-label-sm text-label-sm tracking-wider uppercase text-secondary font-bold flex items-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-secondary"></span> PROGRAM (SOURCE CODE)
+              <div id="reviewCard-PROGRAM" class="rounded-[3px] bg-[#FAF8F5] border-2 border-black shadow-[3px_3px_0px_#000] p-space-md flex flex-col gap-space-xs transition-all">
+                <div class="flex items-center justify-between pb-1 border-b border-black">
+                  <span class="font-mono text-xs font-black uppercase text-black flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#0072BB] border border-black"></span> PROGRAM (SOURCE CODE)
                   </span>
                   <div class="flex items-center gap-space-xs">
-                    <button class="text-on-surface-variant hover:text-on-surface font-label-md text-label-md flex items-center gap-1 transition-all" type="button" onclick="copyProgramCode()">
+                    <button class="px-2 py-0.5 rounded-[2px] bg-white border border-black shadow-[1.5px_1.5px_0px_#000] text-black font-mono text-xs font-bold uppercase flex items-center gap-1 transition-all cursor-pointer" type="button" onclick="copyProgramCode()">
                       <span class="material-symbols-outlined text-[14px]">content_copy</span> Copy
                     </button>
                   </div>
                 </div>
-                <div class="bg-primary text-surface-bright rounded-lg p-space-md font-label-sm text-label-sm overflow-x-auto shadow-sm leading-relaxed max-h-72">
-                  <pre class="m-0"><code id="reviewProgramCode" class="font-mono">No source loaded.</code></pre>
+                <div class="bg-[#111111] text-[#E0E0E0] border-2 border-black shadow-[3px_3px_0px_#000] rounded-[2px] p-space-md font-mono text-xs overflow-x-auto leading-relaxed max-h-72">
+                  <pre class="m-0"><code id="reviewProgramCode" class="font-mono text-xs">No source loaded.</code></pre>
                 </div>
               </div>
 
               <!-- OUTPUT Card -->
-              <div id="reviewCard-OUTPUT" class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-xs transition-all">
-                <div class="flex items-center justify-between">
-                  <span class="font-label-sm text-label-sm tracking-wider uppercase text-secondary font-bold flex items-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-secondary"></span> OUTPUT
+              <div id="reviewCard-OUTPUT" class="rounded-[3px] bg-[#FAF8F5] border-2 border-black shadow-[3px_3px_0px_#000] p-space-md flex flex-col gap-space-xs transition-all">
+                <div class="flex items-center justify-between pb-1 border-b border-black">
+                  <span class="font-mono text-xs font-black uppercase text-black flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#E18335] border border-black"></span> OUTPUT TRACE
                   </span>
-                  <button class="text-on-surface-variant hover:text-on-surface font-label-md text-label-md flex items-center gap-1" type="button" onclick="document.getElementById('reviewOutputText').focus()">
+                  <button class="text-black font-mono text-xs font-bold uppercase flex items-center gap-1 hover:underline cursor-pointer" type="button" onclick="document.getElementById('reviewOutputText').focus()">
                     <span class="material-symbols-outlined text-[14px]">edit</span> Edit Output
                   </button>
                 </div>
-                <textarea id="reviewOutputText" class="w-full bg-inverse-surface text-inverse-on-surface rounded-lg p-space-sm font-label-sm text-label-sm shadow-inner font-mono resize-y" rows="3" placeholder="Enter execution terminal output trace..."></textarea>
+                <textarea id="reviewOutputText" class="w-full bg-white border-2 border-black shadow-[2px_2px_0px_#000] rounded-[2px] p-space-sm font-mono text-xs text-black focus:outline-none focus:shadow-[3px_3px_0px_#1E91D6] resize-y" rows="3" placeholder="Enter execution terminal output trace..."></textarea>
               </div>
 
               <!-- RESULT Card -->
-              <div id="reviewCard-RESULT" class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-xs transition-all">
-                <div class="flex items-center justify-between">
-                  <span class="font-label-sm text-label-sm tracking-wider uppercase text-secondary font-bold flex items-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-secondary"></span> RESULT
+              <div id="reviewCard-RESULT" class="rounded-[3px] bg-[#FAF8F5] border-2 border-black shadow-[3px_3px_0px_#000] p-space-md flex flex-col gap-space-xs transition-all">
+                <div class="flex items-center justify-between pb-1 border-b border-black">
+                  <span class="font-mono text-xs font-black uppercase text-black flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#8FC93A] border border-black"></span> RESULT
                   </span>
-                  <button class="text-on-surface-variant hover:text-on-surface font-label-md text-label-md flex items-center gap-1" type="button" onclick="document.getElementById('reviewResultText').focus()">
+                  <button class="text-black font-mono text-xs font-bold uppercase flex items-center gap-1 hover:underline cursor-pointer" type="button" onclick="document.getElementById('reviewResultText').focus()">
                     <span class="material-symbols-outlined text-[14px]">edit</span> Edit
                   </button>
                 </div>
-                <textarea id="reviewResultText" class="w-full bg-surface-container-lowest rounded-lg p-space-sm font-body-md text-body-md text-on-surface shadow-sm focus:outline-none focus:ring-2 focus:ring-secondary resize-y" rows="2" placeholder="Enter result summary..."></textarea>
+                <textarea id="reviewResultText" class="w-full bg-white border-2 border-black shadow-[2px_2px_0px_#000] rounded-[2px] p-space-sm font-body-md text-xs text-black focus:outline-none focus:shadow-[3px_3px_0px_#1E91D6] resize-y" rows="2" placeholder="Enter result summary..."></textarea>
               </div>
             </div>
           </section>
 
-          <!-- Part 2C: Document Formatting -->
-          <section class="rounded-xl bg-surface-container-lowest shadow-[0_1px_3px_0_rgba(15,23,42,0.04)] p-space-lg flex flex-col gap-space-lg">
-            <div class="flex items-center gap-space-sm pb-space-xs border-b border-surface-container-high">
-              <span class="w-7 h-7 rounded-lg bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm">2C</span>
+          <!-- Part 2C: Document Formatting (Neo-Brutalist) -->
+          <section class="rounded-[3px] bg-white border-2 border-black shadow-[5px_5px_0px_#000] p-space-lg flex flex-col gap-space-lg">
+            <div class="flex items-center gap-space-sm pb-space-sm border-b-2 border-black">
+              <span class="w-8 h-8 rounded-[2px] bg-[#E18335] text-black border-2 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center font-mono font-black text-sm">2C</span>
               <div>
-                <h2 class="font-headline-lg text-headline-lg text-on-surface">Document Formatting &amp; Typography</h2>
+                <h2 class="font-headline-lg text-xl font-black text-black uppercase tracking-tight">Document Formatting &amp; Typography</h2>
               </div>
             </div>
 
             <!-- Formatting Mode Choice: Template vs Manual -->
-            <div class="p-space-md rounded-xl bg-surface-container-low border border-surface-container-high flex flex-col gap-space-sm">
-              <span class="font-headline-sm text-headline-sm text-on-surface">Format Selection</span>
+            <div class="p-space-md rounded-[3px] bg-[#FAF8F5] border-2 border-black shadow-[3px_3px_0px_#000] flex flex-col gap-space-sm">
+              <span class="font-mono text-xs font-black uppercase text-black">Format Selection:</span>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
-                <button type="button" id="formatChoiceTemplateBtn" onclick="setFormatMethod('template')" class="p-space-sm rounded-lg border-2 border-secondary bg-surface-container-lowest text-left flex items-start gap-space-sm transition-all shadow-sm">
-                  <span class="material-symbols-outlined text-secondary text-[22px] mt-0.5">description</span>
+                <button type="button" id="formatChoiceTemplateBtn" onclick="setFormatMethod('template')" class="p-space-sm rounded-[3px] border-2 border-black bg-[#1E91D6] text-black shadow-[3px_3px_0px_#000] text-left flex items-start gap-space-sm transition-all cursor-pointer">
+                  <span class="material-symbols-outlined text-black text-[24px] mt-0.5">description</span>
                   <div class="flex flex-col">
-                    <span class="font-headline-sm text-headline-sm text-on-surface">Use a Template</span>
-                    <span class="font-label-sm text-xs text-on-surface-variant">Choose from university standards or your uploaded .docx templates</span>
+                    <span class="font-headline-sm text-sm font-black uppercase text-black">Use a Template</span>
+                    <span class="font-mono text-[11px] text-black/80 font-bold">University standards or uploaded .docx templates</span>
                   </div>
                 </button>
-                <button type="button" id="formatChoiceManualBtn" onclick="setFormatMethod('manual')" class="p-space-sm rounded-lg border-2 border-transparent bg-surface-container-low hover:bg-surface-container text-left flex items-start gap-space-sm transition-all">
-                  <span class="material-symbols-outlined text-on-surface-variant text-[22px] mt-0.5">tune</span>
+                <button type="button" id="formatChoiceManualBtn" onclick="setFormatMethod('manual')" class="p-space-sm rounded-[3px] border-2 border-black bg-white text-black shadow-[2px_2px_0px_#000] hover:bg-[#FAF8F5] text-left flex items-start gap-space-sm transition-all cursor-pointer">
+                  <span class="material-symbols-outlined text-black text-[24px] mt-0.5">tune</span>
                   <div class="flex flex-col">
-                    <span class="font-headline-sm text-headline-sm text-on-surface">Adjust Settings Manually</span>
-                    <span class="font-label-sm text-xs text-on-surface-variant">Custom borders, line styles, heading &amp; content font sizes</span>
+                    <span class="font-headline-sm text-sm font-black uppercase text-black">Adjust Settings Manually</span>
+                    <span class="font-mono text-[11px] text-black/80 font-bold">Custom borders, line styles, heading &amp; body font sizes</span>
                   </div>
                 </button>
               </div>
 
               <!-- Template Select Panel -->
               <div id="templateSelectPanel" class="pt-space-xs flex flex-col sm:flex-row items-center gap-space-sm">
-                <label class="font-label-sm text-label-sm text-on-surface-variant shrink-0">Selected Template:</label>
-                <select id="activeTemplateSelect" class="h-10 px-space-sm rounded-lg bg-surface-container-lowest border border-surface-container-high text-on-surface font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-secondary flex-1 w-full" onchange="applySelectedTemplate(this.value)">
+                <label class="font-mono text-xs font-bold text-black uppercase shrink-0">Selected Template:</label>
+                <select id="activeTemplateSelect" class="h-10 px-space-sm rounded-[2px] bg-white border-2 border-black shadow-[2px_2px_0px_#000] text-black font-mono text-xs font-bold focus:outline-none flex-1 w-full" onchange="applySelectedTemplate(this.value)">
                   <!-- Dynamically populated -->
                 </select>
-                <button type="button" onclick="switchTab('templates')" class="px-space-sm py-2 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface text-xs font-headline-sm flex items-center gap-1 shrink-0">
+                <button type="button" onclick="switchTab('templates')" class="px-space-md py-2 rounded-[2px] bg-[#E4CC37] text-black border-2 border-black shadow-[2px_2px_0px_#000] text-xs font-mono font-black uppercase flex items-center gap-1 shrink-0 hover:translate-x-[-1px] hover:translate-y-[-1px] cursor-pointer">
                   <span class="material-symbols-outlined text-[16px]">upload_file</span>
                   <span>Manage Templates</span>
                 </button>
@@ -674,23 +804,23 @@
             <!-- Manual Controls Grid -->
             <div id="manualFormatSettingsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
               <!-- Border Settings -->
-              <div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-sm">
-                <div class="flex items-center justify-between">
-                  <span class="font-headline-sm text-headline-sm text-on-surface">Page Border</span>
-                  <span class="material-symbols-outlined text-[18px] text-secondary">crop_square</span>
+              <div class="p-space-md rounded-[3px] bg-[#FAF8F5] border-2 border-black shadow-[3px_3px_0px_#000] flex flex-col gap-space-sm">
+                <div class="flex items-center justify-between pb-1 border-b border-black">
+                  <span class="font-mono text-xs font-black uppercase text-black">Page Border Frame</span>
+                  <span class="material-symbols-outlined text-[20px] text-black">crop_square</span>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-space-sm">
                   <div class="flex flex-col gap-1">
-                    <label class="font-label-sm text-label-sm text-on-surface-variant">Line Style</label>
-                    <select id="docBorderStyle" class="h-9 px-space-xs rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-secondary" onchange="updateLiveDocumentPreview()">
+                    <label class="font-mono text-[11px] font-bold text-black uppercase">Line Style</label>
+                    <select id="docBorderStyle" class="h-9 px-space-xs rounded-[2px] bg-white border-2 border-black shadow-[2px_2px_0px_#000] text-black font-mono text-xs font-bold focus:outline-none" onchange="updateLiveDocumentPreview()">
                       <option value="single" selected>Single Line</option>
                       <option value="double">Double Line</option>
                       <option value="none">None (No Border)</option>
                     </select>
                   </div>
                   <div class="flex flex-col gap-1">
-                    <label class="font-label-sm text-label-sm text-on-surface-variant">Line Thickness</label>
-                    <select id="docBorderThickness" class="h-9 px-space-xs rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-secondary" onchange="updateLiveDocumentPreview()">
+                    <label class="font-mono text-[11px] font-bold text-black uppercase">Thickness</label>
+                    <select id="docBorderThickness" class="h-9 px-space-xs rounded-[2px] bg-white border-2 border-black shadow-[2px_2px_0px_#000] text-black font-mono text-xs font-bold focus:outline-none" onchange="updateLiveDocumentPreview()">
                       <option value="0.5">0.5 pt</option>
                       <option value="1.0" selected>1.0 pt (Standard)</option>
                       <option value="1.5">1.5 pt</option>
@@ -698,8 +828,8 @@
                     </select>
                   </div>
                   <div class="flex flex-col gap-1">
-                    <label class="font-label-sm text-label-sm text-on-surface-variant">Border Color</label>
-                    <select id="docBorderColor" class="h-9 px-space-xs rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-secondary" onchange="updateLiveDocumentPreview()">
+                    <label class="font-mono text-[11px] font-bold text-black uppercase">Color</label>
+                    <select id="docBorderColor" class="h-9 px-space-xs rounded-[2px] bg-white border-2 border-black shadow-[2px_2px_0px_#000] text-black font-mono text-xs font-bold focus:outline-none" onchange="updateLiveDocumentPreview()">
                       <option value="#000000" selected>#000000 (Black)</option>
                       <option value="#091426">#091426 (Navy)</option>
                       <option value="#555555">#555555 (Dark Gray)</option>
@@ -709,15 +839,15 @@
               </div>
 
               <!-- Typography Settings -->
-              <div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-sm">
-                <div class="flex items-center justify-between">
-                  <span class="font-headline-sm text-headline-sm text-on-surface">Typography Calibration</span>
-                  <span class="material-symbols-outlined text-[18px] text-secondary">text_format</span>
+              <div class="p-space-md rounded-[3px] bg-[#FAF8F5] border-2 border-black shadow-[3px_3px_0px_#000] flex flex-col gap-space-sm">
+                <div class="flex items-center justify-between pb-1 border-b border-black">
+                  <span class="font-mono text-xs font-black uppercase text-black">Typography Calibration</span>
+                  <span class="material-symbols-outlined text-[20px] text-black">text_format</span>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
                   <div class="flex flex-col gap-1">
-                    <label class="font-label-sm text-label-sm text-on-surface-variant">Font Family</label>
-                    <select id="docFontFamily" class="h-9 px-space-xs rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-secondary" onchange="updateLiveDocumentPreview()">
+                    <label class="font-mono text-[11px] font-bold text-black uppercase">Font Family</label>
+                    <select id="docFontFamily" class="h-9 px-space-xs rounded-[2px] bg-white border-2 border-black shadow-[2px_2px_0px_#000] text-black font-mono text-xs font-bold focus:outline-none" onchange="updateLiveDocumentPreview()">
                       <option value="Times New Roman" selected>Times New Roman</option>
                       <option value="Arial">Arial (Sans)</option>
                       <option value="Calibri">Calibri</option>
@@ -725,8 +855,8 @@
                     </select>
                   </div>
                   <div class="flex flex-col gap-1">
-                    <label class="font-label-sm text-label-sm text-on-surface-variant">Line Spacing</label>
-                    <select id="docLineSpacing" class="h-9 px-space-xs rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-secondary" onchange="updateLiveDocumentPreview()">
+                    <label class="font-mono text-[11px] font-bold text-black uppercase">Line Spacing</label>
+                    <select id="docLineSpacing" class="h-9 px-space-xs rounded-[2px] bg-white border-2 border-black shadow-[2px_2px_0px_#000] text-black font-mono text-xs font-bold focus:outline-none" onchange="updateLiveDocumentPreview()">
                       <option value="1.15" selected>1.15 (Compact)</option>
                       <option value="1.5">1.5 (Standard Collegiate)</option>
                       <option value="2.0">2.0 (Double Spaced)</option>
@@ -737,24 +867,24 @@
                 <!-- Separate Headings vs Content Font Sizes -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-space-sm pt-1">
                   <div class="flex flex-col gap-1">
-                    <label class="font-label-sm text-label-sm text-on-surface-variant">Headings Size</label>
-                    <select id="docHeadingSize" class="h-9 px-space-xs rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-secondary" onchange="updateLiveDocumentPreview()">
+                    <label class="font-mono text-[11px] font-bold text-black uppercase">Headings</label>
+                    <select id="docHeadingSize" class="h-9 px-space-xs rounded-[2px] bg-white border-2 border-black shadow-[2px_2px_0px_#000] text-black font-mono text-xs font-bold focus:outline-none" onchange="updateLiveDocumentPreview()">
                       <option value="14" selected>14 pt (Standard)</option>
                       <option value="16">16 pt</option>
                       <option value="18">18 pt</option>
                     </select>
                   </div>
                   <div class="flex flex-col gap-1">
-                    <label class="font-label-sm text-label-sm text-on-surface-variant">Content Body Size</label>
-                    <select id="docContentSize" class="h-9 px-space-xs rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-secondary" onchange="updateLiveDocumentPreview()">
+                    <label class="font-mono text-[11px] font-bold text-black uppercase">Body Size</label>
+                    <select id="docContentSize" class="h-9 px-space-xs rounded-[2px] bg-white border-2 border-black shadow-[2px_2px_0px_#000] text-black font-mono text-xs font-bold focus:outline-none" onchange="updateLiveDocumentPreview()">
                       <option value="10">10 pt</option>
                       <option value="11" selected>11 pt (Standard)</option>
                       <option value="12">12 pt</option>
                     </select>
                   </div>
                   <div class="flex flex-col gap-1">
-                    <label class="font-label-sm text-label-sm text-on-surface-variant">Text Alignment</label>
-                    <select id="docAlignment" class="h-9 px-space-xs rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-secondary" onchange="updateLiveDocumentPreview()">
+                    <label class="font-mono text-[11px] font-bold text-black uppercase">Alignment</label>
+                    <select id="docAlignment" class="h-9 px-space-xs rounded-[2px] bg-white border-2 border-black shadow-[2px_2px_0px_#000] text-black font-mono text-xs font-bold focus:outline-none" onchange="updateLiveDocumentPreview()">
                       <option value="justify" selected>Justified</option>
                       <option value="left">Left Aligned</option>
                       <option value="center">Center</option>
@@ -765,18 +895,18 @@
             </div>
           </section>
 
-          <!-- Part 2D: Figures & Artifacts (Images) -->
-          <section class="rounded-xl bg-surface-container-lowest shadow-[0_1px_3px_0_rgba(15,23,42,0.04)] p-space-lg flex flex-col gap-space-md">
-            <div class="flex items-center justify-between pb-space-xs border-b border-surface-container-high">
+          <!-- Part 2D: Figures & Artifacts (Neo-Brutalist) -->
+          <section class="rounded-[3px] bg-white border-2 border-black shadow-[5px_5px_0px_#000] p-space-lg flex flex-col gap-space-md">
+            <div class="flex items-center justify-between pb-space-sm border-b-2 border-black">
               <div class="flex items-center gap-space-sm">
-                <span class="w-7 h-7 rounded-lg bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm">2D</span>
+                <span class="w-8 h-8 rounded-[2px] bg-[#8FC93A] text-black border-2 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center font-mono font-black text-sm">2D</span>
                 <div>
-                  <h2 class="font-headline-lg text-headline-lg text-on-surface">Figures &amp; Artifacts</h2>
+                  <h2 class="font-headline-lg text-xl font-black text-black uppercase tracking-tight">Figures &amp; Artifacts</h2>
                 </div>
               </div>
               <div class="flex items-center gap-space-xs">
-                <label class="flex items-center gap-1.5 cursor-pointer font-headline-sm text-headline-sm text-on-surface">
-                  <input type="checkbox" id="enableImagesCheckbox" class="w-4 h-4 rounded text-secondary focus:ring-0 cursor-pointer" onchange="toggleImagesFeature()" checked>
+                <label class="flex items-center gap-1.5 cursor-pointer font-mono text-xs font-black uppercase text-black">
+                  <input type="checkbox" id="enableImagesCheckbox" class="w-4 h-4 rounded-[2px] border-2 border-black accent-[#0072BB] cursor-pointer" onchange="toggleImagesFeature()" checked>
                   <span>Include Images</span>
                 </label>
               </div>
@@ -785,31 +915,32 @@
             <div id="imagesConfigPanel" class="flex flex-col gap-space-md">
               <div class="flex flex-wrap items-center gap-space-sm">
                 <input type="file" id="figureFileInput" accept="image/*" class="hidden" onchange="handleImageFileUpload(event)">
-                <button onclick="document.getElementById('figureFileInput').click()" class="px-space-md py-space-xs rounded-lg bg-primary text-on-primary hover:bg-inverse-surface transition-all flex items-center gap-1 font-headline-sm text-headline-sm shadow-sm" type="button">
+                <button onclick="document.getElementById('figureFileInput').click()" class="px-space-md py-2 rounded-[3px] bg-[#0072BB] hover:bg-[#1a83cc] text-white border-2 border-black shadow-[3px_3px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#000] flex items-center gap-1 font-headline-sm text-xs font-black uppercase transition-all cursor-pointer" type="button">
                   <span class="material-symbols-outlined text-[18px]">add_photo_alternate</span>
                   <span>Upload Image File</span>
                 </button>
-                <button onclick="pasteImageFromClipboard()" class="px-space-md py-space-xs rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-all flex items-center gap-1 font-headline-sm text-headline-sm shadow-sm" type="button">
+                <button onclick="pasteImageFromClipboard()" class="px-space-md py-2 rounded-[3px] bg-[#E18335] hover:bg-[#eb9449] text-black border-2 border-black shadow-[3px_3px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#000] flex items-center gap-1 font-headline-sm text-xs font-black uppercase transition-all cursor-pointer" type="button">
                   <span class="material-symbols-outlined text-[18px]">content_paste</span>
-                  <span>Paste from Clipboard (Ctrl+V)</span>
+                  <span>Paste Clipboard (Ctrl+V)</span>
                 </button>
               </div>
 
               <!-- List of attached images -->
               <div id="attachedImagesContainer" class="flex flex-col gap-space-sm">
-                <div id="noImagesPlaceholder" class="p-space-md rounded-xl bg-surface-container-low text-center text-on-surface-variant font-body-sm">
-                  No images added yet. Click above or press <kbd class="px-1.5 py-0.5 rounded bg-surface-container font-mono text-xs">Ctrl+V</kbd> to paste a screenshot directly.
+                <div id="noImagesPlaceholder" class="p-space-md rounded-[3px] bg-[#FAF8F5] border-2 border-dashed border-black text-center text-black/70 font-mono text-xs">
+                  No images added yet. Click above or press <kbd class="px-1.5 py-0.5 rounded-[2px] bg-white border border-black shadow-[1px_1px_0px_#000] font-mono text-xs font-bold text-black">Ctrl+V</kbd> to paste a screenshot directly.
                 </div>
               </div>
+            </div>
           </section>
 
           <!-- Step 2 Navigation Footer -->
-          <div class="flex items-center justify-between pt-space-md border-t border-surface-container-high">
-            <button onclick="goToStep(1)" class="px-space-md py-space-sm rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-headline-sm text-headline-sm flex items-center gap-1 transition-all" type="button">
+          <div class="flex items-center justify-between pt-space-md border-t-2 border-black">
+            <button onclick="goToStep(1)" class="px-space-md py-2.5 rounded-[3px] bg-white text-black hover:bg-[#FAF8F5] border-2 border-black shadow-[2px_2px_0px_#000] font-headline-sm text-xs font-black uppercase flex items-center gap-1 transition-all cursor-pointer" type="button">
               <span class="material-symbols-outlined text-[18px]">arrow_back</span>
-              <span>Back to Content Selection</span>
+              <span>Back to Content</span>
             </button>
-            <button onclick="goToStep(3)" class="px-space-xl py-space-sm rounded-lg bg-secondary text-on-secondary hover:bg-secondary-container font-headline-sm text-headline-sm flex items-center gap-2 shadow-md transition-all" type="button">
+            <button onclick="goToStep(3)" class="px-space-xl py-3 rounded-[3px] bg-[#8FC93A] text-black border-2 border-black shadow-[4px_4px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[5px_5px_0px_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[1px_1px_0px_#000] font-headline-sm text-sm font-black uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer" type="button">
               <span>Proceed to Step 3: Verification</span>
               <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
             </button>
@@ -820,46 +951,46 @@
         <!-- STEP 3: VERIFICATION (A4 LIVE DOCUMENT PREVIEW)                          -->
         <!-- ========================================================================= -->
         <div id="stepContainer3" class="hidden flex flex-col gap-space-lg">
-          <section class="rounded-xl bg-surface-container-lowest shadow-[0_1px_3px_0_rgba(15,23,42,0.04)] p-space-md flex flex-col gap-space-md">
+          <section class="rounded-[3px] bg-white border-2 border-black shadow-[5px_5px_0px_#000] p-space-md md:p-space-lg flex flex-col gap-space-md">
             <!-- Top Verification Toolbar -->
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-space-md pb-space-xs border-b border-surface-container-high">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-space-md pb-space-xs border-b-2 border-black">
               <div class="flex items-center gap-space-sm">
-                <span class="w-7 h-7 rounded-lg bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm">3</span>
+                <span class="w-8 h-8 rounded-[2px] bg-[#E4CC37] text-black border-2 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center font-mono font-black text-sm">03</span>
                 <div>
-                  <h2 class="font-headline-lg text-headline-lg text-on-surface">Step 3: Verification Preview</h2>
-                  <p class="text-xs text-on-surface-variant">Hover sections to reorder, align, edit in-place, or remove • Content paginates automatically across A4 sheets</p>
+                  <h2 class="font-headline-lg text-xl font-black text-black uppercase tracking-tight">Step 3: Verification Preview</h2>
+                  <p class="font-mono text-xs text-black/75">Hover sections to reorder, align, edit in-place, or remove • Content paginates automatically across A4 sheets</p>
                 </div>
               </div>
 
               <!-- Quick Alignment / Section Reorder helper / Page Badge -->
               <div class="flex items-center flex-wrap gap-space-sm">
-                <div class="flex rounded-lg bg-surface-container p-0.5" title="Default Document Alignment">
-                  <button onclick="setDocumentAlignment('left')" class="px-2 py-1 flex items-center text-on-surface-variant hover:text-on-surface" type="button" title="Left Align"><span class="material-symbols-outlined text-[18px]">format_align_left</span></button>
-                  <button onclick="setDocumentAlignment('center')" class="px-2 py-1 flex items-center text-on-surface-variant hover:text-on-surface" type="button" title="Center Align"><span class="material-symbols-outlined text-[18px]">format_align_center</span></button>
-                  <button onclick="setDocumentAlignment('justify')" class="px-2 py-1 flex items-center text-secondary font-bold" type="button" title="Justify Align"><span class="material-symbols-outlined text-[18px]">format_align_justify</span></button>
+                <div class="flex rounded-[2px] bg-[#FAF8F5] border-2 border-black shadow-[2px_2px_0px_#000] p-0.5" title="Default Document Alignment">
+                  <button onclick="setDocumentAlignment('left')" class="px-2 py-1 flex items-center text-black/70 hover:text-black hover:bg-black/5 rounded-[1px] transition-colors cursor-pointer" type="button" title="Left Align"><span class="material-symbols-outlined text-[18px]">format_align_left</span></button>
+                  <button onclick="setDocumentAlignment('center')" class="px-2 py-1 flex items-center text-black/70 hover:text-black hover:bg-black/5 rounded-[1px] transition-colors cursor-pointer" type="button" title="Center Align"><span class="material-symbols-outlined text-[18px]">format_align_center</span></button>
+                  <button onclick="setDocumentAlignment('justify')" class="px-2 py-1 flex items-center text-black bg-[#E4CC37] font-bold rounded-[1px] transition-colors cursor-pointer" type="button" title="Justify Align"><span class="material-symbols-outlined text-[18px]">format_align_justify</span></button>
                 </div>
-                <button onclick="resetSectionOrder()" type="button" class="px-2.5 py-1 text-xs rounded-lg border border-surface-container-high hover:bg-surface-container text-on-surface flex items-center gap-1 font-body-sm transition-all" title="Reset to standard Aim → Algorithm → Program → Output → Result order">
+                <button onclick="resetSectionOrder()" type="button" class="px-3 py-1.5 rounded-[2px] bg-white text-black border-2 border-black shadow-[2px_2px_0px_#000] hover:bg-[#FAF8F5] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#000] flex items-center gap-1 font-headline-sm text-xs font-black uppercase transition-all cursor-pointer" title="Reset to standard Aim → Algorithm → Program → Output → Result order">
                   <span class="material-symbols-outlined text-[16px]">restart_alt</span>
                   <span>Reset Order</span>
                 </button>
-                <span id="previewPageCountBadge" class="px-space-xs py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-semibold">1 Page (A4)</span>
+                <span id="previewPageCountBadge" class="px-2.5 py-1 rounded-[2px] bg-[#E4CC37] text-black border-2 border-black shadow-[2px_2px_0px_#000] font-mono text-xs font-black uppercase">1 Page (A4)</span>
               </div>
             </div>
 
             <!-- Realistic Multi-Page A4 Virtual Container -->
-            <div class="relative w-full rounded-2xl bg-surface-container-low p-space-sm md:p-space-lg overflow-x-auto flex flex-col items-center gap-6 shadow-inner">
+            <div class="relative w-full rounded-[3px] bg-[#E8E4DC] border-2 border-black p-space-sm md:p-space-lg overflow-x-auto flex flex-col items-center gap-6 shadow-inner">
               <div id="previewPagesContainer" class="flex flex-col items-center gap-8 w-full max-w-3xl">
                 <!-- Dynamically generated A4 sheets rendered by renderMultiPagePreview() -->
               </div>
             </div>
 
             <!-- Step 3 Navigation Footer -->
-            <div class="flex items-center justify-between pt-space-md border-t border-surface-container-high">
-              <button onclick="goToStep(2)" class="px-space-md py-space-sm rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-headline-sm text-headline-sm flex items-center gap-1 transition-all" type="button">
+            <div class="flex items-center justify-between pt-space-md border-t-2 border-black">
+              <button onclick="goToStep(2)" class="px-space-md py-2.5 rounded-[3px] bg-white text-black hover:bg-[#FAF8F5] border-2 border-black shadow-[2px_2px_0px_#000] font-headline-sm text-xs font-black uppercase flex items-center gap-1 transition-all cursor-pointer" type="button">
                 <span class="material-symbols-outlined text-[18px]">arrow_back</span>
                 <span>Back to Format &amp; Layout</span>
               </button>
-              <button onclick="goToStep(4)" class="px-space-xl py-space-sm rounded-lg bg-secondary text-on-secondary hover:bg-secondary-container font-headline-sm text-headline-sm flex items-center gap-2 shadow-md transition-all" type="button">
+              <button onclick="goToStep(4)" class="px-space-xl py-3 rounded-[3px] bg-[#8FC93A] text-black border-2 border-black shadow-[4px_4px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[5px_5px_0px_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[1px_1px_0px_#000] font-headline-sm text-sm font-black uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer" type="button">
                 <span>Approve Document &amp; Proceed to Step 4</span>
                 <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
               </button>
@@ -871,67 +1002,68 @@
         <!-- STEP 4: EXPORT (.DOCX)                                                    -->
         <!-- ========================================================================= -->
         <div id="stepContainer4" class="hidden flex flex-col gap-space-lg">
-          <section class="rounded-xl bg-surface-container-lowest shadow-[0_1px_3px_0_rgba(15,23,42,0.04)] p-space-lg flex flex-col gap-space-lg">
-            <div class="flex items-center gap-space-sm pb-space-xs border-b border-surface-container-high">
-              <span class="w-7 h-7 rounded-lg bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm">4</span>
+          <section class="rounded-[3px] bg-white border-2 border-black shadow-[5px_5px_0px_#000] p-space-md md:p-space-lg flex flex-col gap-space-lg">
+            <div class="flex items-center gap-space-sm pb-space-xs border-b-2 border-black">
+              <span class="w-8 h-8 rounded-[2px] bg-[#1E91D6] text-black border-2 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center font-mono font-black text-sm">04</span>
               <div>
-                <h2 class="font-headline-lg text-headline-lg text-on-surface">Step 4: Export Word Document (.docx)</h2>
+                <h2 class="font-headline-lg text-xl font-black text-black uppercase tracking-tight">Step 4: Export Word Document (.docx)</h2>
+                <p class="font-mono text-xs text-black/75">Specify destination folder and finalize document synthesis</p>
               </div>
             </div>
 
             <!-- Export Summary Card -->
-            <div class="rounded-xl bg-surface-container-low p-space-md flex flex-col sm:flex-row items-center justify-between gap-space-md">
+            <div class="rounded-[3px] bg-[#FAF8F5] border-2 border-black shadow-[3px_3px_0px_#000] p-space-md flex flex-col sm:flex-row items-center justify-between gap-space-md">
               <div class="flex items-center gap-space-md">
-                <div class="w-12 h-12 rounded-xl bg-primary-container text-on-secondary flex items-center justify-center shrink-0">
+                <div class="w-12 h-12 rounded-[2px] bg-[#0072BB] text-white border-2 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center shrink-0">
                   <span class="material-symbols-outlined text-[28px]">description</span>
                 </div>
                 <div class="flex flex-col">
-                  <span class="font-headline-md text-headline-md text-on-surface" id="summaryDocTitle">Lab_Record_04.docx</span>
-                  <span class="font-label-sm text-xs text-on-surface-variant font-mono">Microsoft Word .docx</span>
+                  <span class="font-headline-md text-base font-black uppercase text-black" id="summaryDocTitle">Lab_Record_04.docx</span>
+                  <span class="font-mono text-xs text-black/70">Microsoft Word (.docx) • Standard A4</span>
                 </div>
               </div>
-              <span class="px-space-sm py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm">
+              <span class="px-space-sm py-1 rounded-[2px] bg-[#8FC93A] text-black border-2 border-black shadow-[2px_2px_0px_#000] font-mono text-xs font-black uppercase">
                 Ready for Generation
               </span>
             </div>
 
             <!-- Destination Folder & File Name Input Form -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
-              <div class="flex flex-col gap-1">
-                <label class="font-label-sm text-label-sm text-on-surface font-semibold">Document File Name</label>
-                <input id="exportDocName" type="text" value="Lab_Record_EXP_04.docx" class="h-10 px-space-sm rounded-lg bg-surface-container-lowest border border-surface-container-high font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary"/>
+              <div class="flex flex-col gap-1.5">
+                <label class="font-mono text-xs font-black uppercase tracking-wider text-black">Document File Name</label>
+                <input id="exportDocName" type="text" value="Lab_Record_EXP_04.docx" class="h-10 px-space-sm rounded-[2px] bg-[#FAF8F5] border-2 border-black text-black font-mono text-sm shadow-[2px_2px_0px_#000] focus:outline-none focus:bg-white focus:shadow-[3px_3px_0px_#000] transition-all"/>
               </div>
-              <div class="flex flex-col gap-1">
-                <label class="font-label-sm text-label-sm text-on-surface font-semibold">Destination Folder on your Computer</label>
-                <input id="exportFolderPath" type="text" value="C:\Users\rahul_o2332zg\OneDrive\Desktop" class="h-10 px-space-sm rounded-lg bg-surface-container-lowest border border-surface-container-high font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary"/>
+              <div class="flex flex-col gap-1.5">
+                <label class="font-mono text-xs font-black uppercase tracking-wider text-black">Destination Folder on your Computer</label>
+                <input id="exportFolderPath" type="text" value="C:\Users\rahul_o2332zg\OneDrive\Desktop" class="h-10 px-space-sm rounded-[2px] bg-[#FAF8F5] border-2 border-black text-black font-mono text-sm shadow-[2px_2px_0px_#000] focus:outline-none focus:bg-white focus:shadow-[3px_3px_0px_#000] transition-all"/>
               </div>
             </div>
 
             <!-- Primary Generate Action Button -->
-            <div class="flex flex-col items-center justify-center p-space-md rounded-xl bg-surface-container-low gap-space-sm">
-              <button id="executeExportBtn" type="button" onclick="executeExportDocx()" class="px-space-xl py-space-sm rounded-lg bg-secondary text-on-secondary hover:bg-secondary-container font-headline-sm text-headline-sm flex items-center justify-center gap-space-sm shadow-lg transition-all text-base">
-                <span id="exportBtnIcon" class="material-symbols-outlined text-[22px]">download</span>
+            <div class="flex flex-col items-center justify-center p-space-lg rounded-[3px] bg-[#FAF8F5] border-2 border-dashed border-black gap-space-sm">
+              <button id="executeExportBtn" type="button" onclick="executeExportDocx()" class="px-8 py-3.5 rounded-[3px] bg-[#8FC93A] hover:bg-[#82b933] text-black border-3 border-black shadow-[5px_5px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[6px_6px_0px_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_#000] font-headline-sm text-base font-black uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer transition-all">
+                <span id="exportBtnIcon" class="material-symbols-outlined text-[24px]">download</span>
                 <span id="exportBtnText">Generate &amp; Save Word Document (.docx)</span>
               </button>
             </div>
 
             <!-- Export Success Banner -->
-            <div id="exportSuccessCard" class="hidden rounded-xl bg-surface-container-high p-space-md flex flex-col md:flex-row items-center justify-between gap-space-md border border-secondary/30 transition-all">
+            <div id="exportSuccessCard" class="hidden rounded-[3px] bg-[#FAF8F5] border-3 border-black shadow-[5px_5px_0px_#000] p-space-md flex flex-col md:flex-row items-center justify-between gap-space-md transition-all">
               <div class="flex items-center gap-space-sm">
-                <div class="w-10 h-10 rounded-lg bg-secondary text-on-secondary flex items-center justify-center shrink-0">
-                  <span class="material-symbols-outlined text-[24px]">verified</span>
+                <div class="w-12 h-12 rounded-[2px] bg-[#8FC93A] text-black border-2 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center shrink-0">
+                  <span class="material-symbols-outlined text-[28px]">verified</span>
                 </div>
                 <div class="flex flex-col">
-                  <span class="font-headline-sm text-headline-sm text-on-surface">Document Generated &amp; Saved!</span>
-                  <span class="font-label-sm text-label-sm text-secondary font-mono" id="savedFilePathDisplay">Saved to: ...</span>
+                  <span class="font-headline-sm text-base font-black uppercase text-black">Document Generated &amp; Saved!</span>
+                  <span class="font-mono text-xs text-black/80 font-bold" id="savedFilePathDisplay">Saved to: ...</span>
                 </div>
               </div>
               <div class="flex items-center gap-space-sm">
-                <a id="directDownloadLink" href="#" class="px-space-md py-space-xs rounded-lg bg-secondary text-on-secondary hover:bg-secondary-container font-headline-sm text-headline-sm flex items-center gap-1 shadow-sm transition-all" download>
+                <a id="directDownloadLink" href="#" class="px-space-md py-2 rounded-[2px] bg-[#0072BB] text-white border-2 border-black shadow-[3px_3px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#000] font-headline-sm text-xs font-black uppercase flex items-center gap-1 transition-all cursor-pointer" download>
                   <span class="material-symbols-outlined text-[18px]">download</span>
                   <span>Direct Download</span>
                 </a>
-                <button onclick="switchTab('myrecords')" class="px-space-md py-space-xs rounded-lg bg-surface-container-highest text-on-surface hover:bg-surface-container font-headline-sm text-headline-sm flex items-center gap-1 shadow-sm transition-all" type="button">
+                <button onclick="switchTab('myrecords')" class="px-space-md py-2 rounded-[2px] bg-[#E4CC37] text-black border-2 border-black shadow-[3px_3px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#000] font-headline-sm text-xs font-black uppercase flex items-center gap-1 transition-all cursor-pointer" type="button">
                   <span class="material-symbols-outlined text-[18px]">folder_open</span>
                   <span>View in My Records</span>
                 </button>
@@ -939,12 +1071,12 @@
             </div>
 
             <!-- Step 4 Navigation Footer -->
-            <div class="flex items-center justify-between pt-space-md border-t border-surface-container-high">
-              <button onclick="goToStep(3)" class="px-space-md py-space-sm rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-headline-sm text-headline-sm flex items-center gap-1 transition-all" type="button">
+            <div class="flex items-center justify-between pt-space-md border-t-2 border-black">
+              <button onclick="goToStep(3)" class="px-space-md py-2.5 rounded-[3px] bg-white text-black hover:bg-[#FAF8F5] border-2 border-black shadow-[2px_2px_0px_#000] font-headline-sm text-xs font-black uppercase flex items-center gap-1 transition-all cursor-pointer" type="button">
                 <span class="material-symbols-outlined text-[18px]">arrow_back</span>
                 <span>Back to Verification Preview</span>
               </button>
-              <button onclick="resetDraft()" class="px-space-md py-space-sm rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-headline-sm text-headline-sm transition-all flex items-center gap-1" type="button">
+              <button onclick="resetDraft()" class="px-space-md py-2.5 rounded-[3px] bg-[#FAF8F5] text-black hover:bg-white border-2 border-black shadow-[2px_2px_0px_#000] font-headline-sm text-xs font-black uppercase flex items-center gap-1 transition-all cursor-pointer" type="button">
                 <span class="material-symbols-outlined text-[18px]">add_task</span>
                 <span>Create Another Record</span>
               </button>
@@ -958,31 +1090,31 @@
         <!-- TAB VIEW: MY RECORDS                                                      -->
         <!-- ========================================================================= -->
         <div id="viewMyRecords" class="hidden flex flex-col gap-space-lg w-full">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md pb-space-xs border-b border-surface-container-high">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md pb-space-xs border-b-2 border-black">
             <div class="flex items-center gap-space-sm">
-              <div class="w-10 h-10 rounded-xl bg-primary text-on-primary flex items-center justify-center shrink-0">
-                <span class="material-symbols-outlined text-[22px]">folder_open</span>
+              <div class="w-10 h-10 rounded-[2px] bg-[#0072BB] text-white border-2 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[24px]">folder_open</span>
               </div>
               <div class="flex flex-col">
                 <div class="flex items-center gap-space-sm">
-                  <h1 class="font-headline-lg text-headline-lg text-on-surface">My Records</h1>
-                  <span id="myRecordsCountPill" class="px-space-xs py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-xs font-bold">0 records</span>
+                  <h1 class="font-headline-lg text-2xl font-black text-black uppercase tracking-tight">My Records</h1>
+                  <span id="myRecordsCountPill" class="px-2.5 py-0.5 rounded-[2px] bg-[#8FC93A] text-black border-2 border-black shadow-[2px_2px_0px_#000] font-mono text-xs font-black uppercase">0 records</span>
                 </div>
-                <span class="font-label-sm text-xs text-on-surface-variant">View and download your exported lab documents</span>
+                <span class="font-mono text-xs text-black/75">View and download your exported lab documents</span>
               </div>
             </div>
-            <button onclick="switchTab('wizard')" class="px-space-md py-space-xs rounded-lg bg-secondary text-on-secondary hover:bg-secondary-container font-headline-sm text-headline-sm flex items-center gap-1 shadow-sm transition-all" type="button">
+            <button onclick="switchTab('wizard')" class="px-space-md py-2.5 rounded-[3px] bg-[#8FC93A] text-black border-2 border-black shadow-[3px_3px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#000] font-headline-sm text-xs font-black uppercase flex items-center gap-1 transition-all cursor-pointer" type="button">
               <span class="material-symbols-outlined text-[18px]">add</span>
               <span>Create New Record</span>
             </button>
           </div>
 
           <div id="myRecordsListContainer" class="flex flex-col gap-space-sm">
-            <div id="noRecordsPlaceholder" class="p-space-xl rounded-2xl bg-surface-container-low text-center flex flex-col items-center justify-center gap-space-sm">
-              <span class="material-symbols-outlined text-outline text-[48px]">inventory_2</span>
-              <span class="font-headline-sm text-headline-sm text-on-surface">No Exported Records Yet</span>
-              <span class="font-body-sm text-body-sm text-on-surface-variant max-w-md">Complete the wizard and export your first Word document to see it saved here.</span>
-              <button onclick="switchTab('wizard')" class="mt-space-xs px-space-md py-space-xs rounded-lg bg-primary text-on-primary font-headline-sm text-headline-sm flex items-center gap-1 transition-all" type="button">
+            <div id="noRecordsPlaceholder" class="p-space-xl rounded-[3px] bg-white border-2 border-dashed border-black shadow-[4px_4px_0px_#000] text-center flex flex-col items-center justify-center gap-space-sm">
+              <span class="material-symbols-outlined text-black/40 text-[56px]">inventory_2</span>
+              <span class="font-headline-sm text-base font-black uppercase text-black">No Exported Records Yet</span>
+              <span class="font-mono text-xs text-black/70 max-w-md">Complete the wizard and export your first Word document to see it saved here.</span>
+              <button onclick="switchTab('wizard')" class="mt-space-xs px-space-md py-2 rounded-[3px] bg-[#0072BB] text-white border-2 border-black shadow-[3px_3px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] font-headline-sm text-xs font-black uppercase flex items-center gap-1 transition-all cursor-pointer" type="button">
                 <span>Start New Record</span>
               </button>
             </div>
@@ -993,35 +1125,35 @@
         <!-- TAB VIEW: TEMPLATES                                                       -->
         <!-- ========================================================================= -->
         <div id="viewTemplates" class="hidden flex flex-col gap-space-lg w-full">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md pb-space-xs border-b border-surface-container-high">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md pb-space-xs border-b-2 border-black">
             <div class="flex items-center gap-space-sm">
-              <div class="w-10 h-10 rounded-xl bg-primary text-on-primary flex items-center justify-center shrink-0">
-                <span class="material-symbols-outlined text-[22px]">description</span>
+              <div class="w-10 h-10 rounded-[2px] bg-[#E18335] text-black border-2 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[24px]">description</span>
               </div>
               <div class="flex flex-col">
                 <div class="flex items-center gap-space-sm">
-                  <h1 class="font-headline-lg text-headline-lg text-on-surface">Document Templates</h1>
-                  <span id="templatesCountPill" class="px-space-xs py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-xs">3 Available</span>
+                  <h1 class="font-headline-lg text-2xl font-black text-black uppercase tracking-tight">Document Templates</h1>
+                  <span id="templatesCountPill" class="px-2.5 py-0.5 rounded-[2px] bg-[#FAF8F5] text-black border-2 border-black shadow-[2px_2px_0px_#000] font-mono text-xs font-black uppercase">3 Available</span>
                 </div>
-                <span class="font-label-sm text-xs text-on-surface-variant">Built-in university presets &amp; custom uploaded Word templates</span>
+                <span class="font-mono text-xs text-black/75">Built-in university presets &amp; custom uploaded Word templates</span>
               </div>
             </div>
           </div>
 
           <!-- Upload Template Card -->
-          <div class="p-space-lg rounded-2xl bg-surface-container-low border-2 border-dashed border-surface-container-highest flex flex-col sm:flex-row items-center justify-between gap-space-md">
+          <div class="p-space-lg rounded-[3px] bg-white border-2 border-dashed border-black shadow-[4px_4px_0px_#000] flex flex-col sm:flex-row items-center justify-between gap-space-md">
             <div class="flex items-center gap-space-md">
-              <div class="w-12 h-12 rounded-xl bg-surface-container-high text-secondary flex items-center justify-center shrink-0">
+              <div class="w-12 h-12 rounded-[2px] bg-[#E4CC37] text-black border-2 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center shrink-0">
                 <span class="material-symbols-outlined text-[28px]">upload_file</span>
               </div>
               <div class="flex flex-col">
-                <span class="font-headline-sm text-headline-sm text-on-surface">Upload Sample Word Document (.docx)</span>
-                <span class="font-body-sm text-xs text-on-surface-variant">The agent extracts fonts, heading sizes, and borders from your sample docx to create a reusable template.</span>
+                <span class="font-headline-sm text-base font-black uppercase text-black">Upload Sample Word Document (.docx)</span>
+                <span class="font-mono text-xs text-black/70">The agent extracts fonts, heading sizes, and borders from your sample docx to create a reusable template.</span>
               </div>
             </div>
             <div>
               <input type="file" id="templateDocxFileInput" accept=".docx" class="hidden" onchange="handleTemplateDocxUpload(event)">
-              <button onclick="document.getElementById('templateDocxFileInput').click()" class="px-space-lg py-space-sm rounded-lg bg-secondary text-on-secondary hover:bg-secondary-container font-headline-sm text-headline-sm flex items-center gap-1 shadow-sm transition-all" type="button">
+              <button onclick="document.getElementById('templateDocxFileInput').click()" class="px-space-lg py-2.5 rounded-[3px] bg-[#0072BB] hover:bg-[#1a83cc] text-white border-2 border-black shadow-[3px_3px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] font-headline-sm text-xs font-black uppercase flex items-center gap-1 transition-all cursor-pointer" type="button">
                 <span class="material-symbols-outlined text-[18px]">add</span>
                 <span>Upload Sample .docx</span>
               </button>
@@ -1039,50 +1171,50 @@
   </div>
 
   <!-- Interactive Tutorial Walkthrough Modal -->
-  <div id="tutorialModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-    <div class="w-full max-w-lg rounded-2xl bg-surface-container-lowest border border-surface-container-high shadow-2xl p-space-xl flex flex-col gap-space-md relative">
-      <div class="flex items-center justify-between pb-space-xs border-b border-surface-container-high">
+  <div id="tutorialModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+    <div class="w-full max-w-lg rounded-[3px] bg-[#FAF8F5] border-3 border-black shadow-[8px_8px_0px_#000] p-space-lg flex flex-col gap-space-md relative">
+      <div class="flex items-center justify-between pb-space-xs border-b-2 border-black">
         <div class="flex items-center gap-2">
-          <span class="w-8 h-8 rounded-lg bg-secondary text-on-secondary flex items-center justify-center font-headline-sm text-[16px]">
+          <span class="w-8 h-8 rounded-[2px] bg-[#E18335] text-black border-2 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center font-mono font-black text-sm">
             <span class="material-symbols-outlined text-[18px]">school</span>
           </span>
-          <span class="font-headline-md text-headline-md text-on-surface">Workspace Tutorial</span>
+          <span class="font-headline-md text-lg font-black uppercase text-black">Workspace Tutorial</span>
         </div>
-        <button onclick="closeInteractiveTutorial()" class="p-1 rounded-lg hover:bg-surface-container text-on-surface-variant" type="button">
-          <span class="material-symbols-outlined text-[20px]">close</span>
+        <button onclick="closeInteractiveTutorial()" class="w-7 h-7 rounded-[2px] border-2 border-black bg-white shadow-[2px_2px_0px_#000] hover:bg-red-100 flex items-center justify-center text-black cursor-pointer transition-all" type="button">
+          <span class="material-symbols-outlined text-[18px]">close</span>
         </button>
       </div>
 
       <!-- Step Counter Indicators -->
-      <div class="flex items-center justify-between text-xs text-on-surface-variant font-label-sm">
+      <div class="flex items-center justify-between text-xs font-mono font-bold text-black uppercase">
         <span id="tutorialStepIndicator">Step 1 of 5</span>
         <div class="flex items-center gap-1.5" id="tutorialDots">
-          <span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
-          <span class="w-2.5 h-2.5 rounded-full bg-surface-container"></span>
-          <span class="w-2.5 h-2.5 rounded-full bg-surface-container"></span>
-          <span class="w-2.5 h-2.5 rounded-full bg-surface-container"></span>
-          <span class="w-2.5 h-2.5 rounded-full bg-surface-container"></span>
+          <span class="w-3 h-3 rounded-[1px] bg-[#8FC93A] border border-black shadow-[1px_1px_0px_#000]"></span>
+          <span class="w-3 h-3 rounded-[1px] bg-white border border-black"></span>
+          <span class="w-3 h-3 rounded-[1px] bg-white border border-black"></span>
+          <span class="w-3 h-3 rounded-[1px] bg-white border border-black"></span>
+          <span class="w-3 h-3 rounded-[1px] bg-white border border-black"></span>
         </div>
       </div>
 
       <!-- Step Card Dynamic Content -->
-      <div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-xs">
-        <h3 class="font-headline-md text-headline-md text-on-surface" id="tutorialStepTitle">1. Content Selection</h3>
-        <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed" id="tutorialStepDesc">
+      <div class="p-space-md rounded-[2px] bg-white border-2 border-black shadow-[3px_3px_0px_#000] flex flex-col gap-space-xs">
+        <h3 class="font-headline-md text-base font-black uppercase text-black" id="tutorialStepTitle">1. Content Selection</h3>
+        <p class="font-mono text-xs text-black/80 leading-relaxed" id="tutorialStepDesc">
           Upload your program file (.java, .py, .c, .cpp, .txt) or paste code directly. The terminal-style inspector displays line numbers and automatically detects the language.
         </p>
       </div>
 
       <!-- Footer Buttons -->
-      <div class="flex items-center justify-between pt-space-xs border-t border-surface-container-high">
-        <button onclick="closeInteractiveTutorial()" class="px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface text-xs font-headline-sm" type="button">
+      <div class="flex items-center justify-between pt-space-xs border-t-2 border-black">
+        <button onclick="closeInteractiveTutorial()" class="px-space-sm py-1.5 rounded-[2px] text-black hover:bg-black/5 font-mono text-xs font-black uppercase transition-all cursor-pointer" type="button">
           Skip Tour
         </button>
         <div class="flex items-center gap-space-xs">
-          <button id="tutorialPrevBtn" onclick="prevTutorialStep()" class="px-space-md py-1.5 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container-highest text-xs font-headline-sm disabled:opacity-40 transition-all" type="button" disabled>
+          <button id="tutorialPrevBtn" onclick="prevTutorialStep()" class="px-space-md py-1.5 rounded-[2px] bg-white text-black border-2 border-black shadow-[2px_2px_0px_#000] font-headline-sm text-xs font-black uppercase disabled:opacity-40 transition-all cursor-pointer" type="button" disabled>
             Previous
           </button>
-          <button id="tutorialNextBtn" onclick="nextTutorialStep()" class="px-space-lg py-1.5 rounded-lg bg-secondary text-on-secondary hover:bg-secondary-container text-xs font-headline-sm shadow-sm transition-all" type="button">
+          <button id="tutorialNextBtn" onclick="nextTutorialStep()" class="px-space-lg py-1.5 rounded-[2px] bg-[#8FC93A] text-black border-2 border-black shadow-[3px_3px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] font-headline-sm text-xs font-black uppercase transition-all cursor-pointer" type="button">
             Next Step
           </button>
         </div>
@@ -1133,16 +1265,16 @@
 
         if (ribbon && badge) {
           if (i === stepNumber) {
-            ribbon.className = "flex items-center gap-space-sm px-space-md py-space-xs rounded-lg transition-all cursor-pointer flex-1 bg-primary text-on-primary shadow-md";
-            badge.className = "w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-label-sm text-label-sm shrink-0 font-bold";
+            ribbon.className = "flex items-center gap-space-sm px-space-md py-space-xs rounded-[3px] transition-all cursor-pointer flex-1 bg-[#E4CC37] text-black border-2 border-black shadow-[3px_3px_0px_#000]";
+            badge.className = "w-6 h-6 rounded-[2px] bg-black text-[#E4CC37] flex items-center justify-center font-mono text-xs font-black shrink-0";
             badge.textContent = i;
           } else if (i < stepNumber) {
-            ribbon.className = "flex items-center gap-space-sm px-space-md py-space-xs rounded-lg transition-all cursor-pointer flex-1 bg-secondary-container text-on-secondary shadow-sm";
-            badge.className = "w-6 h-6 rounded-full bg-surface-container-lowest text-secondary flex items-center justify-center font-label-sm text-label-sm shrink-0 font-bold";
+            ribbon.className = "flex items-center gap-space-sm px-space-md py-space-xs rounded-[3px] transition-all cursor-pointer flex-1 bg-[#8FC93A] text-black border-2 border-black shadow-[2px_2px_0px_#000]";
+            badge.className = "w-6 h-6 rounded-[2px] bg-black text-[#8FC93A] flex items-center justify-center font-mono text-xs font-black shrink-0";
             badge.innerHTML = '<span class="material-symbols-outlined text-[14px]">check</span>';
           } else {
-            ribbon.className = "flex items-center gap-space-sm px-space-md py-space-xs rounded-lg transition-all cursor-pointer flex-1 bg-surface-container text-on-surface opacity-85";
-            badge.className = "w-6 h-6 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label-sm text-label-sm shrink-0";
+            ribbon.className = "flex items-center gap-space-sm px-space-md py-space-xs rounded-[3px] transition-all cursor-pointer flex-1 bg-[#FAF8F5] text-black border-2 border-black shadow-[2px_2px_0px_#000] hover:bg-white opacity-75";
+            badge.className = "w-6 h-6 rounded-[2px] bg-white text-black border border-black flex items-center justify-center font-mono text-xs shrink-0 font-bold";
             badge.textContent = i;
           }
         }
@@ -1202,13 +1334,13 @@
 
       if (mode === "paste") {
         pastePanel.classList.remove("hidden");
-        uploadBtn.className = "flex-1 py-1.5 px-space-sm rounded-lg text-on-surface-variant hover:text-on-surface font-body-md text-body-md text-center transition-all";
-        pasteBtn.className = "flex-1 py-1.5 px-space-sm rounded-lg bg-surface-container-lowest text-on-surface font-headline-sm text-headline-sm shadow-sm text-center";
+        uploadBtn.className = "flex-1 py-1.5 px-space-sm rounded-[2px] text-black/75 hover:text-black font-headline-sm text-xs font-bold uppercase text-center transition-all cursor-pointer";
+        pasteBtn.className = "flex-1 py-1.5 px-space-sm rounded-[2px] bg-[#E4CC37] text-black border-2 border-black shadow-[2px_2px_0px_#000] font-headline-sm text-xs font-black uppercase text-center transition-all cursor-pointer";
         document.getElementById("pasteCodeInput").focus();
       } else {
         pastePanel.classList.add("hidden");
-        uploadBtn.className = "flex-1 py-1.5 px-space-sm rounded-lg bg-surface-container-lowest text-on-surface font-headline-sm text-headline-sm shadow-sm text-center";
-        pasteBtn.className = "flex-1 py-1.5 px-space-sm rounded-lg text-on-surface-variant hover:text-on-surface font-body-md text-body-md text-center transition-all";
+        uploadBtn.className = "flex-1 py-1.5 px-space-sm rounded-[2px] bg-[#E4CC37] text-black border-2 border-black shadow-[2px_2px_0px_#000] font-headline-sm text-xs font-black uppercase text-center transition-all cursor-pointer";
+        pasteBtn.className = "flex-1 py-1.5 px-space-sm rounded-[2px] text-black/75 hover:text-black font-headline-sm text-xs font-bold uppercase text-center transition-all cursor-pointer";
       }
     }
 
@@ -1289,15 +1421,15 @@
       const lines = code.split(/\r?\n/);
       lines.slice(0, 100).forEach((line, index) => {
         const row = document.createElement("tr");
-        row.className = "hover:bg-primary-container/40";
+        row.className = "hover:bg-white/10 transition-colors";
 
         const lineNum = document.createElement("td");
-        lineNum.className = "text-on-primary-container select-none w-8 pr-2 text-right align-top";
+        lineNum.className = "text-[#8FC93A] select-none w-8 pr-2 text-right align-top font-mono font-bold opacity-60";
         lineNum.textContent = index + 1;
 
         const codeCell = document.createElement("td");
         codeCell.colSpan = 2;
-        codeCell.className = "pl-2 whitespace-pre";
+        codeCell.className = "pl-2 whitespace-pre text-[#E5DFD3] font-mono";
         codeCell.textContent = line;
 
         row.appendChild(lineNum);
@@ -1606,27 +1738,27 @@
       container.innerHTML = "";
 
       if (projectImages.length === 0) {
-        container.innerHTML = '<div class="p-space-md rounded-xl bg-surface-container-low text-center text-on-surface-variant font-body-sm">No images added yet. Click above or press <kbd class="px-1.5 py-0.5 rounded bg-surface-container font-mono text-xs">Ctrl+V</kbd> to paste a screenshot directly.</div>';
+        container.innerHTML = '<div class="p-space-md rounded-[3px] bg-[#FAF8F5] border-2 border-dashed border-black text-center text-black/70 font-mono text-xs">No images added yet. Click above or press <kbd class="px-1.5 py-0.5 rounded-[2px] bg-white border border-black shadow-[1px_1px_0px_#000] font-mono text-xs font-bold text-black">Ctrl+V</kbd> to paste a screenshot directly.</div>';
         return;
       }
 
       projectImages.forEach((img, index) => {
         const card = document.createElement("div");
-        card.className = "p-space-sm rounded-xl bg-surface-container-low flex flex-col md:flex-row items-center gap-space-md shadow-sm border border-surface-container-high";
+        card.className = "p-space-sm rounded-[3px] bg-[#FAF8F5] flex flex-col md:flex-row items-center gap-space-md border-2 border-black shadow-[3px_3px_0px_#000]";
         card.innerHTML = `
-          <div class="w-full md:w-36 h-24 rounded-lg overflow-hidden shrink-0 bg-surface-container flex items-center justify-center border border-surface-container-high">
+          <div class="w-full md:w-36 h-24 rounded-[2px] overflow-hidden shrink-0 bg-white flex items-center justify-center border-2 border-black shadow-[1.5px_1.5px_0px_#000]">
             <img src="${img.data}" class="w-full h-full object-cover" alt="Figure preview"/>
           </div>
-          <div class="flex-1 flex flex-col gap-1 w-full">
+          <div class="flex-1 flex flex-col gap-1.5 w-full">
             <div class="flex items-center justify-between">
-              <span class="font-headline-sm text-headline-sm text-on-surface truncate">${escapeHtml(img.name)}</span>
-              <button onclick="removeImage('${img.id}')" class="text-error hover:bg-error-container p-1 rounded transition-all" title="Remove Image" type="button">
-                <span class="material-symbols-outlined text-[18px]">delete</span>
+              <span class="font-headline-sm text-sm font-black uppercase text-black truncate">${escapeHtml(img.name)}</span>
+              <button onclick="removeImage('${img.id}')" class="w-7 h-7 rounded-[2px] bg-white hover:bg-red-100 text-black border-2 border-black shadow-[1.5px_1.5px_0px_#000] flex items-center justify-center cursor-pointer transition-all" title="Remove Image" type="button">
+                <span class="material-symbols-outlined text-[16px]">delete</span>
               </button>
             </div>
             <div class="flex items-center gap-2">
-              <span class="font-label-sm text-label-sm text-secondary font-semibold">Caption:</span>
-              <input type="text" value="${escapeHtml(img.caption)}" onchange="updateImageCaption('${img.id}', this.value)" class="h-8 px-2 rounded bg-surface-container-lowest text-on-surface font-body-sm text-body-sm flex-1 border border-surface-container-high"/>
+              <span class="font-mono text-xs font-black uppercase text-[#0072BB]">Caption:</span>
+              <input type="text" value="${escapeHtml(img.caption)}" onchange="updateImageCaption('${img.id}', this.value)" class="h-8 px-2 rounded-[2px] bg-white text-black font-mono text-xs flex-1 border-2 border-black shadow-[1.5px_1.5px_0px_#000] focus:outline-none"/>
             </div>
           </div>
         `;
@@ -1712,8 +1844,8 @@
       const activeSections = previewSections.filter(s => s.visible !== false);
       if (activeSections.length === 0) {
         container.innerHTML = `
-          <div class="p-8 text-center text-on-surface-variant font-body-md rounded-xl bg-surface-container-lowest border border-surface-container-high w-full">
-            No document sections are currently selected. Return to <strong class="text-on-surface">Step 2: Format &amp; Layout</strong> and select at least one component (Aim, Algorithm, Program, Output, Result).
+          <div class="p-8 text-center text-black font-mono text-xs rounded-[3px] bg-white border-2 border-dashed border-black shadow-[4px_4px_0px_#000] w-full">
+            No document sections are currently selected. Return to <strong class="text-black uppercase">Step 2: Format &amp; Layout</strong> and select at least one component (Aim, Algorithm, Program, Output, Result).
           </div>
         `;
         const badge = document.getElementById("previewPageCountBadge");
@@ -1901,7 +2033,7 @@
         const isLastPage = (pg.pageNum === totalPages);
 
         const sheetArticle = document.createElement("article");
-        sheetArticle.className = "a4-sheet relative w-full bg-surface-container-lowest text-primary shadow-[0_8px_30px_rgba(15,23,42,0.12)] p-8 md:p-12 flex flex-col justify-between transition-all select-text rounded-xs mb-4";
+        sheetArticle.className = "a4-sheet relative w-full bg-white text-black border-2 border-black shadow-[8px_8px_0px_#000] p-8 md:p-12 flex flex-col justify-between transition-all select-text rounded-[2px] mb-6";
         sheetArticle.style.aspectRatio = "1 / 1.4142";
         sheetArticle.style.minHeight = "980px";
         sheetArticle.style.fontFamily = fontFamily;
@@ -1920,27 +2052,27 @@
         // Header for Page 1 vs Page 2+
         if (isFirstPage) {
           contentFlow.innerHTML += `
-            <div class="text-center pb-2 border-b border-primary/20">
+            <div class="text-center pb-2 border-b-2 border-black/30">
               <h3 class="doc-preview-heading font-document-title uppercase tracking-wider font-bold" style="font-size: ${Math.max(13, parseFloat(headingSize) + 1)}pt; font-family: ${fontFamily};">
                 Department of Computer Science &amp; Engineering
               </h3>
-              <p class="font-body-sm text-[11px] uppercase tracking-widest text-on-surface-variant font-medium">
+              <p class="font-mono text-[11px] uppercase tracking-widest text-black/75 font-semibold">
                 Data Structures &amp; Algorithms Laboratory
               </p>
             </div>
-            <div class="flex justify-between items-center text-xs font-semibold uppercase tracking-wider pb-1 border-b border-primary/10">
+            <div class="flex justify-between items-center text-xs font-semibold uppercase tracking-wider pb-1 border-b border-black/20">
               <span>EXPERIMENT NO: 04</span>
               <span>DATE: OCTOBER 24, 2024</span>
             </div>
             <div class="text-center my-0.5">
-              <h2 class="doc-preview-heading font-document-title font-bold uppercase tracking-tight text-primary underline" style="font-size: ${Math.max(13, parseFloat(headingSize) + 1)}pt; font-family: ${fontFamily};">
+              <h2 class="doc-preview-heading font-document-title font-bold uppercase tracking-tight text-black underline" style="font-size: ${Math.max(13, parseFloat(headingSize) + 1)}pt; font-family: ${fontFamily};">
                 IMPLEMENTATION OF PROGRAM
               </h2>
             </div>
           `;
         } else {
           contentFlow.innerHTML += `
-            <div class="flex justify-between items-center text-[11px] uppercase font-semibold text-on-surface-variant pb-1 border-b border-primary/15">
+            <div class="flex justify-between items-center text-[11px] uppercase font-semibold text-black/70 pb-1 border-b border-black/20 font-mono">
               <span>IMPLEMENTATION OF PROGRAM</span>
               <span>Experiment No: 04 — (Contd.)</span>
             </div>
@@ -1950,7 +2082,7 @@
         // Render Allocated Items for this Page
         pg.items.forEach(item => {
           const itemDiv = document.createElement("div");
-          itemDiv.className = "preview-section-item group relative transition-all rounded p-1.5 hover:bg-slate-50 border border-transparent hover:border-slate-200/80";
+          itemDiv.className = "preview-section-item group relative transition-all rounded-[2px] p-1.5 hover:bg-[#FAF8F5] border border-transparent hover:border-black/30";
           itemDiv.setAttribute("data-section-key", item.secKey);
           itemDiv.setAttribute("draggable", "true");
 
@@ -1964,25 +2096,25 @@
 
           // Build Action Toolbar HTML
           const actionToolbarHtml = `
-            <div class="absolute -top-3 right-2 hidden group-hover:flex items-center bg-surface-container-lowest border border-surface-container-high rounded-md shadow-md px-1 py-0.5 gap-0.5 z-30 text-xs">
-              <button type="button" onclick="moveSection('${item.secKey}', -1)" title="Move Section Up" class="p-1 hover:bg-surface-container rounded text-on-surface transition-colors">
+            <div class="absolute -top-3.5 right-2 hidden group-hover:flex items-center bg-white border-2 border-black rounded-[2px] shadow-[3px_3px_0px_#000] px-1 py-0.5 gap-0.5 z-30 text-xs">
+              <button type="button" onclick="moveSection('${item.secKey}', -1)" title="Move Section Up" class="p-1 hover:bg-[#FAF8F5] rounded-[1px] text-black transition-colors cursor-pointer">
                 <span class="material-symbols-outlined text-[15px]">arrow_upward</span>
               </button>
-              <button type="button" onclick="moveSection('${item.secKey}', 1)" title="Move Section Down" class="p-1 hover:bg-surface-container rounded text-on-surface transition-colors">
+              <button type="button" onclick="moveSection('${item.secKey}', 1)" title="Move Section Down" class="p-1 hover:bg-[#FAF8F5] rounded-[1px] text-black transition-colors cursor-pointer">
                 <span class="material-symbols-outlined text-[15px]">arrow_downward</span>
               </button>
-              <div class="w-px h-3 bg-surface-container-high mx-0.5"></div>
-              <button type="button" onclick="setSectionAlignment('${item.secKey}', 'left')" title="Align Left" class="p-1 hover:bg-surface-container rounded ${item.align === 'left' ? 'text-secondary font-bold bg-secondary-container/40' : 'text-on-surface-variant'} transition-colors">
+              <div class="w-px h-3 bg-black mx-0.5"></div>
+              <button type="button" onclick="setSectionAlignment('${item.secKey}', 'left')" title="Align Left" class="p-1 rounded-[1px] ${item.align === 'left' ? 'text-black bg-[#E4CC37] font-bold border border-black shadow-[1px_1px_0px_#000]' : 'text-black/70 hover:bg-[#FAF8F5]'} transition-colors cursor-pointer">
                 <span class="material-symbols-outlined text-[15px]">format_align_left</span>
               </button>
-              <button type="button" onclick="setSectionAlignment('${item.secKey}', 'center')" title="Align Center" class="p-1 hover:bg-surface-container rounded ${item.align === 'center' ? 'text-secondary font-bold bg-secondary-container/40' : 'text-on-surface-variant'} transition-colors">
+              <button type="button" onclick="setSectionAlignment('${item.secKey}', 'center')" title="Align Center" class="p-1 rounded-[1px] ${item.align === 'center' ? 'text-black bg-[#E4CC37] font-bold border border-black shadow-[1px_1px_0px_#000]' : 'text-black/70 hover:bg-[#FAF8F5]'} transition-colors cursor-pointer">
                 <span class="material-symbols-outlined text-[15px]">format_align_center</span>
               </button>
-              <button type="button" onclick="setSectionAlignment('${item.secKey}', 'justify')" title="Align Justify" class="p-1 hover:bg-surface-container rounded ${item.align === 'justify' ? 'text-secondary font-bold bg-secondary-container/40' : 'text-on-surface-variant'} transition-colors">
+              <button type="button" onclick="setSectionAlignment('${item.secKey}', 'justify')" title="Align Justify" class="p-1 rounded-[1px] ${item.align === 'justify' ? 'text-black bg-[#E4CC37] font-bold border border-black shadow-[1px_1px_0px_#000]' : 'text-black/70 hover:bg-[#FAF8F5]'} transition-colors cursor-pointer">
                 <span class="material-symbols-outlined text-[15px]">format_align_justify</span>
               </button>
-              <div class="w-px h-3 bg-surface-container-high mx-0.5"></div>
-              <button type="button" onclick="removePreviewSection('${item.secKey}')" title="Remove Section" class="p-1 hover:bg-error-container text-error rounded transition-colors">
+              <div class="w-px h-3 bg-black mx-0.5"></div>
+              <button type="button" onclick="removePreviewSection('${item.secKey}')" title="Remove Section" class="p-1 hover:bg-red-100 text-black rounded-[1px] transition-colors cursor-pointer">
                 <span class="material-symbols-outlined text-[15px]">delete</span>
               </button>
             </div>
@@ -1993,12 +2125,12 @@
             itemDiv.innerHTML = `
               ${actionToolbarHtml}
               <div class="flex items-center gap-1 cursor-grab active:cursor-grabbing mb-0.5">
-                <span class="material-symbols-outlined text-[14px] text-on-surface-variant/40 group-hover:text-primary transition-colors cursor-grab" title="Drag to reorder">drag_indicator</span>
-                <h4 class="doc-preview-heading font-document-title font-bold uppercase tracking-wider underline text-primary" style="font-size: ${headingSize}pt; font-family: ${fontFamily};">
+                <span class="material-symbols-outlined text-[14px] text-black/50 group-hover:text-black transition-colors cursor-grab" title="Drag to reorder">drag_indicator</span>
+                <h4 class="doc-preview-heading font-document-title font-bold uppercase tracking-wider underline text-black" style="font-size: ${headingSize}pt; font-family: ${fontFamily};">
                   ${item.isContinuation ? `${item.secTitle} (Contd.):` : `${item.secTitle}:`}
                 </h4>
               </div>
-              <div class="doc-preview-body font-mono text-[9.5px] leading-snug whitespace-pre-wrap select-text focus:outline-dashed focus:outline-1 focus:outline-secondary/60 rounded px-1 text-on-surface"
+              <div class="doc-preview-body font-mono text-[9.5px] leading-snug whitespace-pre-wrap select-text focus:outline-2 focus:outline-black rounded-[2px] px-1 text-black"
                    contenteditable="true"
                    onblur="handleSectionContentEdit('${item.secKey}', this.innerText)"
                    style="font-family: Consolas, 'Courier New', monospace; font-size: ${Math.max(8.5, parseFloat(contentSize) - 1.5)}pt; text-align: ${item.align};">
@@ -2017,12 +2149,12 @@
             itemDiv.innerHTML = `
               ${actionToolbarHtml}
               <div class="flex items-center gap-1 cursor-grab active:cursor-grabbing mb-0.5">
-                <span class="material-symbols-outlined text-[14px] text-on-surface-variant/40 group-hover:text-primary transition-colors cursor-grab" title="Drag to reorder">drag_indicator</span>
-                <h4 class="doc-preview-heading font-document-title font-bold uppercase tracking-wider underline text-primary" style="font-size: ${headingSize}pt; font-family: ${fontFamily};">
+                <span class="material-symbols-outlined text-[14px] text-black/50 group-hover:text-black transition-colors cursor-grab" title="Drag to reorder">drag_indicator</span>
+                <h4 class="doc-preview-heading font-document-title font-bold uppercase tracking-wider underline text-black" style="font-size: ${headingSize}pt; font-family: ${fontFamily};">
                   ${item.isContinuation ? `${item.secTitle} (Contd.):` : `${item.secTitle}:`}
                 </h4>
               </div>
-              <div class="doc-preview-body text-xs space-y-0.5 pl-1 select-text focus:outline-dashed focus:outline-1 focus:outline-secondary/60 rounded px-1 text-on-surface"
+              <div class="doc-preview-body text-xs space-y-0.5 pl-1 select-text focus:outline-2 focus:outline-black rounded-[2px] px-1 text-black"
                    contenteditable="true"
                    onblur="handleSectionContentEdit('${item.secKey}', this.innerText)"
                    style="font-family: ${fontFamily}; font-size: ${contentSize}pt; line-height: ${lineSpacing}; text-align: ${item.align};">
@@ -2033,10 +2165,10 @@
             itemDiv.innerHTML = `
               ${actionToolbarHtml}
               <div class="flex flex-col items-center my-1">
-                <div class="max-w-md w-full rounded overflow-hidden border border-primary/20 shadow-xs">
+                <div class="max-w-md w-full rounded-[2px] overflow-hidden border-2 border-black shadow-[2px_2px_0px_#000]">
                   <img src="${item.img.data}" class="w-full object-contain max-h-48" alt="Figure preview"/>
                 </div>
-                <span class="text-[10px] font-document-body italic text-on-surface-variant mt-1 text-center">
+                <span class="text-[10px] font-mono italic text-black/75 mt-1 text-center font-bold">
                   ${escapeHtml(item.img.caption)}
                 </span>
               </div>
@@ -2046,12 +2178,12 @@
             itemDiv.innerHTML = `
               ${actionToolbarHtml}
               <div class="flex items-center gap-1 cursor-grab active:cursor-grabbing mb-0.5">
-                <span class="material-symbols-outlined text-[14px] text-on-surface-variant/40 group-hover:text-primary transition-colors cursor-grab" title="Drag to reorder">drag_indicator</span>
-                <h4 class="doc-preview-heading font-document-title font-bold uppercase tracking-wider underline text-primary" style="font-size: ${headingSize}pt; font-family: ${fontFamily};">
+                <span class="material-symbols-outlined text-[14px] text-black/50 group-hover:text-black transition-colors cursor-grab" title="Drag to reorder">drag_indicator</span>
+                <h4 class="doc-preview-heading font-document-title font-bold uppercase tracking-wider underline text-black" style="font-size: ${headingSize}pt; font-family: ${fontFamily};">
                   ${item.secTitle}:
                 </h4>
               </div>
-              <div class="doc-preview-body text-xs indent-4 leading-normal select-text focus:outline-dashed focus:outline-1 focus:outline-secondary/60 rounded px-1 text-on-surface"
+              <div class="doc-preview-body text-xs indent-4 leading-normal select-text focus:outline-2 focus:outline-black rounded-[2px] px-1 text-black"
                    contenteditable="true"
                    onblur="handleSectionContentEdit('${item.secKey}', this.innerText)"
                    style="font-family: ${fontFamily}; font-size: ${contentSize}pt; line-height: ${lineSpacing}; text-align: ${item.align};">
@@ -2067,17 +2199,17 @@
 
         // Academic Sign-off Footer
         const footerDiv = document.createElement("div");
-        footerDiv.className = "flex justify-between items-end pt-3 border-t border-primary/20 text-xs z-10 mt-auto font-body-sm";
+        footerDiv.className = "flex justify-between items-end pt-3 border-t-2 border-black/30 text-xs z-10 mt-auto font-mono";
         footerDiv.innerHTML = `
           <div class="flex flex-col">
-            <span class="text-[10px] text-on-surface-variant font-medium">Verified Academic Record</span>
+            <span class="text-[10px] text-black/70 font-semibold uppercase">Verified Academic Record</span>
           </div>
           ${isLastPage ? `
           <div class="flex flex-col items-center">
-            <div class="w-36 border-b border-primary border-dotted mb-1"></div>
-            <span class="text-[10px] font-semibold uppercase tracking-wider text-on-surface">Signature of Evaluator</span>
+            <div class="w-36 border-b-2 border-black border-dotted mb-1"></div>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-black">Signature of Evaluator</span>
           </div>` : `<div></div>`}
-          <div class="text-[10px] font-semibold uppercase tracking-wider text-on-surface-variant">
+          <div class="text-[10px] font-bold uppercase tracking-wider text-black">
             Page ${pg.pageNum} of ${totalPages}
           </div>
         `;
@@ -2336,20 +2468,18 @@
       const desc = document.getElementById("aiActiveDescription");
       if (!badge) return;
 
+      badge.className = "px-2 py-0.5 rounded-[2px] bg-[#8FC93A] text-black border border-black shadow-[1px_1px_0px_#000] font-mono text-[11px] font-bold uppercase";
+
       if (key.startsWith("ghp_") || key.startsWith("github_pat_")) {
-        badge.className = "px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-xs font-semibold";
         badge.textContent = "GitHub Models (GPT-4o-mini) Active";
         if (desc) desc.textContent = "Using direct GitHub personal access token for OpenAI GPT-4o-mini inference.";
       } else if (key.startsWith("AIzaSy")) {
-        badge.className = "px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-xs font-semibold";
         badge.textContent = "Gemini LLM Active";
         if (desc) desc.textContent = "Using direct Google Gemini API key (gemini-1.5-flash).";
       } else if (key.startsWith("gsk_")) {
-        badge.className = "px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-xs font-semibold";
         badge.textContent = "Groq Llama-3 Active";
         if (desc) desc.textContent = "Using direct Groq Cloud API key.";
       } else {
-        badge.className = "px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-xs font-semibold";
         badge.textContent = "Custom Key Active";
         if (desc) desc.textContent = "Using custom API key provided in input.";
       }
@@ -2364,11 +2494,11 @@
           const data = await resp.json();
           if (data.has_env) {
             if (badge) {
-              badge.className = "px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-xs font-semibold";
+              badge.className = "px-2 py-0.5 rounded-[2px] bg-[#8FC93A] text-black border border-black shadow-[1px_1px_0px_#000] font-mono text-[11px] font-bold uppercase";
               badge.textContent = data.label;
             }
             if (desc) {
-              desc.innerHTML = `Active configuration loaded from project <code class="font-mono bg-surface-container-highest px-1 py-0.5 rounded text-[11px]">.env</code> (${data.active_provider.toUpperCase()}).`;
+              desc.innerHTML = `Active configuration loaded from project <code class="font-mono bg-white border border-black px-1 py-0.5 rounded-[2px] text-[11px] text-black">.env</code> (${data.active_provider.toUpperCase()}).`;
             }
             return;
           }
@@ -2378,11 +2508,11 @@
       }
 
       if (badge) {
-        badge.className = "px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-xs";
+        badge.className = "px-2 py-0.5 rounded-[2px] bg-[#FAF8F5] text-black border border-black font-mono text-[11px] font-bold uppercase";
         badge.textContent = "Offline Mode";
       }
       if (desc) {
-        desc.innerHTML = `Configure your <code class="font-mono bg-surface-container-highest px-1 py-0.5 rounded text-[11px]">.env</code> file or paste a key below to enable AI generation.`;
+        desc.innerHTML = `Configure your <code class="font-mono bg-white border border-black px-1 py-0.5 rounded-[2px] text-[11px] text-black">.env</code> file or paste a key below to enable AI generation.`;
       }
     }
 
@@ -2413,24 +2543,24 @@
       // Reset nav button styles
       [navTabWizard, navTabMyRecords, navTabTemplates].forEach(btn => {
         if (btn) {
-          btn.className = "flex items-center justify-between px-space-sm py-space-sm rounded-lg transition-all text-left text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface w-full";
+          btn.className = "flex items-center justify-between px-space-md py-2.5 rounded-[3px] transition-all text-left bg-white text-black border-2 border-black shadow-[2px_2px_0px_#000] hover:bg-[#FAF8F5] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#000] w-full font-headline-sm text-xs font-black uppercase cursor-pointer";
         }
       });
       if (navTabWizardBadge) navTabWizardBadge.classList.add("hidden");
 
       if (tabName === "wizard") {
         viewWizard.classList.remove("hidden");
-        if (navTabWizard) navTabWizard.className = "flex items-center justify-between px-space-sm py-space-sm rounded-lg transition-all text-left bg-primary-container text-on-secondary font-headline-sm w-full";
+        if (navTabWizard) navTabWizard.className = "flex items-center justify-between px-space-md py-2.5 rounded-[3px] transition-all text-left bg-[#0072BB] text-white border-2 border-black shadow-[3px_3px_0px_#000] font-headline-sm text-xs font-black uppercase w-full cursor-pointer";
         if (navTabWizardBadge) navTabWizardBadge.classList.remove("hidden");
         if (topBarTitle) topBarTitle.textContent = "New Record Wizard";
       } else if (tabName === "myrecords") {
         viewMyRecords.classList.remove("hidden");
-        if (navTabMyRecords) navTabMyRecords.className = "flex items-center justify-between px-space-sm py-space-sm rounded-lg transition-all text-left bg-primary-container text-on-secondary font-headline-sm w-full";
+        if (navTabMyRecords) navTabMyRecords.className = "flex items-center justify-between px-space-md py-2.5 rounded-[3px] transition-all text-left bg-[#0072BB] text-white border-2 border-black shadow-[3px_3px_0px_#000] font-headline-sm text-xs font-black uppercase w-full cursor-pointer";
         if (topBarTitle) topBarTitle.textContent = "My Records";
         loadMyRecords();
       } else if (tabName === "templates") {
         viewTemplates.classList.remove("hidden");
-        if (navTabTemplates) navTabTemplates.className = "flex items-center justify-between px-space-sm py-space-sm rounded-lg transition-all text-left bg-primary-container text-on-secondary font-headline-sm w-full";
+        if (navTabTemplates) navTabTemplates.className = "flex items-center justify-between px-space-md py-2.5 rounded-[3px] transition-all text-left bg-[#0072BB] text-white border-2 border-black shadow-[3px_3px_0px_#000] font-headline-sm text-xs font-black uppercase w-full cursor-pointer";
         if (topBarTitle) topBarTitle.textContent = "Document Templates";
         loadTemplatesList();
       }
@@ -2465,11 +2595,11 @@
 
       if (!records || records.length === 0) {
         container.innerHTML = `
-          <div class="p-space-xl rounded-2xl bg-surface-container-low text-center flex flex-col items-center justify-center gap-space-sm">
-            <span class="material-symbols-outlined text-outline text-[48px]">inventory_2</span>
-            <span class="font-headline-sm text-headline-sm text-on-surface">No Exported Records Yet</span>
-            <span class="font-body-sm text-body-sm text-on-surface-variant max-w-md">Complete the 4-step wizard and export your first Word document to see it saved here.</span>
-            <button onclick="switchTab('wizard')" class="mt-space-xs px-space-md py-space-xs rounded-lg bg-primary text-on-primary font-headline-sm text-headline-sm flex items-center gap-1 transition-all" type="button">
+          <div class="p-space-xl rounded-[3px] bg-white border-2 border-dashed border-black shadow-[4px_4px_0px_#000] text-center flex flex-col items-center justify-center gap-space-sm">
+            <span class="material-symbols-outlined text-black/40 text-[56px]">inventory_2</span>
+            <span class="font-headline-sm text-base font-black uppercase text-black">No Exported Records Yet</span>
+            <span class="font-mono text-xs text-black/70 max-w-md">Complete the 4-step wizard and export your first Word document to see it saved here.</span>
+            <button onclick="switchTab('wizard')" class="mt-space-xs px-space-md py-2 rounded-[3px] bg-[#0072BB] text-white border-2 border-black shadow-[3px_3px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] font-headline-sm text-xs font-black uppercase flex items-center gap-1 transition-all cursor-pointer" type="button">
               <span>Start New Record</span>
             </button>
           </div>
@@ -2479,26 +2609,26 @@
 
       container.innerHTML = records.map(rec => {
         const sectionPills = (rec.sections || []).map(s => `
-          <span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-mono text-[10px] uppercase font-semibold">${escapeHtml(s)}</span>
+          <span class="px-2 py-0.5 rounded-[2px] bg-[#FAF8F5] text-black border border-black font-mono text-[10px] uppercase font-bold">${escapeHtml(s)}</span>
         `).join("");
 
         return `
-          <div class="p-space-md rounded-xl bg-surface-container-low border border-surface-container-high flex flex-col sm:flex-row sm:items-center justify-between gap-space-md hover:border-secondary/40 transition-all shadow-sm">
+          <div class="p-space-md rounded-[3px] bg-white border-2 border-black shadow-[4px_4px_0px_#000] flex flex-col sm:flex-row sm:items-center justify-between gap-space-md hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[5px_5px_0px_#000] transition-all">
             <div class="flex items-start gap-space-md min-w-0">
-              <div class="w-11 h-11 rounded-xl bg-primary-container text-on-secondary flex items-center justify-center shrink-0">
+              <div class="w-11 h-11 rounded-[2px] bg-[#0072BB] text-white border-2 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center shrink-0">
                 <span class="material-symbols-outlined text-[24px]">description</span>
               </div>
               <div class="flex flex-col min-w-0">
                 <div class="flex items-center gap-2 flex-wrap">
-                  <span class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">${escapeHtml(rec.title || rec.filename)}</span>
-                  <span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-[11px] font-semibold">${escapeHtml(rec.language || 'Code')}</span>
+                  <span class="font-headline-sm text-sm font-black uppercase text-black truncate">${escapeHtml(rec.title || rec.filename)}</span>
+                  <span class="px-2 py-0.5 rounded-[2px] bg-[#8FC93A] text-black border border-black shadow-[1px_1px_0px_#000] font-mono text-[10px] font-bold uppercase">${escapeHtml(rec.language || 'Code')}</span>
                 </div>
-                <div class="flex items-center gap-2 text-on-surface-variant text-xs mt-1">
+                <div class="flex items-center gap-2 text-black/70 font-mono text-xs mt-1">
                   <span>${escapeHtml(rec.display_date || rec.created_at)}</span>
                   <span>•</span>
                   <span>${rec.file_size_kb || 0} KB</span>
                   <span>•</span>
-                  <span class="font-mono text-[11px] truncate max-w-xs">${escapeHtml(rec.filename)}</span>
+                  <span class="truncate max-w-xs">${escapeHtml(rec.filename)}</span>
                 </div>
                 <div class="flex flex-wrap items-center gap-1.5 mt-2">
                   ${sectionPills}
@@ -2506,12 +2636,12 @@
               </div>
             </div>
             <div class="flex items-center gap-space-xs shrink-0 self-end sm:self-center">
-              <a href="${rec.download_url}" download class="px-space-md py-1.5 rounded-lg bg-secondary text-on-secondary hover:bg-secondary-container font-headline-sm text-xs flex items-center gap-1 transition-all shadow-sm">
+              <a href="${rec.download_url}" download class="px-space-md py-1.5 rounded-[2px] bg-[#8FC93A] text-black border-2 border-black shadow-[2px_2px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#000] font-headline-sm text-xs font-black uppercase flex items-center gap-1 transition-all cursor-pointer">
                 <span class="material-symbols-outlined text-[16px]">download</span>
                 <span>Download .docx</span>
               </a>
-              <button onclick="deleteRecord('${rec.id}')" class="p-1.5 rounded-lg hover:bg-error-container text-on-surface-variant hover:text-error transition-all" title="Delete record" type="button">
-                <span class="material-symbols-outlined text-[18px]">delete</span>
+              <button onclick="deleteRecord('${rec.id}')" class="w-7 h-7 rounded-[2px] bg-white hover:bg-red-100 text-black border-2 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center cursor-pointer transition-all" title="Delete record" type="button">
+                <span class="material-symbols-outlined text-[16px]">delete</span>
               </button>
             </div>
           </div>
@@ -2581,31 +2711,31 @@
       if (!grid) return;
 
       grid.innerHTML = templates.map(t => `
-        <div class="p-space-md rounded-xl bg-surface-container-low border border-surface-container-high flex flex-col justify-between gap-space-md hover:border-secondary/40 transition-all shadow-sm">
+        <div class="p-space-md rounded-[3px] bg-white border-2 border-black shadow-[4px_4px_0px_#000] flex flex-col justify-between gap-space-md hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[5px_5px_0px_#000] transition-all">
           <div class="flex flex-col gap-space-xs">
             <div class="flex items-center justify-between">
-              <span class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">${escapeHtml(t.name)}</span>
+              <span class="font-headline-sm text-sm font-black uppercase text-black truncate">${escapeHtml(t.name)}</span>
               ${t.is_default 
-                ? '<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-[10px]">Preset</span>' 
-                : '<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-[10px] font-semibold">Custom Upload</span>'}
+                ? '<span class="px-2 py-0.5 rounded-[2px] bg-[#FAF8F5] text-black border border-black font-mono text-[10px] uppercase font-bold">Preset</span>' 
+                : '<span class="px-2 py-0.5 rounded-[2px] bg-[#8FC93A] text-black border border-black font-mono text-[10px] uppercase font-bold">Custom</span>'}
             </div>
-            <p class="font-body-sm text-xs text-on-surface-variant">${escapeHtml(t.description || '')}</p>
+            <p class="font-mono text-xs text-black/70">${escapeHtml(t.description || '')}</p>
 
-            <div class="grid grid-cols-2 gap-2 mt-2 pt-2 border-t border-surface-container-high text-xs text-on-surface-variant">
-              <div><strong class="text-on-surface">Font:</strong> ${escapeHtml(t.font_family)}</div>
-              <div><strong class="text-on-surface">Border:</strong> ${escapeHtml(t.border)}</div>
-              <div><strong class="text-on-surface">Headings:</strong> ${t.heading_size} pt</div>
-              <div><strong class="text-on-surface">Body:</strong> ${t.content_size} pt</div>
+            <div class="grid grid-cols-2 gap-2 mt-2 pt-2 border-t-2 border-black text-xs font-mono text-black">
+              <div><strong>Font:</strong> ${escapeHtml(t.font_family)}</div>
+              <div><strong>Border:</strong> ${escapeHtml(t.border)}</div>
+              <div><strong>Headings:</strong> ${t.heading_size} pt</div>
+              <div><strong>Body:</strong> ${t.content_size} pt</div>
             </div>
           </div>
 
-          <div class="flex items-center justify-between pt-2 border-t border-surface-container-high">
-            <button onclick="useTemplateInWizard('${t.id}')" class="px-space-md py-1.5 rounded-lg bg-secondary text-on-secondary hover:bg-secondary-container font-headline-sm text-xs flex items-center gap-1 transition-all" type="button">
+          <div class="flex items-center justify-between pt-2 border-t-2 border-black">
+            <button onclick="useTemplateInWizard('${t.id}')" class="px-space-md py-1.5 rounded-[2px] bg-[#0072BB] text-white border-2 border-black shadow-[2px_2px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#000] font-headline-sm text-xs font-black uppercase flex items-center gap-1 transition-all cursor-pointer" type="button">
               <span class="material-symbols-outlined text-[16px]">check_circle</span>
               <span>Use Format</span>
             </button>
             ${!t.is_default ? `
-              <button onclick="deleteTemplate('${t.id}')" class="p-1 rounded-lg hover:bg-error-container text-error transition-all" title="Delete template" type="button">
+              <button onclick="deleteTemplate('${t.id}')" class="w-7 h-7 rounded-[2px] bg-white hover:bg-red-100 text-black border-2 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center cursor-pointer transition-all" title="Delete template" type="button">
                 <span class="material-symbols-outlined text-[16px]">delete</span>
               </button>
             ` : ''}
@@ -2621,14 +2751,14 @@
       const panel = document.getElementById("templateSelectPanel");
 
       if (method === "template") {
-        if (tplBtn) tplBtn.className = "p-space-sm rounded-lg border-2 border-secondary bg-surface-container-lowest text-left flex items-start gap-space-sm transition-all shadow-sm";
-        if (manBtn) manBtn.className = "p-space-sm rounded-lg border-2 border-transparent bg-surface-container-low hover:bg-surface-container text-left flex items-start gap-space-sm transition-all";
+        if (tplBtn) tplBtn.className = "p-space-sm rounded-[3px] border-2 border-black bg-[#1E91D6] text-black shadow-[3px_3px_0px_#000] text-left flex items-start gap-space-sm transition-all cursor-pointer";
+        if (manBtn) manBtn.className = "p-space-sm rounded-[3px] border-2 border-black bg-white text-black shadow-[2px_2px_0px_#000] hover:bg-[#FAF8F5] text-left flex items-start gap-space-sm transition-all cursor-pointer";
         if (panel) panel.classList.remove("hidden");
         const select = document.getElementById("activeTemplateSelect");
         if (select && select.value) applySelectedTemplate(select.value);
       } else {
-        if (tplBtn) tplBtn.className = "p-space-sm rounded-lg border-2 border-transparent bg-surface-container-low hover:bg-surface-container text-left flex items-start gap-space-sm transition-all";
-        if (manBtn) manBtn.className = "p-space-sm rounded-lg border-2 border-secondary bg-surface-container-lowest text-left flex items-start gap-space-sm transition-all shadow-sm";
+        if (tplBtn) tplBtn.className = "p-space-sm rounded-[3px] border-2 border-black bg-white text-black shadow-[2px_2px_0px_#000] hover:bg-[#FAF8F5] text-left flex items-start gap-space-sm transition-all cursor-pointer";
+        if (manBtn) manBtn.className = "p-space-sm rounded-[3px] border-2 border-black bg-[#1E91D6] text-black shadow-[3px_3px_0px_#000] text-left flex items-start gap-space-sm transition-all cursor-pointer";
         if (panel) panel.classList.add("hidden");
       }
     }
@@ -2789,7 +2919,7 @@
 
       if (dotsContainer) {
         dotsContainer.innerHTML = tutorialStepsData.map((_, idx) => `
-          <span class="w-2.5 h-2.5 rounded-full ${idx + 1 === currentTutorialStep ? 'bg-secondary' : 'bg-surface-container'}"></span>
+          <span class="w-3 h-3 rounded-[1px] border border-black ${idx + 1 === currentTutorialStep ? 'bg-[#8FC93A] shadow-[1px_1px_0px_#000]' : 'bg-white'}"></span>
         `).join("");
       }
     }
